@@ -2,38 +2,39 @@ import { AnimatedText } from '../../ui/animated-text';
 import { GithubCard } from './GithubCard';
 import { GithubStats } from './GithubStats';
 
+
 const featuredRepos = [
   {
-    name: "Pentaomnia",
-    description: "Full stack website for the Bihar based startup -Pentaomnia Pvt ltd",
-    stars: 128,
-    forks: 45,
-    watchers: 89,
-    language: "React, Node js, tailiwnd, Postcss",
-    url: "https://github.com/username/project-alpha"
+    name: "Crpto-go",
+    description: "Full stack website for tracking crypto currency prices and news",
+    stars: 1,
+    forks: 0,
+    watchers: 1,
+    language: "React, Go, tailiwnd, Postcsss",
+    url: "https://github.com/Vaibhavkulshrestha12/Crypto-go.git"
   },
   {
-    name: "Nirmaan",
-    description: "Eduction web-app still in developement,providing NDA courses",
-    stars: 256,
-    forks: 78,
-    watchers: 134,
-    language: "React, Node js, tailiwnd, postman",
-    url: "https://github.com/username/beta-framework"
+    name: "Dev-Portfolio",
+    description: "A pofolio website template made using sass and css",
+    stars: 0,
+    forks: 0,
+    watchers: 1,
+    language: "Html, js, Sass, Css",
+    url: "https://github.com/Vaibhavkulshrestha12/Portfolio-sass-.git"
   },
   {
     name: "Superman - flight to fight",
     description: "2D-game devloped using pygame,applied oops,music and gui using python",
-    stars: 89,
-    forks: 23,
-    watchers: 67,
+    stars: 1,
+    forks: 0,
+    watchers: 1,
     language: "Python",
-    url: "https://github.com/username/devtools-x"
+    url: "https://github.com/Vaibhavkulshrestha12/superman-pygame.git"
   }
 ];
 
 export const GithubSection = () => {
-  const githubUsername = "Vaibhavkulshrestha12"; // Replace with your GitHub username
+  const githubUsername = "Vaibhavkulshrestha12"; 
 
   return (
     <section className="py-20 px-4" id="github">

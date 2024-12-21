@@ -13,11 +13,11 @@ export const Hero = () => {
           className="text-sm font-bold text-violet-500 tracking-wider uppercase mb-4"
         />
         <AnimatedText
-          text="Building Digital Experiences That Matter"
+          text="Who is not yet another developer"
           className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8 bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500"
         />
         <AnimatedText
-          text="Specialized in MERN stack, Python, and Frontend Technologies"
+          text="Specialized in MERN stack, Python, SEO and Project Management"
           className="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto"
         />
         

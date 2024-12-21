@@ -34,7 +34,7 @@ export const Navbar = () => {
             </a>
           </div>
           
-          {/* Desktop Navigation */}
+          
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               <NavLink href="#">About</NavLink>
@@ -45,7 +45,7 @@ export const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            {/* Theme toggle for desktop */}
+            
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors hidden md:block"
@@ -53,7 +53,7 @@ export const Navbar = () => {
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
-            {/* Mobile menu button */}
+            
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
@@ -64,7 +64,7 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/10 backdrop-blur-md dark:bg-black/10">

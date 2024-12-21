@@ -8,7 +8,7 @@ export const GithubStats = ({ username }: GithubStatsProps) => {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* GitHub Stats Card */}
+        
         <MovingBorder>
           <div className="bg-white dark:bg-black p-6">
             <img
@@ -19,7 +19,6 @@ export const GithubStats = ({ username }: GithubStatsProps) => {
           </div>
         </MovingBorder>
 
-        {/* GitHub Streak Stats */}
         <MovingBorder>
           <div className="bg-white dark:bg-black p-6">
             <img

@@ -1,4 +1,4 @@
-import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp,FaDiscord } from 'react-icons/fa';
 
 export const SocialLinks = () => {
   return (
@@ -9,6 +9,8 @@ export const SocialLinks = () => {
         <SocialLink href="https://x.com/Vaibhav_1208" icon={<FaTwitter size={24} />} />
         <SocialLink href="mailto:vaibhavkulshrestha55@gmail.com" icon={<FaEnvelope size={24} />} />
         <SocialLink href="https://wa.me/+917355479199" icon={<FaWhatsapp size={24} />} />
+        <SocialLink href="https://discord.com/users/idk_alpha_" icon={<FaDiscord size={24} />} />
+
       </div>
     </div>
   );

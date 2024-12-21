@@ -2,30 +2,35 @@ import { AnimatedText } from "../ui/animated-text";
 import { MovingBorder } from "../ui/moving-border";
 import { ExternalLink, Github } from "lucide-react";
 
+
+import pentaomniaImage from "/images/page.png";
+import kisaanImage from "/images/kissan.gif";
+import nirmaanImage from "/images/work.png";
+
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with real-time inventory management",
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-    technologies: ["Next.js", "Node.js", "PostgreSQL"],
-    github: "https://github.com",
-    live: "https://example.com",
+    title: "Pentaomnia",
+    description: "Full stack website for Bihar-based startup - Pentaomnia Pvt Ltd.",
+    image: pentaomniaImage, 
+    technologies: ["React", "Next js", "Tailwindcss", "Typescript"],
+    github: "https://github.com/Vaibhavkulshrestha12/PentaOmnia-V2.0.git",
+    live: "https://pentaomnia.com",
   },
   {
-    title: "AI Task Manager",
-    description: "Smart task management system with AI-powered prioritization",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
-    technologies: ["React", "Python", "TensorFlow"],
-    github: "https://github.com",
-    live: "https://example.com",
+    title: "Kisaan Connect",
+    description: "Full stack web-app for farmers to connect and trade.",
+    image: kisaanImage, 
+    technologies: ["React", "Css", "Firebase"],
+    github: "https://github.com/Vaibhavkulshrestha12/Kisan-connect-frontend-web.git",
+    live: "https://rented-eta.vercel.app",
   },
   {
-    title: "Real-time Analytics Dashboard",
-    description: "Interactive dashboard for real-time data visualization",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    technologies: ["Vue.js", "D3.js", "Firebase"],
-    github: "https://github.com",
-    live: "https://example.com",
+    title: "Nirmaan",
+    description: "A full-stack education web application for NDA aspirants (still in development)",
+    image: nirmaanImage, 
+    technologies: ["React", "Typescript", "Mongodb", "Tailwind"],
+    github: "https://github.com/Vaibhavkulshrestha12/Nirmaan-frontend.git",
+    live: "https://github.com/Vaibhavkulshrestha12/Nirmaan-frontend.git",
   },
 ];
 
@@ -37,13 +42,13 @@ export const Projects = () => {
           text="Featured Projects"
           className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
         />
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <MovingBorder key={project.title}>
               <div className="relative group">
                 <img
-                  src={project.image}
+                  src={project.image} 
                   alt={project.title}
                   className="w-full h-48 object-cover rounded-t-lg"
                 />

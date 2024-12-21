@@ -1,20 +1,6 @@
 import { AnimatedText } from "../ui/animated-text";
 import { MovingBorder } from "../ui/moving-border";
-
-const skills = [
-  {
-    category: "Frontend",
-    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux"],
-  },
-  {
-    category: "Backend",
-    technologies: ["Node.js", "Python", "Django", "PostgreSQL", "MongoDB"],
-  },
-  {
-    category: "Tech known",
-    technologies: ["Git", "C++", "Postman", "Vercel", "Jenkins"],
-  },
-];
+import { techStack } from "../sections/TechStack";
 
 export const Skills = () => {
   return (
@@ -24,15 +10,18 @@ export const Skills = () => {
           text="Technical Expertise"
           className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
         />
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skills.map((skill) => (
-            <MovingBorder key={skill.category}>
+          {Object.entries(techStack).map(([category, technologies]) => (
+            <MovingBorder key={category}>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-4">{skill.category}</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">{category}</h3>
                 <ul className="space-y-2">
-                  {skill.technologies.map((tech) => (
-                    <li key={tech} className="text-gray-400">{tech}</li>
+                  {technologies.map(({ name, icon: Icon, color }) => (
+                    <li key={name} className="flex items-center gap-2 text-gray-400">
+                      <Icon className={`w-5 h-5 ${color}`} />
+                      <span>{name}</span>
+                    </li>
                   ))}
                 </ul>
               </div>

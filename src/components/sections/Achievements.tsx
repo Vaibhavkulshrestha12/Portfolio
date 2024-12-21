@@ -37,17 +37,17 @@ export const Achievements = () => {
         </h2>
         
         <div className="relative mt-40" style={{ height: '600px' }}>
-          {/* Orbit Circle */}
+          
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-gray-700/30 dark:border-gray-300/30" />
           
-          {/* Center Logo */}
+          
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className="w-24 h-24 rounded-full bg-violet-500/20 flex items-center justify-center">
               <Trophy className="w-12 h-12 text-violet-500" />
             </div>
           </div>
           
-          {/* Orbiting Achievements */}
+          
           {achievements.map((achievement, index) => {
             const angle = (index * 360) / achievements.length;
             const Icon = achievement.icon;
