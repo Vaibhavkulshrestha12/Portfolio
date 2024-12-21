@@ -33,7 +33,7 @@ export const MovingBorder = ({
         variants={variants}
         transition={{ duration: 0.5 }}
         className={cn(
-          "relative bg-black rounded-lg p-6",
+          "relative bg-white dark:bg-black rounded-lg p-6 shadow-lg",
           className
         )}
       >

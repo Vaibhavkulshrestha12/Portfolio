@@ -11,8 +11,8 @@ const skills = [
     technologies: ["Node.js", "Python", "Django", "PostgreSQL", "MongoDB"],
   },
   {
-    category: "DevOps",
-    technologies: ["Docker", "AWS", "CI/CD", "Kubernetes", "Terraform"],
+    category: "Tech known",
+    technologies: ["Git", "C++", "Postman", "Vercel", "Jenkins"],
   },
 ];
 

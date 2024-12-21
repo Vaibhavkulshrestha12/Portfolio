@@ -1,13 +1,14 @@
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 
 export const SocialLinks = () => {
   return (
     <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50">
       <div className="flex flex-col gap-6">
-        <SocialLink href="https://github.com" icon={<Github size={24} />} />
-        <SocialLink href="https://linkedin.com" icon={<Linkedin size={24} />} />
-        <SocialLink href="https://twitter.com" icon={<Twitter size={24} />} />
-        <SocialLink href="mailto:contact@example.com" icon={<Mail size={24} />} />
+        <SocialLink href="https://github.com/Vaibhavkulshrestha12" icon={<FaGithub size={24} />} />
+        <SocialLink href="https://www.linkedin.com/in/vaibhav-kulshrestha-053924283/" icon={<FaLinkedin size={24} />} />
+        <SocialLink href="https://x.com/Vaibhav_1208" icon={<FaTwitter size={24} />} />
+        <SocialLink href="mailto:vaibhavkulshrestha55@gmail.com" icon={<FaEnvelope size={24} />} />
+        <SocialLink href="https://wa.me/+917355479199" icon={<FaWhatsapp size={24} />} />
       </div>
     </div>
   );

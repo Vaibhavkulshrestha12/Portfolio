@@ -3,27 +3,27 @@ import { Award, Trophy, Star, Medal } from 'lucide-react';
 
 const achievements = [
   {
-    title: "Best Developer Award",
-    description: "Recognized for exceptional contributions",
-    icon: Trophy,
+    title: "Tech Speaker",
+    description: "Spoke at 4+ tech-events",
+    icon: Medal,
     color: "text-yellow-500"
   },
   {
-    title: "100+ Projects Completed",
-    description: "Successfully delivered projects",
-    icon: Star,
+    title: "Smart India Hackathon qualifier",
+    description: "qualified the first round of SIH",
+    icon: Trophy,
     color: "text-blue-500"
   },
   {
     title: "Open Source Contributor",
     description: "Active contributor to major projects",
-    icon: Award,
+    icon: Star,
     color: "text-green-500"
   },
   {
-    title: "Tech Speaker",
-    description: "Spoke at 20+ conferences",
-    icon: Medal,
+    title: "Winner of All India Science Competition",
+    description: "Created improved waste water treatment plant prototype",
+    icon: Award,
     color: "text-purple-500"
   }
 ];
@@ -32,15 +32,18 @@ export const Achievements = () => {
   return (
     <section id="achievements" className="py-20 relative min-h-screen">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-16 dark:text-white">
+        <h2 className="text-3xl font-bold text-center mb-32 dark:text-white">
           Achievements
         </h2>
         
-        <div className="relative">
+        <div className="relative mt-40" style={{ height: '600px' }}>
+          {/* Orbit Circle */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-gray-700/30 dark:border-gray-300/30" />
+          
           {/* Center Logo */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="w-20 h-20 rounded-full bg-violet-500/20 flex items-center justify-center">
-              <Trophy className="w-10 h-10 text-violet-500" />
+            <div className="w-24 h-24 rounded-full bg-violet-500/20 flex items-center justify-center">
+              <Trophy className="w-12 h-12 text-violet-500" />
             </div>
           </div>
           
@@ -57,15 +60,15 @@ export const Achievements = () => {
                   rotate: [angle, angle + 360],
                 }}
                 transition={{
-                  duration: 20,
+                  duration: 30,
                   repeat: Infinity,
                   ease: "linear",
                 }}
                 style={{
-                  width: '300px',
-                  height: '300px',
-                  marginLeft: '-150px',
-                  marginTop: '-150px',
+                  width: '500px',
+                  height: '500px',
+                  marginLeft: '-250px',
+                  marginTop: '-250px',
                 }}
               >
                 <div
