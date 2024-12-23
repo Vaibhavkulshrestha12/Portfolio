@@ -22,7 +22,7 @@ const projects = [
     image: kisaanImage, 
     technologies: ["React", "Css", "Firebase"],
     github: "https://github.com/Vaibhavkulshrestha12/Kisan-connect-frontend-web.git",
-    live: "https://rented-eta.vercel.app",
+    live: "https://kisan-connect-six.vercel.app",
   },
   {
     title: "Nirmaan",
