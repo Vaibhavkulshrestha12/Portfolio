@@ -21,7 +21,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                 <FaMapMarkerAlt size={16} />
-                <span>Sunny Apartments, Law Gate Road, Chehru, Phagwara - 144402, Punjab, India</span>
+                <span>Delhi, India</span>
               </div>
             </div>
           </div>

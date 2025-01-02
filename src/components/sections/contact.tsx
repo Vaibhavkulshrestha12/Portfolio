@@ -25,7 +25,7 @@ export const Contact = () => {
               </div>
               <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
                 <MapPin size={20} />
-                <span>Sunny apartments, Law Gate Road, Chehru, Phagwara - 144402, Punjab, India</span>
+                <span>Delhi, India</span>
               </div>
             </div>
           </MovingBorder>

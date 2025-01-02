@@ -2,33 +2,42 @@ import { AnimatedText } from "../ui/animated-text";
 import { MovingBorder } from "../ui/moving-border";
 import { motion } from "framer-motion";
 
+
 const experiences = [
   {
     title: "Tech Manager",
     company: "Pentaomnia Pvt ltd",
     period: "2023 - Present",
-    description: "Led development of various projects and spearheaded the tech team",
+    description: "Led development and management of various projects and spearheaded the tech team.",
     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&q=80"
   },
   {
     title: "Full Stack Developer",
     company: "Pentaomnia Pvt ltd",
     period: "2023 - 2024",
-    description: "Developed and maintained multiple web applications using modern technologies",
+    description: "Developed and maintained multiple web applications for external clients and startups.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80"
   },
   {
-    title: "Frontend Developer",
-    company: "Pentaomnia pvt ltd",
+    title: "Tech Team Member",
+    company: "Innovxus",
     period: "2023 - 2024",
-    description: "Created responsive and interactive user interfaces for various clients",
+    description: "Created responsive and interactive user interfaces for various clients.",
     image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80"
   },
   {
     title: "Marketing intern",
     company: "Soch/Warriors Without cause",
     period: "2024 - present",
-    description: "SEO, SMM, and marketing management for the clothing brand -SOCH",
+    description: "SEO, SMM, and marketing management for the clothing brand - SOCH",
+    image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80"
+  },
+
+  {
+    title: "Tech Speaker",
+    company: "InnovateX",
+    period: "2024",
+    description: "Delivered lectures on open source contributions and efficient usage of git",
     image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80"
   }
 ];
