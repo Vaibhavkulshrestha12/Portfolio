@@ -1,4 +1,4 @@
-<<<<<<< master
+
 # Portfolio Website Template
 
 This is a portfolio website template created using Tailwind CSS, TypeScript, and React. This site is completely open source and free for everyone. Any contribution is highly appreciated.
