@@ -9,6 +9,13 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+
+  "author":{
+    "name": "vaibhav kulshrestha",
+    "email": "vaibhavkulshrestha55@gmail.com",
+    "github":"vaibhavkulshrestha12"
+  },
+  
   "dependencies": {
     "@iconify/react": "^5.1.0",
     "clsx": "^2.1.0",
