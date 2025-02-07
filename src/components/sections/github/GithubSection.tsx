@@ -2,39 +2,38 @@ import { AnimatedText } from '../../ui/animated-text';
 import { GithubCard } from './GithubCard';
 import { GithubStats } from './GithubStats';
 
-
 const featuredRepos = [
   {
-    name: "Crpto-go",
-    description: "Full stack website for tracking crypto currency prices and news",
-    stars: 1,
-    forks: 0,
-    watchers: 1,
-    language: "React, Go, tailiwnd, Postcsss",
-    url: "https://github.com/Vaibhavkulshrestha12/Crypto-go.git"
+    name: "Pentaomnia",
+    description: "Full stack website for Bihar-based startup - Pentaomnia Pvt Ltd.",
+    stars: 12,
+    forks: 3,
+    watchers: 5,
+    language: "TypeScript",
+    url: "https://github.com/Vaibhavkulshrestha12/PentaOmnia-V2.0.git"
   },
   {
-    name: "Dev-Portfolio",
-    description: "A pofolio website template made using sass and css",
-    stars: 0,
-    forks: 0,
-    watchers: 1,
-    language: "Html, js, Sass, Css",
-    url: "https://github.com/Vaibhavkulshrestha12/Portfolio-sass-.git"
+    name: "Kisaan Connect",
+    description: "Full stack web-app for farmers to connect and trade.",
+    stars: 8,
+    forks: 2,
+    watchers: 4,
+    language: "React",
+    url: "https://github.com/Vaibhavkulshrestha12/Kisan-connect-frontend-web.git"
   },
   {
-    name: "Superman - flight to fight",
-    description: "2D-game devloped using pygame,applied oops,music and gui using python",
-    stars: 1,
-    forks: 0,
-    watchers: 1,
-    language: "Python",
-    url: "https://github.com/Vaibhavkulshrestha12/superman-pygame.git"
+    name: "Nirmaan",
+    description: "A full-stack education web application for NDA aspirants",
+    stars: 15,
+    forks: 4,
+    watchers: 7,
+    language: "TypeScript",
+    url: "https://github.com/Vaibhavkulshrestha12/Nirmaan-frontend.git"
   }
 ];
 
 export const GithubSection = () => {
-  const githubUsername = "Vaibhavkulshrestha12"; 
+  const githubUsername = "Vaibhavkulshrestha12";
 
   return (
     <section className="py-20 px-4" id="github">

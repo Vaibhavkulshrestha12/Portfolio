@@ -2,16 +2,11 @@ import { AnimatedText } from "../ui/animated-text";
 import { MovingBorder } from "../ui/moving-border";
 import { ExternalLink, Github } from "lucide-react";
 
-
-import pentaomniaImage from "/images/page.png";
-import kisaanImage from "/images/kissan.gif";
-import nirmaanImage from "/images/work.png";
-
 const projects = [
   {
     title: "Pentaomnia",
     description: "Full stack website for Bihar-based startup - Pentaomnia Pvt Ltd.",
-    image: pentaomniaImage, 
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
     technologies: ["React", "Next js", "Tailwindcss", "Typescript"],
     github: "https://github.com/Vaibhavkulshrestha12/PentaOmnia-V2.0.git",
     live: "https://pentaomnia.com",
@@ -19,7 +14,7 @@ const projects = [
   {
     title: "Kisaan Connect",
     description: "Full stack web-app for farmers to connect and trade.",
-    image: kisaanImage, 
+    image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80",
     technologies: ["React", "Css", "Firebase"],
     github: "https://github.com/Vaibhavkulshrestha12/Kisan-connect-frontend-web.git",
     live: "https://kisan-connect-six.vercel.app",
@@ -27,7 +22,7 @@ const projects = [
   {
     title: "Nirmaan",
     description: "A full-stack education web application for NDA aspirants (still in development)",
-    image: nirmaanImage, 
+    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80",
     technologies: ["React", "Typescript", "Mongodb", "Tailwind"],
     github: "https://github.com/Vaibhavkulshrestha12/Nirmaan-frontend.git",
     live: "https://github.com/Vaibhavkulshrestha12/Nirmaan-frontend.git",
@@ -48,7 +43,7 @@ export const Projects = () => {
             <MovingBorder key={project.title}>
               <div className="relative group">
                 <img
-                  src={project.image} 
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover rounded-t-lg"
                 />

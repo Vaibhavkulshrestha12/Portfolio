@@ -22,7 +22,7 @@ export const GithubStats = ({ username }: GithubStatsProps) => {
         <MovingBorder>
           <div className="bg-white dark:bg-black p-6">
             <img
-              src={`https://github-readme-streak-stats.herokuapp.com/?user=${username}&hide_border=true&theme=transparent&title_color=6d28d9&text_color=64748b&icon_color=6d28d9&bg_color=00000000`}
+              src={`https://streak-stats.demolab.com?user=${username}&hide_border=true&theme=transparent&title_color=6d28d9&text_color=64748b&icon_color=6d28d9&bg_color=00000000`}
               alt="GitHub Streak Stats"
               className="w-full h-auto"
             />
