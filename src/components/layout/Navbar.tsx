@@ -1,29 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 export const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  if (typeof window !== 'undefined') {
-    window.addEventListener('scroll', () => {
+  useEffect(() => {
+    const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-    });
-  }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    setIsMenuOpen(false);
+    
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
+      return;
+    }
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      navigate('/#contact');
-    }
-    setIsMenuOpen(false);
+    scrollToSection('contact');
   };
 
   return (
@@ -50,15 +62,28 @@ export const Navbar = () => {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <NavLink href="#about">About</NavLink>
-              <NavLink href="#projects">Projects</NavLink>
+              <button
+                onClick={() => scrollToSection('about')}
+                className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                About
+              </button>
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Projects
+              </button>
               <Link
                 to="/experience"
                 className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Experience
               </Link>
-              <button onClick={handleContactClick} className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+              <button
+                onClick={handleContactClick}
+                className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
                 Contact
               </button>
             </div>
@@ -85,12 +110,18 @@ export const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/10 backdrop-blur-md dark:bg-black/10">
-            <MobileNavLink href="#about" onClick={() => setIsMenuOpen(false)}>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
+            >
               About
-            </MobileNavLink>
-            <MobileNavLink href="#projects" onClick={() => setIsMenuOpen(false)}>
+            </button>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
+            >
               Projects
-            </MobileNavLink>
+            </button>
             <Link
               to="/experience"
               onClick={() => setIsMenuOpen(false)}
@@ -100,7 +131,7 @@ export const Navbar = () => {
             </Link>
             <button
               onClick={handleContactClick}
-              className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
             >
               Contact
             </button>
@@ -128,30 +159,3 @@ export const Navbar = () => {
     </nav>
   );
 };
-
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a
-    href={href}
-    className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-  >
-    {children}
-  </a>
-);
-
-const MobileNavLink = ({
-  href,
-  children,
-  onClick,
-}: {
-  href: string;
-  children: React.ReactNode;
-  onClick: () => void;
-}) => (
-  <a
-    href={href}
-    onClick={onClick}
-    className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
-  >
-    {children}
-  </a>
-);
