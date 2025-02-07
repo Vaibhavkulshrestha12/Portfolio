@@ -11,22 +11,42 @@
     "server": "node server/index.js"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "body-parser": "^1.20.3",
+    "clsx": "^2.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "framer-motion": "^11.0.8",
+>>>>>>> 9a3a2c80b9e1a546ab63d0124bf89ba0813edf29
     "lucide-react": "^0.344.0",
+    "nodemailer": "^6.9.16",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "framer-motion": "^11.0.8",
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.2.1",
     "react-icons": "^5.0.1",
+<<<<<<< HEAD
     "express": "^4.18.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "nodemailer": "^6.9.10",
     "react-router-dom": "^6.22.3",
     "googleapis": "^133.0.0"
+=======
+    "react-router-dom": "^7.1.1",
+    "tailwind-merge": "^2.2.1",
+    "winston": "^3.17.0"
+>>>>>>> 9a3a2c80b9e1a546ab63d0124bf89ba0813edf29
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
