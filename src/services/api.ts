@@ -1,5 +1,5 @@
 const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://vaibhavkulshrestha.vercel.app'  // This will be replaced with your actual Vercel domain
+  ? '/api'  
   : 'http://localhost:3000/api';
 
 export const sendContactForm = async (data: {
