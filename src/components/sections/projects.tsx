@@ -1,15 +1,13 @@
 import { AnimatedText } from "../ui/animated-text";
 import { MovingBorder } from "../ui/moving-border";
 import { ExternalLink, Github } from "lucide-react";
-import kisan from ".../../../public/kisan.gif";
-import page from ".../../../public/page.png";
-import work from ".../../../public/work.png";
+
 
 const projects = [
   {
     title: "Pentaomnia",
     description: "Full stack website for Bihar-based startup - Pentaomnia Pvt Ltd.",
-    image: {page},
+    image: "./images/page.png",
     technologies: ["React", "Next js", "Tailwindcss", "Typescript"],
     github: "https://github.com/Vaibhavkulshrestha12/PentaOmnia-V2.0.git",
     live: "https://pentaomnia.com",
@@ -17,7 +15,7 @@ const projects = [
   {
     title: "Kisaan Connect",
     description: "Full stack web-app for farmers to connect and trade.",
-    image: {kisan},
+    image: "./images/kissan.gif",
     technologies: ["React", "Css", "Firebase"],
     github: "https://github.com/Vaibhavkulshrestha12/Kisan-connect-frontend-web.git",
     live: "https://kisan-connect-six.vercel.app",
@@ -25,7 +23,7 @@ const projects = [
   {
     title: "Nirmaan",
     description: "A full-stack education web application for NDA aspirants (still in development)",
-    image: {work},
+    image: "./images/work.png",
     technologies: ["React", "Typescript", "Mongodb", "Tailwind"],
     github: "https://github.com/Vaibhavkulshrestha12/Nirmaan-frontend.git",
     live: "https://github.com/Vaibhavkulshrestha12/Nirmaan-frontend.git",
