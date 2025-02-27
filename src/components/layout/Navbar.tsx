@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Sun, Moon, Menu, X, Cat, Fish } from 'lucide-react'; 
 import { useTheme } from '../../hooks/useTheme';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-export const Navbar = () => {
+
+export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, toggleMouse: () => void }) => {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ export const Navbar = () => {
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
     
-    // If we're not on the home page, navigate there first
+   
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: sectionId } });
       return;
@@ -102,6 +103,24 @@ export const Navbar = () => {
               className="md:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+
+            
+            <button
+              onClick={toggleNeko}
+              className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
+              aria-label="Toggle cat"
+            >
+              <Cat className="w-6 h-6" />
+            </button>
+
+           
+            <button
+              onClick={toggleMouse}
+              className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
+              aria-label="Toggle mouse"
+            >
+              <Fish className="w-6 h-6" />
             </button>
           </div>
         </div>

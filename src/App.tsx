@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { SocialLinks } from './components/sections/SocialLinks';
 import { Hero } from './components/sections/hero';
@@ -10,6 +10,8 @@ import { Achievements } from './components/sections/Achievements';
 import { GithubSection } from './components/sections/github/GithubSection';
 import { Contact } from './components/sections/contact';
 import { Footer } from './components/layout/Footer';
+import Oneko from './components/oneko/oneko'; 
+import CustomCursor from './components/CustomCursor'; 
 
 function ScrollToSection() {
   const location = useLocation();
@@ -27,11 +29,27 @@ function ScrollToSection() {
 }
 
 function App() {
+  const [isNekoEnabled, setIsNekoEnabled] = useState(true); 
+  const [isMouseCursorEnabled, setIsMouseCursorEnabled] = useState(true); 
+
+  const toggleNeko = () => {
+    setIsNekoEnabled(prev => !prev); 
+  };
+
+  const toggleMouse = () => {
+    setIsMouseCursorEnabled(prev => !prev); 
+  };
+
   return (
     <Router>
       <ScrollToSection />
       <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
-        <Navbar />
+        <Navbar 
+          toggleNeko={toggleNeko} 
+          toggleMouse={toggleMouse} 
+        />
+        {isNekoEnabled && <Oneko />} 
+        {isMouseCursorEnabled && <CustomCursor />} 
         <Routes>
           <Route
             path="/"

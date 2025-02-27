@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export const NextjsIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg
