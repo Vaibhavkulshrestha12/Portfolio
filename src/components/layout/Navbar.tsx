@@ -3,7 +3,6 @@ import { Sun, Moon, Menu, X, Cat, Fish } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-
 export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, toggleMouse: () => void }) => {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -93,15 +92,14 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
-           
+            
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-colors absolute top-4 right-4"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
-           
             <div className="hidden md:flex gap-4">
               <button
                 onClick={toggleNeko}
@@ -123,7 +121,6 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
         </div>
       </div>
 
-      
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/10 backdrop-blur-md dark:bg-black/10">
@@ -153,7 +150,6 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
               Contact
             </button>
 
-            
             <div className="px-4 py-2 flex gap-4">
               <button
                 onClick={toggleNeko}
