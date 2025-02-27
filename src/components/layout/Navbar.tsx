@@ -21,8 +21,7 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
 
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
-    
-   
+
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: sectionId } });
       return;
@@ -41,11 +40,7 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled || isMenuOpen
-          ? 'bg-white/10 backdrop-blur-md dark:bg-black/10'
-          : 'bg-transparent'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled || isMenuOpen ? 'bg-white/10 backdrop-blur-md dark:bg-black/10' : 'bg-transparent'}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -98,6 +93,7 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
+           
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
@@ -105,27 +101,29 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
-            
-            <button
-              onClick={toggleNeko}
-              className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
-              aria-label="Toggle cat"
-            >
-              <Cat className="w-6 h-6" />
-            </button>
-
            
-            <button
-              onClick={toggleMouse}
-              className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
-              aria-label="Toggle mouse"
-            >
-              <Fish className="w-6 h-6" />
-            </button>
+            <div className="hidden md:flex gap-4">
+              <button
+                onClick={toggleNeko}
+                className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
+                aria-label="Toggle cat"
+              >
+                <Cat className="w-6 h-6" />
+              </button>
+
+              <button
+                onClick={toggleMouse}
+                className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
+                aria-label="Toggle mouse"
+              >
+                <Fish className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
+      
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/10 backdrop-blur-md dark:bg-black/10">
@@ -154,6 +152,26 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
             >
               Contact
             </button>
+
+            
+            <div className="px-4 py-2 flex gap-4">
+              <button
+                onClick={toggleNeko}
+                className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
+                aria-label="Toggle cat"
+              >
+                <Cat className="w-6 h-6" />
+              </button>
+
+              <button
+                onClick={toggleMouse}
+                className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
+                aria-label="Toggle mouse"
+              >
+                <Fish className="w-6 h-6" />
+              </button>
+            </div>
+
             <div className="px-4 py-2">
               <button
                 onClick={toggleTheme}
