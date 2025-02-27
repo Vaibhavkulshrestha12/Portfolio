@@ -75,7 +75,7 @@ This project is licensed under the MIT License.
 
 This is a portfolio website template created using Tailwind CSS, TypeScript, and React. This site is completely open source and free for everyone. Any contribution is highly appreciated.
 
-![Preview](./public/images/preview.png)
+![Preview](./public/images/preview.gif)
 
 ## Getting Started
 
