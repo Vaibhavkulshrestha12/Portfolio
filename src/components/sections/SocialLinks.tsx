@@ -20,7 +20,7 @@ const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => 
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="text-gray-400 hover:text-violet-400 transition-colors transform hover:scale-110"
+    className="text-surface-600 hover:text-primary-500 dark:text-surface-400 dark:hover:text-primary-400 transition-colors transform hover:scale-110"
   >
     {icon}
   </a>

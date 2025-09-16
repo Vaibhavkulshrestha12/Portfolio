@@ -1,7 +1,7 @@
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 
-export const AnimatedText = ({ text, className = "" }: { text: string; className?: string }) => {
+export const AnimatedText = memo(({ text, className = "" }: { text: string; className?: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
@@ -27,4 +27,4 @@ export const AnimatedText = ({ text, className = "" }: { text: string; className
       {text}
     </motion.div>
   );
-};
+});

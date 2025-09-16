@@ -1,35 +1,63 @@
-import { AnimatedText } from "../ui/animated-text";
-import { MovingBorder } from "../ui/moving-border";
-//import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-
 export const Hero = () => {
   return (
     <section className="min-h-[90vh] flex flex-col justify-center items-center p-4 relative overflow-hidden">
-      <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-900/20 via-white dark:via-black to-white dark:to-black" />
+      {/* Background Animation */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-radial from-primary-500/5 via-surface-50 dark:via-surface-900 to-surface-50 dark:to-surface-900" />
+      
+      {/* Matrix Rain Animation - DISABLED FOR TESTING */}
+      {/* <MatrixRain /> */}
       
       <div className="relative z-10 max-w-7xl mx-auto text-center">
-        <AnimatedText
-          text="Full Stack Developer"
-          className="text-sm font-bold text-violet-500 tracking-wider uppercase mb-4"
-        />
-        <AnimatedText
-          text="Who is not yet another developer"
-          className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8 bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500"
-        />
-        <AnimatedText
-          text="Specialized in MERN stack, Python, SEO and Project Management"
-          className="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto"
-        />
+        {/* Animated Role Title - DISABLED FOR TESTING */}
+        <div className="text-sm font-bold text-primary-500 tracking-wider uppercase mb-4 h-6">
+          Full Stack Developer
+        </div>
+
+        {/* Main Title - DISABLED ANIMATION */}
+        <div className="text-4xl md:text-6xl font-bold text-surface-900 dark:text-surface-50 mb-8 text-gradient-professional leading-tight">
+          Who is not yet another developer
+        </div>
+
+        {/* Subtitle - DISABLED ANIMATION */}
+        <div className="text-lg text-surface-600 dark:text-surface-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Crafting exceptional digital experiences with modern technologies and creative solutions
+        </div>
         
+        {/* CTA Buttons - DISABLED ANIMATION */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-          <MovingBorder>
+          <div className="border border-surface-200 dark:border-surface-700 rounded-lg p-1">
             <a 
               href="#contact" 
-              className="px-8 py-4 text-gray-900 dark:text-white font-medium hover:text-violet-600 dark:hover:text-violet-300 transition-colors"
+              className="px-8 py-4 text-surface-900 dark:text-surface-50 font-medium hover:text-primary-500 dark:hover:text-primary-300 transition-colors inline-block"
             >
               Get in Touch
             </a>
-          </MovingBorder>
+          </div>
+          
+          <div className="border border-surface-200 dark:border-surface-700 rounded-lg p-1">
+            <a 
+              href="#projects" 
+              className="px-8 py-4 text-surface-900 dark:text-surface-50 font-medium hover:text-primary-500 dark:hover:text-primary-300 transition-colors inline-block"
+            >
+              View Projects
+            </a>
+          </div>
+        </div>
+
+        {/* Quick Stats */}
+        <div className="grid grid-cols-3 gap-8 max-w-md mx-auto">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-primary-500 mb-1">15+</div>
+            <div className="text-sm text-surface-600 dark:text-surface-400">Projects</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-primary-500 mb-1">3+</div>
+            <div className="text-sm text-surface-600 dark:text-surface-400">Years Exp</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-primary-500 mb-1">10+</div>
+            <div className="text-sm text-surface-600 dark:text-surface-400">Technologies</div>
+          </div>
         </div>
       </div>
     </section>

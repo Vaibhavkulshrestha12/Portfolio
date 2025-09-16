@@ -87,7 +87,7 @@ const Neko = () => {
       nekoEl.style.top = `${nekoPosY - 16}px`;
     };
 
-    const interval = setInterval(frame, 100);
+    const interval = setInterval(frame, 120); // Slower for better performance
 
     return () => {
       clearInterval(interval);

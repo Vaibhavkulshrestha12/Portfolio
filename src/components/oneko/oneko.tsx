@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Neko = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   useEffect(() => {
     const isReducedMotion =
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (isReducedMotion) return;
 
+    // Don't check sessionStorage - neko should appear on every page reload
     const nekoEl = document.createElement("div");
 
     let nekoPosX = 32;
@@ -17,11 +20,43 @@ const Neko = () => {
     let idleTime = 0;
     let idleAnimation: string | null = null;
     let idleAnimationFrame = 0;
+    let captureTriggered = false;
 
-   
-    const nekoSpeed = 10;
+    const nekoSpeed = 12;
     
     let lastFrameTimestamp: number | null = null;
+
+    // Pokeball capture animation logic
+    const triggerCaptureAnimation = () => {
+      if (captureTriggered) return;
+      
+      captureTriggered = true;
+      
+      // Hide neko immediately
+      nekoEl.style.opacity = '0';
+      
+      // Trigger cursor pokeball animation by dispatching a custom event
+      const captureEvent = new CustomEvent('pokeball-capture', {
+        detail: { 
+          x: mousePosX, 
+          y: mousePosY,
+          onComplete: () => {
+            // Show success popup after cursor animation
+            setTimeout(() => {
+              setShowPopup(true);
+              
+              // Hide popup and set caught state (but don't persist)
+              setTimeout(() => {
+                setShowPopup(false);
+                nekoEl.remove();
+              }, 2000);
+            }, 3500); // Wait for full cursor animation sequence
+          }
+        }
+      });
+      
+      window.dispatchEvent(captureEvent);
+    };
 
     const spriteSets: Record<string, [number, number][]> = {
       idle: [[-3, -3]],
@@ -93,15 +128,134 @@ const Neko = () => {
     nekoEl.style.position = "fixed";
     nekoEl.style.pointerEvents = "none";
     nekoEl.style.imageRendering = "pixelated";
-    nekoEl.style.left = `${nekoPosX - 16}px`;
-    nekoEl.style.top = `${nekoPosY - 16}px`;
-    nekoEl.style.zIndex = "2147483647";
+    nekoEl.style.left = "0px";
+    nekoEl.style.top = "0px";
+    nekoEl.style.transform = `translate(${nekoPosX - 16}px, ${nekoPosY - 16}px)`;
+    nekoEl.style.zIndex = "9998"; // Just below the cursor
+    nekoEl.style.transition = "none"; // Disable any CSS transitions for smoother movement
+    nekoEl.style.willChange = "transform"; // Optimize for animations
 
     
-    let nekoFile = "./oneko.gif";
+    let nekoFile = "/oneko.gif"; // Correct path for public directory
     nekoEl.style.backgroundImage = `url(${nekoFile})`;
 
     document.body.appendChild(nekoEl);
+
+    // Add CSS animations for pokeball capture
+    const style = document.createElement('style');
+    style.setAttribute('data-oneko-styles', 'true');
+    style.textContent = `
+      @keyframes pokeball-shake {
+        0%, 100% { transform: translateX(0px) rotate(0deg); }
+        25% { transform: translateX(-3px) rotate(-5deg); }
+        75% { transform: translateX(3px) rotate(5deg); }
+      }
+      
+      @keyframes pokeball-success {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+      
+      @keyframes sparkle-twinkle {
+        0%, 100% { 
+          opacity: 0; 
+          transform: scale(0.3) rotate(0deg); 
+        }
+        50% { 
+          opacity: 1; 
+          transform: scale(1) rotate(180deg); 
+        }
+      }
+      
+      @keyframes red-light-pulse {
+        0% { 
+          filter: drop-shadow(0 0 8px #FF4444) brightness(1);
+          transform: scale(1);
+        }
+        100% { 
+          filter: drop-shadow(0 0 16px #FF4444) drop-shadow(0 0 24px #FF0000) brightness(1.5);
+          transform: scale(1.1);
+        }
+      }
+      
+      .pokemon-dialog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10001;
+        animation: popup-appear 0.3s ease-out;
+        font-family: 'Courier New', monospace;
+        image-rendering: pixelated;
+      }
+      
+      .dialog-border {
+        background: #f8f8f8;
+        border: 4px solid #000;
+        border-radius: 0;
+        position: relative;
+        min-width: 280px;
+        min-height: 80px;
+        box-shadow: 
+          inset -2px -2px 0px #c0c0c0,
+          inset 2px 2px 0px #ffffff,
+          4px 4px 0px #808080;
+      }
+      
+      .dialog-border::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border: 2px solid #000;
+        pointer-events: none;
+      }
+      
+      /* Decorative corner elements */
+      .dialog-border::after {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+        background: #000;
+        clip-path: polygon(0 0, 0 100%, 100% 0);
+      }
+      
+      .dialog-content {
+        padding: 20px 24px;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .pokemon-name {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+        text-align: left;
+      }
+      
+      .pokemon-message {
+        font-size: 16px;
+        color: #000;
+        text-align: left;
+        font-weight: normal;
+      }
+      
+      @keyframes popup-appear {
+        0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      }
+      }
+    `;
+    document.head.appendChild(style);
 
     const mouseMoveHandler = (event: MouseEvent) => {
       mousePosX = event.clientX;
@@ -167,6 +321,12 @@ const Neko = () => {
       const diffY = nekoPosY - mousePosY;
       const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
 
+      // Collision detection for capture
+      if (distance < 20 && !captureTriggered) {
+        triggerCaptureAnimation();
+        return;
+      }
+
       if (distance < nekoSpeed || distance < 48) {
         idle();
         return;
@@ -197,8 +357,7 @@ const Neko = () => {
       nekoPosX = Math.min(Math.max(16, nekoPosX), window.innerWidth - 16);
       nekoPosY = Math.min(Math.max(16, nekoPosY), window.innerHeight - 16);
 
-      nekoEl.style.left = `${nekoPosX - 16}px`;
-      nekoEl.style.top = `${nekoPosY - 16}px`;
+      nekoEl.style.transform = `translate(${nekoPosX - 16}px, ${nekoPosY - 16}px)`;
     };
 
     const onAnimationFrame = (timestamp: number) => {
@@ -212,7 +371,7 @@ const Neko = () => {
       }
       
       
-      if (timestamp - lastFrameTimestamp > 100) {
+      if (timestamp - lastFrameTimestamp > 99) { // Faster frame rate for smoother movement (16.67ms ≈ 60fps)
         lastFrameTimestamp = timestamp;
         frame();
       }
@@ -227,8 +386,27 @@ const Neko = () => {
       if (nekoEl.isConnected) {
         nekoEl.remove();
       }
+      // Remove the style element
+      const existingStyle = document.querySelector('style[data-oneko-styles]');
+      if (existingStyle) {
+        existingStyle.remove();
+      }
     };
   }, []);
+
+  // Render Pokemon-style popup
+  if (showPopup) {
+    return (
+      <div className="pokemon-dialog">
+        <div className="dialog-border">
+          <div className="dialog-content">
+            <div className="pokemon-name">NEKO</div>
+            <div className="pokemon-message">was caught!</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return null;
 };

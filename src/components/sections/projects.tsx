@@ -36,26 +36,26 @@ export const Projects = () => {
       <div className="max-w-7xl mx-auto">
         <AnimatedText
           text="Featured Projects"
-          className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
+          className="text-3xl md:text-4xl font-bold text-surface-900 dark:text-surface-50 mb-12 text-center"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <MovingBorder key={project.title}>
-              <div className="relative group">
+              <div className="relative group bg-surface-50 dark:bg-surface-900">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-400 mb-4">{project.description}</p>
+                  <h3 className="text-xl font-semibold text-surface-900 dark:text-surface-50 mb-2">{project.title}</h3>
+                  <p className="text-surface-600 dark:text-surface-400 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-sm bg-violet-900/30 text-violet-300 rounded"
+                        className="px-2 py-1 text-sm bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded"
                       >
                         {tech}
                       </span>
@@ -66,7 +66,7 @@ export const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className="text-surface-600 hover:text-primary-500 dark:text-surface-400 dark:hover:text-primary-400 transition-colors"
                     >
                       <Github size={20} />
                     </a>
@@ -74,7 +74,7 @@ export const Projects = () => {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className="text-surface-600 hover:text-primary-500 dark:text-surface-400 dark:hover:text-primary-400 transition-colors"
                     >
                       <ExternalLink size={20} />
                     </a>

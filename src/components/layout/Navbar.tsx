@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, Cat, Fish } from 'lucide-react'; 
+import { Sun, Moon, Menu, X } from 'lucide-react'; 
 import { useTheme } from '../../hooks/useTheme';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, toggleMouse: () => void }) => {
+export const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,10 +11,19 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
   const location = useLocation();
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -45,7 +54,7 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-violet-500 hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-500 hover:scale-110 transition-transform">
                 <img
                   src="https://avatars.githubusercontent.com/u/137729638?v=4"
                   alt="Profile"
@@ -59,25 +68,25 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
             <div className="ml-10 flex items-baseline space-x-8">
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('projects')}
-                className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Projects
               </button>
               <Link
                 to="/experience"
-                className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Experience
               </Link>
               <button
                 onClick={handleContactClick}
-                className="text-gray-300 hover:text-violet-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Contact
               </button>
@@ -99,24 +108,6 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
-
-            <div className="hidden md:flex gap-4">
-              <button
-                onClick={toggleNeko}
-                className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
-                aria-label="Toggle cat"
-              >
-                <Cat className="w-6 h-6" />
-              </button>
-
-              <button
-                onClick={toggleMouse}
-                className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
-                aria-label="Toggle mouse"
-              >
-                <Fish className="w-6 h-6" />
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -149,24 +140,6 @@ export const Navbar = ({ toggleNeko, toggleMouse }: { toggleNeko: () => void, to
             >
               Contact
             </button>
-
-            <div className="px-4 py-2 flex gap-4">
-              <button
-                onClick={toggleNeko}
-                className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
-                aria-label="Toggle cat"
-              >
-                <Cat className="w-6 h-6" />
-              </button>
-
-              <button
-                onClick={toggleMouse}
-                className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors"
-                aria-label="Toggle mouse"
-              >
-                <Fish className="w-6 h-6" />
-              </button>
-            </div>
 
             <div className="px-4 py-2">
               <button

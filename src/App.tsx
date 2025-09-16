@@ -1,17 +1,18 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { SocialLinks } from './components/sections/SocialLinks';
-import { Hero } from './components/sections/hero';
-import { Skills } from './components/sections/skills';
+import { ModernHero } from './components/sections/ModernHero';
+import { ModernSkills } from './components/sections/ModernSkills';
 import { Experience } from './components/sections/Experience';
-import { Projects } from './components/sections/projects';
-import { Achievements } from './components/sections/Achievements';
+import { ModernProjects } from './components/sections/ModernProjects';
+import { ModernAchievements } from './components/sections/ModernAchievements';
 import { GithubSection } from './components/sections/github/GithubSection';
-import { Contact } from './components/sections/contact';
+import { ModernContact } from './components/sections/ModernContact';
 import { Footer } from './components/layout/Footer';
+import { Spotlight } from './components/ui/spotlight';
+import CustomCursor from './components/CustomCursor';
 import Oneko from './components/oneko/oneko'; 
-import CustomCursor from './components/CustomCursor'; 
 
 function ScrollToSection() {
   const location = useLocation();
@@ -29,27 +30,20 @@ function ScrollToSection() {
 }
 
 function App() {
-  const [isNekoEnabled, setIsNekoEnabled] = useState(true); 
-  const [isMouseCursorEnabled, setIsMouseCursorEnabled] = useState(true); 
-
-  const toggleNeko = () => {
-    setIsNekoEnabled(prev => !prev); 
-  };
-
-  const toggleMouse = () => {
-    setIsMouseCursorEnabled(prev => !prev); 
-  };
-
   return (
     <Router>
       <ScrollToSection />
-      <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
-        <Navbar 
-          toggleNeko={toggleNeko} 
-          toggleMouse={toggleMouse} 
-        />
-        {isNekoEnabled && <Oneko />} 
-        {isMouseCursorEnabled && <CustomCursor />} 
+      <div className="min-h-screen transition-colors" style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+        {/* Global Spotlight Effect */}
+        <Spotlight />
+        
+        {/* Custom Pokeball Cursor */}
+        <CustomCursor />
+        
+        {/* Oneko Cat - follows the pokeball cursor */}
+        <Oneko />
+        
+        <Navbar />
         <Routes>
           <Route
             path="/"
@@ -57,16 +51,16 @@ function App() {
               <>
                 <SocialLinks />
                 <main>
-                  <Hero />
+                  <ModernHero />
                   <section id="about">
-                    <Skills />
+                    <ModernSkills />
                   </section>
                   <section id="projects">
-                    <Projects />
+                    <ModernProjects />
                   </section>
-                  <Achievements />
+                  <ModernAchievements />
                   <GithubSection />
-                  <Contact />
+                  <ModernContact />
                 </main>
               </>
             }

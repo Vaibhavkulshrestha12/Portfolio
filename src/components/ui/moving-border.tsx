@@ -4,12 +4,10 @@ import React from "react";
 
 export const MovingBorder = ({
   children,
-  duration = 2000,
   className,
   containerClassName,
 }: {
   children: React.ReactNode;
-  duration?: number;
   className?: string;
   containerClassName?: string;
 }) => {
@@ -25,7 +23,7 @@ export const MovingBorder = ({
         animate="visible"
         variants={variants}
         transition={{ duration: 0.5 }}
-        className="absolute inset-0 bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+        className="absolute inset-0 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 rounded-lg blur-sm opacity-60 group-hover:opacity-90 transition-all duration-700 group-hover:duration-300 animate-gradient-x"
       />
       <motion.div
         initial="hidden"
@@ -33,7 +31,7 @@ export const MovingBorder = ({
         variants={variants}
         transition={{ duration: 0.5 }}
         className={cn(
-          "relative bg-white dark:bg-black rounded-lg p-6 shadow-lg",
+          "relative bg-surface-50 dark:bg-surface-900 rounded-lg p-6 shadow-xl border border-surface-200 dark:border-surface-700",
           className
         )}
       >
