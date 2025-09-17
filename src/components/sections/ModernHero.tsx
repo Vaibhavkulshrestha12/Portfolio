@@ -123,12 +123,13 @@ export const ModernHero = () => {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-slide-up"
              style={{ animationDelay: '1.1s' }}>
-          <a href="#contact" className="btn-primary">
-            Get in Touch
-          </a>
-          
-          <a href="#projects" className="btn-secondary">
-            View Projects
+          <a 
+            href="/Vaibhav Kulshreshta resume.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Download CV
           </a>
         </div>
 

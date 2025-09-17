@@ -24,6 +24,9 @@ function ScrollToSection() {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
+    } else {
+      // Scroll to top when navigating to a new route
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
   }, [location]);
 

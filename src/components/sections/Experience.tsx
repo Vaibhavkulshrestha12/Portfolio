@@ -36,19 +36,18 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <section className="py-20 px-4" id="experience">
+    <section className="py-12 sm:py-16 lg:py-20 px-4" id="experience">
       <div className="max-w-7xl mx-auto">
         <AnimatedText
           text="Professional Journey"
-          className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 sm:mb-12 text-center"
         />
 
         <div className="relative">
-          
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-violet-200 dark:bg-violet-900" />
+          {/* Timeline line - hidden on mobile */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-violet-200 dark:bg-violet-900" />
 
-          
-          <div className="space-y-16">
+          <div className="space-y-8 sm:space-y-12 lg:space-y-16">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.title}
@@ -56,34 +55,36 @@ export const Experience = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`relative ${index % 2 === 0 ? 'md:ml-auto md:pl-8' : 'md:mr-auto md:pr-8'} md:w-1/2`}
+                className={`relative w-full ${index % 2 === 0 ? 'md:ml-auto md:pl-8' : 'md:mr-auto md:pr-8'} md:w-1/2`}
               >
                 <MovingBorder>
-                  <div className="bg-white dark:bg-black p-6">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="w-full md:w-1/3">
+                  <div className="bg-white dark:bg-black p-4 sm:p-6">
+                    <div className="flex flex-col gap-4 sm:gap-6">
+                      {/* Image */}
+                      <div className="w-full">
                         <img
                           src={exp.image}
                           alt={exp.company}
-                          className="w-full h-28 object-cover rounded-lg"
+                          className="w-full h-32 sm:h-28 md:h-32 object-cover rounded-lg"
                         />
                       </div>
-                      <div className="w-full md:w-2/3">
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      
+                      {/* Content */}
+                      <div className="w-full">
+                        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-2 break-words">
                           {exp.title}
                         </h3>
-                        <h4 className="text-violet-600 dark:text-violet-400 font-medium mb-2">
+                        <h4 className="text-violet-600 dark:text-violet-400 font-medium mb-2 text-sm sm:text-base break-words">
                           {exp.company}
                         </h4>
-                        <p className="text-gray-600 dark:text-gray-400 mb-2">{exp.period}</p>
-                        <p className="text-gray-700 dark:text-gray-300">{exp.description}</p>
+                        <p className="text-gray-600 dark:text-gray-400 mb-2 text-sm sm:text-base">{exp.period}</p>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                          {exp.description}
+                        </p>
                       </div>
                     </div>
                   </div>
                 </MovingBorder>
-
-                
-                
               </motion.div>
             ))}
           </div>

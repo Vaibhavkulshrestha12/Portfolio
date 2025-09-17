@@ -1,42 +1,7 @@
-import { useState } from "react";
 import { SpotlightCard } from "../ui/spotlight";
-import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export const ModernContact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    try {
-      const response = await fetch('http://localhost:3000/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
-      }
-
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Error sending message:', error);
-      setStatus('error');
-    }
-  };
-
   const contactInfo = [
     {
       icon: Mail,
@@ -83,40 +48,40 @@ export const ModernContact = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Information */}
-          <SpotlightCard className="modern-card p-8">
+          <SpotlightCard className="modern-card p-6 sm:p-8 order-2 lg:order-1">
             <div className="space-small">
-              <h3 className="text-2xl font-bold mb-8" style={{ color: 'var(--text-primary)' }}>
+              <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8" style={{ color: 'var(--text-primary)' }}>
                 Contact Information
               </h3>
               
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map(({ icon: Icon, label, value, href }) => (
                   <a
                     key={label}
                     href={href}
-                    className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 hover:transform hover:scale-105 group"
+                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl transition-all duration-300 hover:transform hover:scale-105 group"
                     style={{ 
                       background: 'var(--bg-secondary)',
                       border: '1px solid var(--border)'
                     }}
                   >
                     <div 
-                      className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0"
                       style={{ 
                         background: 'var(--bg-tertiary)',
                         color: 'var(--accent-primary)'
                       }}
                     >
-                      <Icon size={24} />
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div>
-                      <div className="text-sm font-medium mb-1" 
+                    <div className="min-w-0 flex-1">
+                      <div className="text-xs sm:text-sm font-medium mb-1" 
                            style={{ color: 'var(--text-muted)' }}>
                         {label}
                       </div>
-                      <div className="font-medium" 
+                      <div className="font-medium text-sm sm:text-base break-words" 
                            style={{ color: 'var(--text-primary)' }}>
                         {value}
                       </div>
@@ -126,135 +91,69 @@ export const ModernContact = () => {
               </div>
 
               {/* Availability */}
-              <div className="mt-8 p-4 rounded-xl" 
+              <div className="mt-6 sm:mt-8 p-3 sm:p-4 rounded-xl" 
                    style={{ background: 'var(--bg-secondary)' }}>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                  <span className="font-semibold" style={{ color: 'var(--text-primary)' }}>
+                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+                  <span className="font-semibold text-sm sm:text-base" style={{ color: 'var(--text-primary)' }}>
                     Available for projects
                   </span>
                 </div>
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                <p className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>
                   I'm currently available for freelance work and full-time opportunities
                 </p>
               </div>
             </div>
           </SpotlightCard>
 
-          {/* Contact Form */}
-          <SpotlightCard className="modern-card p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <h3 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-                Send Message
+          {/* Map and Contact Section */}
+          <SpotlightCard className="modern-card p-6 sm:p-8 order-1 lg:order-2">
+            <div className="space-y-6">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6" style={{ color: 'var(--text-primary)' }}>
+                Location
               </h3>
 
-              <div>
-                <label 
-                  htmlFor="name" 
-                  className="block text-sm font-medium mb-2"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:border-2"
-                  style={{ 
-                    background: 'var(--bg-secondary)',
-                    borderColor: 'var(--border)',
-                    color: 'var(--text-primary)'
-                  }}
-                  onFocus={(e) => e.target.style.borderColor = 'var(--accent-primary)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
+              {/* Map Container */}
+              <div className="w-full h-64 sm:h-80 rounded-xl overflow-hidden border-2 border-orange-500/30 shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.4734716065933!2d77.2090212741885!3d28.613939382421508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb1ad40639d7%3A0x9ff7e7beb8c1b58!2sDelhi%2C%20India!5e0!3m2!1sen!2sin!4v1697485936148!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Location Map - Delhi, India"
                 />
               </div>
 
-              <div>
-                <label 
-                  htmlFor="email" 
-                  className="block text-sm font-medium mb-2"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border-2 transition-all duration-300 focus:outline-none"
-                  style={{ 
-                    background: 'var(--bg-secondary)',
-                    borderColor: 'var(--border)',
-                    color: 'var(--text-primary)'
-                  }}
-                  onFocus={(e) => e.target.style.borderColor = 'var(--accent-primary)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                />
-              </div>
-
-              <div>
-                <label 
-                  htmlFor="message" 
-                  className="block text-sm font-medium mb-2"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border-2 transition-all duration-300 focus:outline-none resize-none"
-                  style={{ 
-                    background: 'var(--bg-secondary)',
-                    borderColor: 'var(--border)',
-                    color: 'var(--text-primary)'
-                  }}
-                  onFocus={(e) => e.target.style.borderColor = 'var(--accent-primary)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={status === 'sending'}
-                className="w-full btn-primary flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {status === 'sending' ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send size={20} />
-                    Send Message
-                  </>
-                )}
-              </button>
-
-              {/* Status Messages */}
-              {status === 'success' && (
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                  <CheckCircle size={20} className="text-green-500" />
-                  <p className="text-green-600">Message sent successfully! I'll get back to you soon.</p>
+              {/* Location Description */}
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <MapPin className="w-5 h-5 text-orange-400" />
+                  <span className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>
+                    Delhi, India
+                  </span>
                 </div>
-              )}
-              {status === 'error' && (
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20">
-                  <AlertCircle size={20} className="text-red-500" />
-                  <p className="text-red-600">Failed to send message. Please try again later.</p>
-                </div>
-              )}
-            </form>
+                <p className="text-sm sm:text-base text-gray-400 mb-6">
+                  Available for remote work and on-site projects across India
+                </p>
+              </div>
+
+              {/* Contact Me Button */}
+              <div className="text-center">
+                <a
+                  href="mailto:vaibhavkulshrestha55@gmail.com"
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 border-2 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white border-orange-500 hover:border-orange-600 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>Contact Me</span>
+                </a>
+                <p className="text-xs sm:text-sm text-gray-400 mt-3">
+                  Click to send me an email directly
+                </p>
+              </div>
+            </div>
           </SpotlightCard>
         </div>
       </div>

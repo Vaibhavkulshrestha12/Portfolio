@@ -144,7 +144,10 @@ export const Navbar = () => {
 
             <div className="px-4 py-2">
               <button
-                onClick={toggleTheme}
+                onClick={() => {
+                  toggleTheme();
+                  setIsMenuOpen(false);
+                }}
                 className="flex items-center gap-2 text-gray-300 hover:text-violet-500 transition-colors"
               >
                 {theme === 'dark' ? (

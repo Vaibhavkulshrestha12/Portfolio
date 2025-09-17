@@ -36,21 +36,21 @@ export const About = () => {
 
       <div className="container-custom relative z-10">
         {/* Header with terminal-style design */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-block mb-8"
+            className="inline-block mb-6 sm:mb-8"
           >
-            <div className="bg-black/20 border border-orange-500/30 rounded-lg p-4 font-mono text-sm backdrop-blur-sm">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-3 h-3 rounded-full bg-red-500" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
-                <span className="ml-2 text-gray-400">~/about-vaibhav.js</span>
+            <div className="bg-black/20 border border-orange-500/30 rounded-lg p-3 sm:p-4 font-mono text-xs sm:text-sm backdrop-blur-sm">
+              <div className="flex items-center gap-1 sm:gap-2 mb-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500" />
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500" />
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500" />
+                <span className="ml-1 sm:ml-2 text-gray-400 text-xs sm:text-sm">~/about-vaibhav.js</span>
               </div>
-              <div className="text-orange-400">
+              <div className="text-orange-400 text-xs sm:text-sm break-all">
                 <span className="text-purple-400">const</span>{' '}
                 <span className="text-blue-400">aboutMe</span>{' '}
                 <span className="text-white">=</span>{' '}
@@ -61,7 +61,7 @@ export const About = () => {
           
           <AnimatedText
             text="About Me"
-            className="text-5xl md:text-7xl font-display font-bold mb-8"
+            className="text-3xl sm:text-5xl md:text-7xl font-display font-bold mb-6 sm:mb-8"
           />
           
           {/* Role tags with emerald highlighting */}
@@ -69,20 +69,20 @@ export const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex justify-center gap-4 flex-wrap mb-12"
+            className="flex justify-center gap-2 sm:gap-4 flex-wrap mb-8 sm:mb-12 px-4"
           >
-            <div className="px-4 py-2 bg-black/20 border border-orange-500/30 rounded-full backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400">
+            <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black/20 border border-orange-500/30 rounded-full backdrop-blur-sm">
+              <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400 text-xs sm:text-sm">
                 Full-Stack Engineer
               </span>
             </div>
-            <div className="px-4 py-2 bg-black/20 border border-amber-500/30 rounded-full backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text font-medium text-transparent dark:from-blue-200 dark:to-cyan-400">
+            <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black/20 border border-amber-500/30 rounded-full backdrop-blur-sm">
+              <span className="bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text font-medium text-transparent dark:from-blue-200 dark:to-cyan-400 text-xs sm:text-sm">
                 Gaming Enthusiast
               </span>
             </div>
-            <div className="px-4 py-2 bg-black/20 border border-yellow-500/30 rounded-full backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text font-medium text-transparent dark:from-purple-200 dark:to-pink-400">
+            <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black/20 border border-yellow-500/30 rounded-full backdrop-blur-sm">
+              <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text font-medium text-transparent dark:from-purple-200 dark:to-pink-400 text-xs sm:text-sm">
                 Comic Geek
               </span>
             </div>
@@ -97,15 +97,15 @@ export const About = () => {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-20"
+            className="mb-12 sm:mb-16 lg:mb-20"
           >
-            <div className="grid lg:grid-cols-12 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
               {/* Stats panel */}
-              <div className="lg:col-span-4">
-                <div className="bg-black/40 border border-orange-500/30 rounded-xl p-6 backdrop-blur-sm h-full">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Terminal className="w-6 h-6 text-orange-400" />
-                    <h3 className="text-xl font-bold">
+              <div className="lg:col-span-4 order-2 lg:order-1">
+                <div className="bg-black/40 border border-orange-500/30 rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                    <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400 flex-shrink-0" />
+                    <h3 className="text-lg sm:text-xl font-bold">
                       <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent dark:from-orange-300 dark:to-amber-400">
                         System.Engineer
                       </span>
@@ -113,11 +113,11 @@ export const About = () => {
                   </div>
                   
                   {/* Skill bars */}
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-sm text-gray-300">React & Frontend</span>
-                        <span className="text-sm text-orange-400">95%</span>
+                        <span className="text-xs sm:text-sm text-gray-300">React & Frontend</span>
+                        <span className="text-xs sm:text-sm text-orange-400">95%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
                         <motion.div 
@@ -130,8 +130,8 @@ export const About = () => {
                     </div>
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-sm text-gray-300">Node.js & Backend</span>
-                        <span className="text-sm text-amber-400">90%</span>
+                        <span className="text-xs sm:text-sm text-gray-300">Node.js & Backend</span>
+                        <span className="text-xs sm:text-sm text-amber-400">90%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
                         <motion.div 
@@ -144,8 +144,8 @@ export const About = () => {
                     </div>
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-sm text-gray-300">DevOps & Cloud</span>
-                        <span className="text-sm text-yellow-400">85%</span>
+                        <span className="text-xs sm:text-sm text-gray-300">DevOps & Cloud</span>
+                        <span className="text-xs sm:text-sm text-yellow-400">85%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
                         <motion.div 
@@ -159,29 +159,29 @@ export const About = () => {
                   </div>
                   
                   {/* Certifications */}
-                  <div className="mt-6 space-y-2">
-                    <div className="flex items-center gap-2 px-3 py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-                      <Shield className="w-4 h-4 text-orange-400" />
-                      <span className="text-sm text-orange-300">OCI DevOps Professional</span>
+                  <div className="mt-4 sm:mt-6 space-y-2">
+                    <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg">
+                      <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm text-orange-300">OCI DevOps Professional</span>
                     </div>
-                    <div className="flex items-center gap-2 px-3 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
-                      <Cpu className="w-4 h-4 text-cyan-400" />
-                      <span className="text-sm text-cyan-300">AI Foundations</span>
+                    <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+                      <Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm text-cyan-300">AI Foundations</span>
                     </div>
                   </div>
                 </div>
               </div>
               
               {/* Main content */}
-              <div className="lg:col-span-8">
-                <SpotlightCard className="p-8 h-full">
+              <div className="lg:col-span-8 order-1 lg:order-2">
+                <SpotlightCard className="p-6 sm:p-8 h-full">
                   <div className="mb-4">
-                    <span className="text-2xl">👋</span>
-                    <span className="ml-2 text-lg font-semibold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent dark:from-orange-300 dark:to-amber-400">
+                    <span className="text-xl sm:text-2xl">👋</span>
+                    <span className="ml-2 text-base sm:text-lg font-semibold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent dark:from-orange-300 dark:to-amber-400">
                       console.log("Hello World!")
                     </span>
                   </div>
-                  <p className="text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
+                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                     Hello there! 👋 I'm a{' '}
                     <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400">
                       Full-Stack Engineer and Product Architect
@@ -210,34 +210,34 @@ export const About = () => {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-20"
+            className="mb-12 sm:mb-16 lg:mb-20"
           >
-            <div className="grid lg:grid-cols-12 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
               {/* Main content */}
-              <div className="lg:col-span-8 lg:order-1">
-                <SpotlightCard className="p-8 h-full">
+              <div className="lg:col-span-8 lg:order-1 order-1">
+                <SpotlightCard className="p-6 sm:p-8 h-full">
                   <div className="mb-4">
-                    <span className="text-2xl">💼</span>
-                    <span className="ml-2 text-lg font-semibold bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent dark:from-amber-300 dark:to-orange-400">
+                    <span className="text-xl sm:text-2xl">💼</span>
+                    <span className="ml-2 text-base sm:text-lg font-semibold bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent dark:from-amber-300 dark:to-orange-400">
                       Entrepreneur.prototype
                     </span>
                   </div>
-                  <p className="text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
+                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                     For me, innovation is about solving real problems that matter .Like{' '}
                     <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400">
                       Co-Founder of Kisan Connect
                     </span>{' '}
-                    (an MSME-funded agri-tech startup), I co-led development of a farmer–buyer marketplace. This not only supported the farmers but also generated the 💰! , proof that a good engineering drives the buisness values.
+                    (an MSME-funded agri-tech startup), I co-led development of a farmer buyer marketplace. This not only supported the farmers but also generated the 💰! , proof that a good engineering drives the buisness values.
                   </p>
                 </SpotlightCard>
               </div>
               
               {/* Achievement panel */}
-              <div className="lg:col-span-4 lg:order-2">
-                <div className="bg-black/40 border border-amber-500/30 rounded-xl p-6 backdrop-blur-sm h-full">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Rocket className="w-6 h-6 text-amber-400" />
-                    <h3 className="text-xl font-bold">
+              <div className="lg:col-span-4 lg:order-2 order-2">
+                <div className="bg-black/40 border border-amber-500/30 rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                    <Rocket className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 flex-shrink-0" />
+                    <h3 className="text-lg sm:text-xl font-bold">
                       <span className="bg-gradient-to-r from-amber-500 to-yellow-600 bg-clip-text text-transparent dark:from-amber-300 dark:to-yellow-400">
                         Achievements.unlock()
                       </span>
@@ -245,46 +245,46 @@ export const About = () => {
                   </div>
                   
                   {/* Achievement cards */}
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     <motion.div 
-                      className="flex items-center gap-3 p-3 bg-green-500/10 border border-green-500/30 rounded-lg"
+                      className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-green-500/10 border border-green-500/30 rounded-lg"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-white text-xs font-bold">Co</span>
                       </div>
-                      <div>
-                        <p className="font-semibold text-green-300">Co-Founder</p>
-                        <p className="text-xs text-green-400">Kisan Connect</p>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-green-300 text-xs sm:text-sm">Co-Founder</p>
+                        <p className="text-xs text-green-400 break-words">Kisan Connect</p>
                       </div>
                     </motion.div>
                     
                     <motion.div 
-                      className="flex items-center gap-3 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg"
+                      className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
-                        <Star className="w-4 h-4 text-black" />
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Star className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
                       </div>
-                      <div>
-                        <p className="font-semibold text-yellow-300">Winner</p>
-                        <p className="text-xs text-yellow-400">MSME Hackathon 2024</p>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-yellow-300 text-xs sm:text-sm">Winner</p>
+                        <p className="text-xs text-yellow-400 break-words">MSME Hackathon 2024</p>
                       </div>
                     </motion.div>
                     
                     <motion.div 
-                      className="flex items-center gap-3 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg"
+                      className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                        <Database className="w-4 h-4 text-white" />
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Database className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                       </div>
-                      <div>
-                        <p className="font-semibold text-blue-300">MSME Funded</p>
-                        <p className="text-xs text-blue-400">Agri-Tech Startup</p>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-blue-300 text-xs sm:text-sm">MSME Funded</p>
+                        <p className="text-xs text-blue-400 break-words">Agri-Tech Startup</p>
                       </div>
                     </motion.div>
                   </div>
