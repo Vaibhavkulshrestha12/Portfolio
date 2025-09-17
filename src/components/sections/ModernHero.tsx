@@ -30,15 +30,99 @@ export const ModernHero = () => {
           <span className="text-gradient">Kulshrestha</span>
         </h1>
 
-        {/* Tagline */}
-        <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up font-light"
-           style={{ color: 'var(--text-secondary)', animationDelay: '0.4s' }}>
-          Who is not yet another developer—crafting exceptional digital experiences with modern technologies and creative solutions
-        </p>
+        {/* Tagline & Bio */}
+        <div className="space-y-6 mb-12 max-w-4xl mx-auto">
+          {/* Main tagline */}
+          <p className="text-xl md:text-2xl font-light leading-relaxed animate-slide-up"
+             style={{ color: 'var(--text-secondary)', animationDelay: '0.4s' }}>
+            Full-Stack Engineer & Product Architect crafting scalable applications
+          </p>
+          
+          {/* Key highlights with staggered animations */}
+          <div className="grid md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
+            <div className="flex items-start gap-3 p-4 rounded-lg animate-slide-up"
+                 style={{ 
+                   background: 'var(--bg-secondary)', 
+                   animationDelay: '0.6s',
+                   border: '1px solid var(--border)'
+                 }}>
+              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                   style={{ background: 'var(--accent-primary)' }} />
+              <div>
+                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--accent-primary)' }}>
+                  OCI 2025 Certified
+                </p>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                  DevOps Professional & AI Foundations
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3 p-4 rounded-lg animate-slide-up"
+                 style={{ 
+                   background: 'var(--bg-secondary)', 
+                   animationDelay: '0.7s',
+                   border: '1px solid var(--border)'
+                 }}>
+              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                   style={{ background: 'var(--accent-primary)' }} />
+              <div>
+                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--accent-primary)' }}>
+                  Co-Founder & Winner
+                </p>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                  MSME-funded Kisan Connect, Ideathon 2024
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3 p-4 rounded-lg animate-slide-up"
+                 style={{ 
+                   background: 'var(--bg-secondary)', 
+                   animationDelay: '0.8s',
+                   border: '1px solid var(--border)'
+                 }}>
+              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                   style={{ background: 'var(--accent-primary)' }} />
+              <div>
+                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--accent-primary)' }}>
+                  Tech Leadership
+                </p>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                  Leading dev teams & scaling to production
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3 p-4 rounded-lg animate-slide-up"
+                 style={{ 
+                   background: 'var(--bg-secondary)', 
+                   animationDelay: '0.9s',
+                   border: '1px solid var(--border)'
+                 }}>
+              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                   style={{ background: 'var(--accent-primary)' }} />
+              <div>
+                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--accent-primary)' }}>
+                  Tech Stack
+                </p>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                  React, Node.js, Firebase & Cloud DevOps
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Closing statement */}
+          <p className="text-base md:text-lg font-light leading-relaxed animate-slide-up opacity-80"
+             style={{ color: 'var(--text-secondary)', animationDelay: '1.0s' }}>
+            Delivering secure, high-impact solutions while contributing to community
+          </p>
+        </div>
         
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-slide-up"
-             style={{ animationDelay: '0.6s' }}>
+             style={{ animationDelay: '1.1s' }}>
           <a href="#contact" className="btn-primary">
             Get in Touch
           </a>

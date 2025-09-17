@@ -66,12 +66,12 @@ export const Navbar = () => {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <button
-                onClick={() => scrollToSection('about')}
+              <Link
+                to="/about"
                 className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 About
-              </button>
+              </Link>
               <button
                 onClick={() => scrollToSection('projects')}
                 className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -115,12 +115,13 @@ export const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/10 backdrop-blur-md dark:bg-black/10">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
+            <Link
+              to="/about"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
             >
               About
-            </button>
+            </Link>
             <button
               onClick={() => scrollToSection('projects')}
               className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"

@@ -118,7 +118,7 @@ export const ModernSkills = () => {
 
                 {/* Technologies List */}
                 <div className="space-y-3">
-                  {technologies.map(({ name, icon: Icon, color }, techIndex) => (
+                  {(technologies as any[]).map(({ name, icon: Icon, color }: any, techIndex: number) => (
                     <div
                       key={name}
                       className={`
@@ -208,7 +208,7 @@ export const ModernSkills = () => {
           
           <div className="flex flex-wrap justify-center gap-3">
             {Object.entries(techStack).flatMap(([category, technologies]) =>
-              technologies.map(({ name, icon: Icon, color }, index) => (
+              (technologies as any[]).map(({ name, icon: Icon, color }: any, index: number) => (
                 <div
                   key={`${category}-${name}`}
                   className="group relative flex items-center gap-2 px-4 py-2 rounded-full border cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg"

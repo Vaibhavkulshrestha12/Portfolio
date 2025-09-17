@@ -9,6 +9,7 @@ import { ModernProjects } from './components/sections/ModernProjects';
 import { ModernAchievements } from './components/sections/ModernAchievements';
 import { GithubSection } from './components/sections/github/GithubSection';
 import { ModernContact } from './components/sections/ModernContact';
+import { About } from './components/sections/About';
 import { Footer } from './components/layout/Footer';
 import { Spotlight } from './components/ui/spotlight';
 import CustomCursor from './components/CustomCursor';
@@ -65,6 +66,7 @@ function App() {
               </>
             }
           />
+          <Route path="/about" element={<About />} />
           <Route path="/experience" element={<Experience />} />
         </Routes>
         <Footer />

@@ -5,40 +5,32 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    title: "Tech Manager",
-    company: "Pentaomnia Pvt ltd",
-    period: "2023 - Present",
-    description: "Led development and management of various projects and spearheaded the tech team.",
+    title: "VP of Engineering",
+    company: "Kisan Connect (MSME Funded Startup)",
+    period: "May 2025 - Present",
+    description: "CO-Led a 5-member dev team to build a farmer-buyer digital marketplace. Farmers onboarded with Secured 5 Lakh MSME funding, and scaled app to production. Designed mobile UI & chatbot, Firebase Auth with reduced onboarding time by 35%.",
     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&q=80"
   },
   {
-    title: "Full Stack Developer",
-    company: "Pentaomnia Pvt ltd",
-    period: "2023 - 2024",
-    description: "Developed and maintained multiple web applications for external clients and startups.",
+    title: "Tech Manager",
+    company: "Pentaomnia Pvt. Ltd.",
+    period: "May 2024 - Feb 2025",
+    description: "Spearheaded development of EdTech platform WriterSpace (comprehensive blogging platform). Implemented CI workflows, reducing dev cycle time by 25%. Managed company web app (pentaomnia.com), reaching 1k+ monthly visitors.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80"
   },
   {
-    title: "Tech Team Member",
-    company: "Innovxus",
-    period: "2023 - 2024",
-    description: "Created responsive and interactive user interfaces for various clients.",
+    title: "Frontend Developer Intern",
+    company: "Pentaomnia Pvt. Ltd.",
+    period: "Feb 2024 - May 2024",
+    description: "Developed client projects using React, Tailwind, MERN, WordPress and HTML. Improved UI/UX and performance, boosting engagement by 40%.",
     image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80"
   },
   {
-    title: "Marketing intern",
-    company: "Soch/Warriors Without cause",
-    period: "2024 - present",
-    description: "SEO, SMM, and marketing management for the clothing brand - SOCH",
-    image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80"
-  },
-
-  {
-    title: "Tech Speaker",
-    company: "InnovateX",
-    period: "2024",
-    description: "Delivered lectures on open source contributions and efficient usage of git",
-    image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80"
+    title: "Marketing Volunteer",
+    company: "Soch by WWC (NGO)",
+    period: "May 2024 - July 2024",
+    description: "Increased SEO-driven reach by 60% via targeted campaigns.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80"
   }
 ];
 

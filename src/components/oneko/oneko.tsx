@@ -21,6 +21,8 @@ const Neko = () => {
     let idleAnimation: string | null = null;
     let idleAnimationFrame = 0;
     let captureTriggered = false;
+    let lastMouseMoveTime = Date.now(); // Track when mouse last moved
+    let isMouseOutOfBounds = false; // Track if mouse is outside viewport
 
     const nekoSpeed = 12;
     
@@ -63,24 +65,13 @@ const Neko = () => {
       alert: [[-7, -3]],
       scratchSelf: [
         [-5, 0],
-        [-6, 0],
+        [-6, 0], 
         [-7, 0],
+        [-5, 0],
       ],
-      scratchWallN: [
-        [0, 0],
-        [0, -1],
-      ],
-      scratchWallS: [
-        [-7, -1],
-        [-6, -2],
-      ],
-      scratchWallE: [
-        [-2, -2],
-        [-2, -3],
-      ],
-      scratchWallW: [
-        [-4, 0],
-        [-4, -1],
+      scratchWall: [
+        [0, 0],   // First sprite (top-left)
+        [0, -1],  // Sprite below that
       ],
       tired: [[-3, -2]],
       sleeping: [
@@ -260,63 +251,100 @@ const Neko = () => {
     const mouseMoveHandler = (event: MouseEvent) => {
       mousePosX = event.clientX;
       mousePosY = event.clientY;
+      lastMouseMoveTime = Date.now(); // Update mouse move timestamp
+      isMouseOutOfBounds = false; // Mouse is back in bounds
+      
+      // Reset any animation if mouse moves
+      if (idleAnimation === "sleeping" || idleAnimation === "scratchSelf" || idleAnimation === "scratchWall") {
+        idleAnimation = null;
+        idleAnimationFrame = 0;
+        idleTime = 0;
+      }
+    };
+
+    const mouseLeaveHandler = () => {
+      isMouseOutOfBounds = true; // Mouse left the viewport
+      // Immediately start wall scratching when mouse leaves
+      idleAnimation = "scratchWall";
+      idleAnimationFrame = 0;
+    };
+
+    const mouseEnterHandler = () => {
+      isMouseOutOfBounds = false; // Mouse entered the viewport
+      // Stop wall scratching when mouse comes back
+      if (idleAnimation === "scratchWall") {
+        idleAnimation = null;
+        idleAnimationFrame = 0;
+        idleTime = 0;
+        lastMouseMoveTime = Date.now(); // Reset idle timer
+      }
     };
 
     document.addEventListener("mousemove", mouseMoveHandler);
+    document.addEventListener("mouseleave", mouseLeaveHandler);
+    document.addEventListener("mouseenter", mouseEnterHandler);
 
     const setSprite = (name: string, frame: number) => {
       const sprite = spriteSets[name][frame % spriteSets[name].length];
       nekoEl.style.backgroundPosition = `${sprite[0] * 32}px ${sprite[1] * 32}px`;
     };
 
-    const resetIdleAnimation = () => {
-      idleAnimation = null;
-      idleAnimationFrame = 0;
-    };
-
     const idle = () => {
-      idleTime += 1;
-
+      const currentTime = Date.now();
+      const timeSinceLastMouseMove = currentTime - lastMouseMoveTime;
       
-      if (
-        idleTime > 10 &&
-        Math.floor(Math.random() * 200) === 0 &&
-        idleAnimation === null
-      ) {
-        const availableIdleAnimations = ["sleeping", "scratchSelf"];
-        if (nekoPosX < 32) availableIdleAnimations.push("scratchWallW");
-        if (nekoPosY < 32) availableIdleAnimations.push("scratchWallN");
-        if (nekoPosX > window.innerWidth - 32) availableIdleAnimations.push("scratchWallE");
-        if (nekoPosY > window.innerHeight - 32) availableIdleAnimations.push("scratchWallS");
-        idleAnimation = availableIdleAnimations[Math.floor(Math.random() * availableIdleAnimations.length)];
+      // Priority 1: If mouse is out of bounds, do wall scratching (handled by mouseLeaveHandler)
+      if (isMouseOutOfBounds && idleAnimation !== "scratchWall") {
+        idleAnimation = "scratchWall";
+        idleAnimationFrame = 0;
+      }
+      // Priority 2: If cursor idle for 2 seconds, start self-scratching
+      else if (!isMouseOutOfBounds && timeSinceLastMouseMove > 2000 && timeSinceLastMouseMove <= 8000 && idleAnimation !== "scratchSelf") {
+        idleAnimation = "scratchSelf";
+        idleAnimationFrame = 0;
+      }
+      // Priority 3: If cursor idle for 8 seconds, sleep (after scratching)
+      else if (!isMouseOutOfBounds && timeSinceLastMouseMove > 8000 && idleAnimation !== "sleeping") {
+        idleAnimation = "sleeping";
+        idleAnimationFrame = 0;
       }
 
       switch (idleAnimation) {
+        case "scratchWall":
+          setSprite("scratchWall", idleAnimationFrame % 2); // Ensure we only use frame 0 or 1
+          idleAnimationFrame += 1;
+          // Loop the wall scratching animation (2 frames) - reset counter to prevent overflow
+          if (idleAnimationFrame >= 2) {
+            idleAnimationFrame = 0;
+          }
+          break;
+        case "scratchSelf":
+          setSprite("scratchSelf", idleAnimationFrame % 4); // Ensure we only use frames 0-3
+          idleAnimationFrame += 1;
+          // Loop the self-scratching animation (4 frames)
+          if (idleAnimationFrame >= 4) {
+            idleAnimationFrame = 0;
+          }
+          break;
         case "sleeping":
           if (idleAnimationFrame < 8) {
             setSprite("tired", 0);
+            idleAnimationFrame += 1;
             break;
           }
-          setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
-          if (idleAnimationFrame > 192) resetIdleAnimation();
-          break;
-        case "scratchSelf":
-        case "scratchWallN":
-        case "scratchWallS":
-        case "scratchWallE":
-        case "scratchWallW":
-          setSprite(idleAnimation, idleAnimationFrame);
-          if (idleAnimationFrame > 9) resetIdleAnimation();
+          setSprite("sleeping", Math.floor((idleAnimationFrame - 8) / 4));
+          idleAnimationFrame += 1;
+          // Keep sleeping until mouse moves
           break;
         default:
           setSprite("idle", 0);
           return;
       }
-      idleAnimationFrame += 1;
     };
 
     const frame = () => {
       frameCount += 1;
+      
       const diffX = nekoPosX - mousePosX;
       const diffY = nekoPosY - mousePosY;
       const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
@@ -350,7 +378,6 @@ const Neko = () => {
       direction += diffX / distance < -0.5 ? "E" : "";
       setSprite(direction, frameCount);
 
-   
       nekoPosX -= (diffX / distance) * nekoSpeed;
       nekoPosY -= (diffY / distance) * nekoSpeed;
 
@@ -383,6 +410,8 @@ const Neko = () => {
 
     return () => {
       document.removeEventListener("mousemove", mouseMoveHandler);
+      document.removeEventListener("mouseleave", mouseLeaveHandler);
+      document.removeEventListener("mouseenter", mouseEnterHandler);
       if (nekoEl.isConnected) {
         nekoEl.remove();
       }

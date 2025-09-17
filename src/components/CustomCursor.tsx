@@ -20,38 +20,32 @@ const CustomCursor = () => {
     
     // Listen for pokeball capture event
     const handleCapture = (event: CustomEvent) => {
-      console.log('🎯 Pokeball capture started!');
       setAnimationState('opening');
       
       // Pokemon-style animation sequence: open → close → shake → red light → sparkle → popup
       setTimeout(() => {
-        console.log('🔴 Animation state: closing');
         // After opening, close to capture neko
         setAnimationState('closing');
       }, 1000); // Opening - pokeball top lifts up (1 second)
       
       setTimeout(() => {
-        console.log('📳 Animation state: shaking');
         // Now shake the complete closed pokeball
         setAnimationState('shaking');
       }, 2200); // Closing - top comes back down completely (1.2 seconds after opening)
       
       setTimeout(() => {
-        console.log('✨ Animation state: sparkling - RED LIGHT AND SPARKLES SHOULD APPEAR NOW!');
         // Red light appears in center - Pokemon is captured
         setAnimationState('sparkling');
       }, 4700); // Shaking - complete pokeball shakes (2.5 seconds)
       
       // Trigger popup while sparkles are still showing
       setTimeout(() => {
-        console.log('🎉 Triggering popup while sparkles continue');
         if (event.detail.onComplete) {
           event.detail.onComplete();
         }
       }, 5200); // Popup appears 0.5s after sparkles start
       
       setTimeout(() => {
-        console.log('🏁 Animation state: normal - sparkles end');
         setAnimationState('normal');
       }, 7000); // Give more time for sparkles to be visible (2.3 seconds of sparkling)
     };
@@ -182,13 +176,11 @@ const CustomCursor = () => {
                 filter: animationState === 'sparkling' ? 'drop-shadow(0 0 8px #FF4444)' : 'none',
                 animation: animationState === 'sparkling' ? 'red-light-pulse-cursor 0.3s infinite alternate' : 'none'
               }}
-              onAnimationStart={() => console.log('🔴 RED LIGHT ANIMATION STARTED!')}
             />
 
             {/* Success Sparkles - Golden sparkles around the pokeball after red light */}
             {animationState === 'sparkling' && (
               <>
-                {console.log('✨ SPARKLES SHOULD BE VISIBLE NOW! Animation state:', animationState)}
                 {/* Sparkle 1 - Top Right */}
                 <circle
                   cx="26"
@@ -199,7 +191,6 @@ const CustomCursor = () => {
                     animation: 'sparkle-twinkle-cursor 0.8s infinite alternate',
                     animationDelay: '0.2s'
                   }}
-                  onAnimationStart={() => console.log('✨ SPARKLE 1 ANIMATION STARTED!')}
                 />
                 {/* Sparkle 2 - Top Left */}
                 <circle
