@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    title: "VP of Engineering",
+    title: "VP of Engineering (Co-Founder)",
     company: "Kisan Connect (MSME Funded Startup)",
     period: "May 2025 - Present",
     description: "CO-Led a 5-member dev team to build a farmer-buyer digital marketplace. Farmers onboarded with Secured 5 Lakh MSME funding, and scaled app to production. Designed mobile UI & chatbot, Firebase Auth with reduced onboarding time by 35%.",
