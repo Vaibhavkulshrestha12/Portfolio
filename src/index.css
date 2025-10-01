@@ -5,20 +5,20 @@
 @tailwind utilities;
 
 :root {
-  /* Warm Professional Color Palette */
-  --bg-primary: #fefefe;       /* Pure warm white */
-  --bg-secondary: #f8f7f5;     /* Cream white */
-  --bg-tertiary: #f1ece6;      /* Light warm beige */
+  /* Warm Professional Color Palette - Dimmed for eye comfort */
+  --bg-primary: #f7f6f4;       /* Soft warm gray (dimmed from pure white) */
+  --bg-secondary: #f0efec;     /* Light cream (dimmed) */
+  --bg-tertiary: #e8e3dd;      /* Warm beige (dimmed) */
   --text-primary: #2c2621;     /* Rich dark brown */
   --text-secondary: #5a5146;   /* Medium warm gray */
   --text-muted: #8b8075;       /* Light warm gray */
   --accent-primary: #d97706;   /* Warm amber */
   --accent-secondary: #f59e0b; /* Golden yellow */
   --accent-hover: #b45309;     /* Deep amber */
-  --border: #e5ddd4;          /* Warm light border */
-  --border-hover: #d1c7b8;    /* Warm medium border */
-  --surface: #ffffff;          /* Pure white surfaces */
-  --shadow: rgba(44, 38, 33, 0.1); /* Warm shadow */
+  --border: #d1c7b8;          /* Warm medium border (more visible) */
+  --border-hover: #b8a99a;    /* Darker warm border */
+  --surface: #f5f3f0;          /* Slightly off-white surfaces for better contrast */
+  --shadow: rgba(44, 38, 33, 0.15); /* Stronger warm shadow for better definition */
   
   /* Professional gradients */
   --gradient-primary: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
@@ -80,6 +80,32 @@
 }
 
 @layer components {
+  /* Light mode specific card backgrounds */
+  .card-background-light {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+  }
+  
+  [data-theme="dark"] .card-background-light,
+  .dark .card-background-light {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
+  }
+  
+  /* Panel backgrounds for better contrast */
+  .panel-background {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+  }
+  
+  [data-theme="dark"] .panel-background,
+  .dark .panel-background {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
+  }
+
   /* Modern card component */
   .modern-card {
     @apply relative overflow-hidden rounded-2xl border-2 transition-all duration-300;
@@ -91,6 +117,19 @@
   .modern-card:hover {
     border-color: var(--accent-primary);
     box-shadow: 0 8px 40px var(--shadow);
+  }
+
+  /* Achievement card specific styles */
+  .achievement-card {
+    @apply relative overflow-hidden rounded-2xl border-2 transition-all duration-300;
+    background: var(--bg-secondary);
+    border-color: var(--border);
+    box-shadow: 0 25px 50px -12px var(--shadow);
+  }
+  
+  .achievement-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 25px 50px -12px var(--shadow), 0 0 20px rgba(217, 119, 6, 0.2);
   }
 
   /* Professional button styles */

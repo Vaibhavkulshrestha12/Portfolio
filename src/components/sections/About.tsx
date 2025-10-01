@@ -43,12 +43,12 @@ export const About = () => {
             transition={{ duration: 0.6 }}
             className="inline-block mb-6 sm:mb-8"
           >
-            <div className="bg-black/20 border border-orange-500/30 rounded-lg p-3 sm:p-4 font-mono text-xs sm:text-sm backdrop-blur-sm">
+            <div className="panel-background rounded-lg p-3 sm:p-4 font-mono text-xs sm:text-sm backdrop-blur-sm">
               <div className="flex items-center gap-1 sm:gap-2 mb-2">
                 <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500" />
                 <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500" />
                 <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500" />
-                <span className="ml-1 sm:ml-2 text-gray-400 text-xs sm:text-sm">~/about-vaibhav.js</span>
+                <span className="ml-1 sm:ml-2 text-xs sm:text-sm" style={{ color: 'var(--text-muted)' }}>~/about-vaibhav.js</span>
               </div>
               <div className="text-orange-400 text-xs sm:text-sm break-all">
                 <span className="text-purple-400">const</span>{' '}
@@ -71,17 +71,17 @@ export const About = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex justify-center gap-2 sm:gap-4 flex-wrap mb-8 sm:mb-12 px-4"
           >
-            <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black/20 border border-orange-500/30 rounded-full backdrop-blur-sm">
+            <div className="px-3 sm:px-4 py-1.5 sm:py-2 panel-background rounded-full backdrop-blur-sm">
               <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400 text-xs sm:text-sm">
                 Full-Stack Engineer
               </span>
             </div>
-            <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black/20 border border-amber-500/30 rounded-full backdrop-blur-sm">
+            <div className="px-3 sm:px-4 py-1.5 sm:py-2 panel-background rounded-full backdrop-blur-sm">
               <span className="bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text font-medium text-transparent dark:from-blue-200 dark:to-cyan-400 text-xs sm:text-sm">
                 Gaming Enthusiast
               </span>
             </div>
-            <div className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black/20 border border-yellow-500/30 rounded-full backdrop-blur-sm">
+            <div className="px-3 sm:px-4 py-1.5 sm:py-2 panel-background rounded-full backdrop-blur-sm">
               <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text font-medium text-transparent dark:from-purple-200 dark:to-pink-400 text-xs sm:text-sm">
                 Comic Geek
               </span>
@@ -102,7 +102,7 @@ export const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
               {/* Stats panel */}
               <div className="lg:col-span-4 order-2 lg:order-1">
-                <div className="bg-black/40 border border-orange-500/30 rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
+                <div className="panel-background rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
                   <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                     <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400 flex-shrink-0" />
                     <h3 className="text-lg sm:text-xl font-bold">
@@ -116,7 +116,7 @@ export const About = () => {
                   <div className="space-y-3 sm:space-y-4">
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-xs sm:text-sm text-gray-300">React & Frontend</span>
+                        <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>React & Frontend</span>
                         <span className="text-xs sm:text-sm text-orange-400">95%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
@@ -130,7 +130,7 @@ export const About = () => {
                     </div>
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-xs sm:text-sm text-gray-300">Node.js & Backend</span>
+                        <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>Node.js & Backend</span>
                         <span className="text-xs sm:text-sm text-amber-400">90%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
@@ -144,7 +144,7 @@ export const About = () => {
                     </div>
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-xs sm:text-sm text-gray-300">DevOps & Cloud</span>
+                        <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>DevOps & Cloud</span>
                         <span className="text-xs sm:text-sm text-yellow-400">85%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
@@ -162,11 +162,11 @@ export const About = () => {
                   <div className="mt-4 sm:mt-6 space-y-2">
                     <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg">
                       <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 flex-shrink-0" />
-                      <span className="text-xs sm:text-sm text-orange-300">OCI DevOps Professional</span>
+                      <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>OCI DevOps Professional</span>
                     </div>
                     <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
                       <Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0" />
-                      <span className="text-xs sm:text-sm text-cyan-300">AI Foundations</span>
+                      <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>AI Foundations</span>
                     </div>
                   </div>
                 </div>
@@ -234,7 +234,7 @@ export const About = () => {
               
               {/* Achievement panel */}
               <div className="lg:col-span-4 lg:order-2 order-2">
-                <div className="bg-black/40 border border-amber-500/30 rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
+                <div className="panel-background rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
                   <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                     <Rocket className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 flex-shrink-0" />
                     <h3 className="text-lg sm:text-xl font-bold">
@@ -303,7 +303,7 @@ export const About = () => {
             <div className="grid lg:grid-cols-12 gap-8">
               {/* Gaming stats panel */}
               <div className="lg:col-span-4">
-                <div className="bg-black/40 border border-yellow-500/30 rounded-xl p-6 backdrop-blur-sm h-full">
+                <div className="panel-background rounded-xl p-6 backdrop-blur-sm h-full">
                   <div className="flex items-center gap-3 mb-6">
                     <Gamepad2 className="w-6 h-6 text-yellow-400" />
                     <h3 className="text-xl font-bold">
@@ -320,7 +320,7 @@ export const About = () => {
                       <span className="text-xs bg-red-500 text-white px-2 py-1 rounded">100%</span>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-gray-500/10 rounded">
-                      <span className="text-sm text-gray-300">⚔️ Dark Souls</span>
+                      <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>⚔️ Dark Souls</span>
                       <span className="text-xs bg-gray-500 text-white px-2 py-1 rounded">MASTER</span>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-orange-500/10 rounded">

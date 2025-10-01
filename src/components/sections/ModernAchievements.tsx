@@ -11,10 +11,10 @@ const achievements = [
   },
   {
     title: "Smart India Hackathon",
-    description: "State qualified internals and won 3 internal hackathon",
+    description: "Twice qualified for the nationals and won 3 internal hackathon",
     icon: Trophy,
     color: "#3b82f6",
-    year: "2024"
+    year: "2025"
   },
   {
     title: "MSME Hackathon Winner",
@@ -24,11 +24,11 @@ const achievements = [
     year: "2024"
   },
   {
-    title: "Science Competition Winner",
-    description: "Winner of All India Science Competition with waste water treatment prototype",
+    title: "Oracle certified devops professional",
+    description: "Achieved certification demonstrating expertise in DevOps practices and tools",
     icon: Award,
     color: "#8b5cf6",
-    year: "2023"
+    year: "2025"
   }
 ];
 
@@ -65,7 +65,7 @@ export const ModernAchievements = () => {
             return (
               <SpotlightCard 
                 key={achievement.title} 
-                className="modern-card p-6 sm:p-8 group bg-black/30 border border-orange-500/30 backdrop-blur-md shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-300 hover:border-orange-500/50 lg:hover:scale-105"
+                className="achievement-card p-6 sm:p-8 group backdrop-blur-md shadow-2xl transition-all duration-300 lg:hover:scale-105"
               >
                 <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                   {/* Icon */}
@@ -89,16 +89,23 @@ export const ModernAchievements = () => {
                   {/* Content */}
                   <div className="flex-grow text-center sm:text-left w-full">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">
-                      <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow-sm break-words">
+                      <h3 className="text-lg sm:text-xl font-bold drop-shadow-sm break-words"
+                          style={{ color: 'var(--text-primary)' }}>
                         {achievement.title}
                       </h3>
                       <span 
-                        className="text-sm font-medium px-3 py-1 rounded-full bg-orange-500/20 text-orange-200 border border-orange-500/30 backdrop-blur-sm self-center sm:self-auto flex-shrink-0"
+                        className="text-sm font-medium px-3 py-1 rounded-full backdrop-blur-sm self-center sm:self-auto flex-shrink-0"
+                        style={{
+                          background: 'var(--accent-primary)',
+                          color: 'white',
+                          border: `1px solid var(--accent-primary)`
+                        }}
                       >
                         {achievement.year}
                       </span>
                     </div>
-                    <p className="text-sm sm:text-base leading-relaxed text-gray-300 drop-shadow-sm break-words hyphens-auto">
+                    <p className="text-sm sm:text-base leading-relaxed drop-shadow-sm break-words hyphens-auto"
+                       style={{ color: 'var(--text-secondary)' }}>
                       {achievement.description}
                     </p>
                   </div>
