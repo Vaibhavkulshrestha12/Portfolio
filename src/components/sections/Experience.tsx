@@ -1,42 +1,69 @@
 import { AnimatedText } from "../ui/animated-text";
 import { MovingBorder } from "../ui/moving-border";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Download, X, ZoomIn } from "lucide-react";
+import { useState } from "react";
+
+interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+  image: string;
+  certificate?: string;
+}
 
 
 const experiences = [
   {
-    title: "VP of Engineering (Co-Founder)",
+    title: "(Co-Founder)",
     company: "Kisan Connect (MSME Funded Startup)",
     period: "May 2025 - Present",
     description: "CO-Led a 5-member dev team to build a farmer-buyer digital marketplace. Farmers onboarded with Secured 5 Lakh MSME funding, and scaled app to production. Designed mobile UI & chatbot, Firebase Auth with reduced onboarding time by 35%.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&q=80"
+    image: "/images/Kisaanconnect.jpg"
   },
   {
     title: "Tech Manager",
     company: "Pentaomnia Pvt. Ltd.",
     period: "May 2024 - Feb 2025",
     description: "Spearheaded development of EdTech platform WriterSpace (comprehensive blogging platform). Implemented CI workflows, reducing dev cycle time by 25%. Managed company web app (pentaomnia.com), reaching 1k+ monthly visitors.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80"
+    image: "/images/page.png",
   },
   {
     title: "Frontend Developer Intern",
     company: "Pentaomnia Pvt. Ltd.",
     period: "Feb 2024 - May 2024",
     description: "Developed client projects using React, Tailwind, MERN, WordPress and HTML. Improved UI/UX and performance, boosting engagement by 40%.",
-    image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=400&q=80"
+    image: "/images/page.png",
+    certificate: "/images/Pentaomnia frontend intern.pdf"
   },
   {
     title: "Marketing Volunteer",
     company: "Soch by WWC (NGO)",
-    period: "May 2024 - July 2024",
+    period: "June 2024 - August 2024",
     description: "Increased SEO-driven reach by 60% via targeted campaigns.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80"
+    image: "/images/WWE intern.jpg"
   }
 ];
 
 export const Experience = () => {
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+    title: string;
+  } | null>(null);
+
+  const openModal = (imageSrc: string, imageAlt: string, title: string) => {
+    setSelectedImage({ src: imageSrc, alt: imageAlt, title });
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4" id="experience">
+    <>
+      <section className="py-12 sm:py-16 lg:py-20 px-4" id="experience">
       <div className="max-w-7xl mx-auto">
         <AnimatedText
           text="Professional Journey"
@@ -62,11 +89,23 @@ export const Experience = () => {
                     <div className="flex flex-col gap-4 sm:gap-6">
                       {/* Image */}
                       <div className="w-full">
-                        <img
-                          src={exp.image}
-                          alt={exp.company}
-                          className="w-full h-32 sm:h-28 md:h-32 object-cover rounded-lg"
-                        />
+                        <div 
+                          className="relative group cursor-pointer overflow-hidden rounded-lg"
+                          onClick={() => openModal(exp.image, exp.company, exp.title)}
+                        >
+                          <img
+                            src={exp.image}
+                            alt={exp.company}
+                            className="w-full h-32 sm:h-28 md:h-32 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                          />
+                          {/* Overlay with zoom icon */}
+                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                            <ZoomIn 
+                              size={24} 
+                              className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+                            />
+                          </div>
+                        </div>
                       </div>
                       
                       {/* Content */}
@@ -78,9 +117,22 @@ export const Experience = () => {
                           {exp.company}
                         </h4>
                         <p className="text-gray-600 dark:text-gray-400 mb-2 text-sm sm:text-base">{exp.period}</p>
-                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed break-words mb-3">
                           {exp.description}
                         </p>
+                        
+                        {/* Certificate download button */}
+                        {exp.certificate && (
+                          <a
+                            href={exp.certificate}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm rounded-lg transition-colors duration-200"
+                          >
+                            <Download size={16} />
+                            View Offer letter
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -91,5 +143,49 @@ export const Experience = () => {
         </div>
       </div>
     </section>
+
+    {/* Image Modal */}
+    <AnimatePresence>
+      {selectedImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-80"
+          onClick={closeModal}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            className="relative max-w-4xl max-h-[90vh] bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                {selectedImage.title} - {selectedImage.alt}
+              </h3>
+              <button
+                onClick={closeModal}
+                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            
+            {/* Modal Image */}
+            <div className="p-4">
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="w-full h-auto max-h-[calc(90vh-120px)] object-contain rounded-lg"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </>
   );
 };
