@@ -23,7 +23,7 @@ const experiences = [
     image: "/images/Kisaanconnect.jpg"
   },
   {
-    title: "Tech Manager",
+    title: "Tech Lead",
     company: "Pentaomnia Pvt. Ltd.",
     period: "May 2024 - Feb 2025",
     description: "Spearheaded development of EdTech platform Nirmaan(comprehensive blogging platform). Implemented CI workflows, reducing dev cycle time by 25%. Managed company web app (pentaomnia.com), reaching 1k+ monthly visitors.",
