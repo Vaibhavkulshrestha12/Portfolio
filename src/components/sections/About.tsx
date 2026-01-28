@@ -12,7 +12,7 @@ export const About = () => {
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-orange-500/20 to-transparent animate-pulse" />
         <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-amber-500/20 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
         <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-yellow-500/20 to-transparent animate-pulse" style={{ animationDelay: '2s' }} />
-        
+
         {/* Floating tech elements */}
         <div className="absolute top-20 left-10 opacity-5 animate-float">
           <div className="text-6xl font-mono text-orange-500">{'<>'}</div>
@@ -23,7 +23,7 @@ export const About = () => {
         <div className="absolute top-1/2 left-16 opacity-5 animate-float" style={{ animationDelay: '2s' }}>
           <div className="text-4xl font-mono text-yellow-500">console.log();</div>
         </div>
-        
+
         {/* Gaming UI elements */}
         <div className="absolute top-32 right-20 opacity-10">
           <div className="w-20 h-20 border-2 border-orange-500 rounded-lg p-2 animate-pulse">
@@ -37,7 +37,7 @@ export const About = () => {
       <div className="container-custom relative z-10">
         {/* Header with terminal-style design */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -51,21 +51,21 @@ export const About = () => {
                 <span className="ml-1 sm:ml-2 text-xs sm:text-sm" style={{ color: 'var(--text-muted)' }}>~/about-vaibhav.js</span>
               </div>
               <div className="text-orange-400 text-xs sm:text-sm break-all">
-                <span className="text-purple-400">const</span>{' '}
-                <span className="text-blue-400">aboutMe</span>{' '}
+                <span className="text-red-400">const</span>{' '}
+                <span className="text-red-300">aboutMe</span>{' '}
                 <span className="text-white">=</span>{' '}
                 <span className="text-yellow-400">"passionate developer"</span>
               </div>
             </div>
           </motion.div>
-          
+
           <AnimatedText
             text="About Me"
             className="text-3xl sm:text-5xl md:text-7xl font-display font-bold mb-6 sm:mb-8"
           />
-          
+
           {/* Role tags with emerald highlighting */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -77,12 +77,12 @@ export const About = () => {
               </span>
             </div>
             <div className="px-3 sm:px-4 py-1.5 sm:py-2 panel-background rounded-full backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text font-medium text-transparent dark:from-blue-200 dark:to-cyan-400 text-xs sm:text-sm">
+              <span className="bg-gradient-to-r from-red-500 to-orange-600 bg-clip-text font-medium text-transparent dark:from-red-200 dark:to-orange-400 text-xs sm:text-sm">
                 Gaming Enthusiast
               </span>
             </div>
             <div className="px-3 sm:px-4 py-1.5 sm:py-2 panel-background rounded-full backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text font-medium text-transparent dark:from-purple-200 dark:to-pink-400 text-xs sm:text-sm">
+              <span className="bg-gradient-to-r from-red-600 to-red-400 bg-clip-text font-medium text-transparent dark:from-red-500 dark:to-red-300 text-xs sm:text-sm">
                 Comic Geek
               </span>
             </div>
@@ -91,9 +91,9 @@ export const About = () => {
 
         {/* Main content - Gaming HUD style */}
         <div className="max-w-7xl mx-auto">
-          
+
           {/* Section 1: The Code Architect */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -111,7 +111,7 @@ export const About = () => {
                       </span>
                     </h3>
                   </div>
-                  
+
                   {/* Skill bars */}
                   <div className="space-y-3 sm:space-y-4">
                     <div>
@@ -120,7 +120,7 @@ export const About = () => {
                         <span className="text-xs sm:text-sm text-orange-400">95%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
-                        <motion.div 
+                        <motion.div
                           className="bg-gradient-to-r from-orange-500 to-amber-600 h-2 rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: '95%' }}
@@ -134,7 +134,7 @@ export const About = () => {
                         <span className="text-xs sm:text-sm text-amber-400">90%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
-                        <motion.div 
+                        <motion.div
                           className="bg-gradient-to-r from-amber-500 to-yellow-600 h-2 rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: '90%' }}
@@ -148,7 +148,7 @@ export const About = () => {
                         <span className="text-xs sm:text-sm text-yellow-400">85%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
-                        <motion.div 
+                        <motion.div
                           className="bg-gradient-to-r from-yellow-500 to-orange-500 h-2 rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: '85%' }}
@@ -157,21 +157,21 @@ export const About = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Certifications */}
                   <div className="mt-4 sm:mt-6 space-y-2">
                     <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg">
                       <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 flex-shrink-0" />
                       <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>OCI DevOps Professional</span>
                     </div>
-                    <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
-                      <Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0" />
+                    <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-red-500/10 border border-red-500/30 rounded-lg">
+                      <Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-red-400 flex-shrink-0" />
                       <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>AI Foundations</span>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Main content */}
               <div className="lg:col-span-8 order-1 lg:order-2">
                 <SpotlightCard className="p-6 sm:p-8 h-full">
@@ -206,7 +206,7 @@ export const About = () => {
           </motion.div>
 
           {/* Section 2: The Business Builder */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -231,7 +231,7 @@ export const About = () => {
                   </p>
                 </SpotlightCard>
               </div>
-              
+
               {/* Achievement panel */}
               <div className="lg:col-span-4 lg:order-2 order-2">
                 <div className="panel-background rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
@@ -243,10 +243,10 @@ export const About = () => {
                       </span>
                     </h3>
                   </div>
-                  
+
                   {/* Achievement cards */}
                   <div className="space-y-2 sm:space-y-3">
-                    <motion.div 
+                    <motion.div
                       className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-green-500/10 border border-green-500/30 rounded-lg"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
@@ -259,8 +259,8 @@ export const About = () => {
                         <p className="text-xs text-green-400 break-words">Kisan Connect</p>
                       </div>
                     </motion.div>
-                    
-                    <motion.div 
+
+                    <motion.div
                       className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
@@ -273,8 +273,8 @@ export const About = () => {
                         <p className="text-xs text-yellow-400 break-words">MSME Hackathon 2024</p>
                       </div>
                     </motion.div>
-                    
-                    <motion.div 
+
+                    <motion.div
                       className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
@@ -294,7 +294,7 @@ export const About = () => {
           </motion.div>
 
           {/* Section 3: The Gaming Virtuoso */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -312,7 +312,7 @@ export const About = () => {
                       </span>
                     </h3>
                   </div>
-                  
+
                   {/* Gaming achievements */}
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-2 bg-red-500/10 rounded">
@@ -340,7 +340,7 @@ export const About = () => {
                       <span className="text-xs bg-yellow-500 text-black px-2 py-1 rounded">CHILL</span>
                     </div>
                   </div>
-                  
+
                   <div className="mt-4 p-3 bg-purple-500/10 border border-purple-500/30 rounded">
                     <div className="flex items-center gap-2">
                       <Monitor className="w-4 h-4 text-purple-400" />
@@ -349,7 +349,7 @@ export const About = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Main content */}
               <div className="lg:col-span-8">
                 <SpotlightCard className="p-8 h-full">

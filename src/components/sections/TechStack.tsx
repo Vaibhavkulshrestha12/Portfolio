@@ -1,20 +1,20 @@
-import { 
+import {
   SiReact,
-  SiTypescript, 
-  SiNextdotjs, 
-  SiTailwindcss, 
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
   SiPostcss,
   SiNodedotjs,
   SiPython,
-  SiGo,
+  SiPostgresql,
   SiFirebase,
   SiMongodb,
   SiGit,
-  SiCplusplus,
   SiPostman,
   SiVercel,
   SiJenkins
 } from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
 import { ComponentType } from 'react';
 
 export interface TechItem {
@@ -38,13 +38,13 @@ export const techStack: TechStack = {
   'Backend': [
     { name: 'Node.js', icon: SiNodedotjs, color: 'text-green-600' },
     { name: 'Python', icon: SiPython, color: 'text-yellow-500' },
-    { name: 'Go', icon: SiGo, color: 'text-blue-500' },
+    { name: 'Postgres', icon: SiPostgresql, color: 'text-blue-400' },
     { name: 'Firebase', icon: SiFirebase, color: 'text-yellow-500' },
     { name: 'MongoDB', icon: SiMongodb, color: 'text-green-600' }
   ],
   'Tech known': [
     { name: 'Git', icon: SiGit, color: 'text-orange-600' },
-    { name: 'C++', icon: SiCplusplus, color: 'text-blue-600' },
+    { name: 'AWS', icon: FaAws, color: 'text-orange-500' },
     { name: 'Postman', icon: SiPostman, color: 'text-orange-600' },
     { name: 'Vercel', icon: SiVercel, color: 'text-gray-800 dark:text-white' },
     { name: 'Jenkins', icon: SiJenkins, color: 'text-blue-600' }

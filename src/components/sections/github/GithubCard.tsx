@@ -18,7 +18,7 @@ export const GithubCard = ({ name, description, stars, forks, watchers, language
         <div className="p-6 bg-white dark:bg-black">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{name}</h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{description}</p>
-          
+
           <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
             <div className="flex items-center gap-1">
               <Star size={16} />
@@ -33,9 +33,9 @@ export const GithubCard = ({ name, description, stars, forks, watchers, language
               <span>{watchers}</span>
             </div>
           </div>
-          
+
           {language && (
-            <div className="mt-4 inline-block px-2 py-1 text-sm bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded">
+            <div className="mt-4 inline-block px-2 py-1 text-sm bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded">
               {language}
             </div>
           )}

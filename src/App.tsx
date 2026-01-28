@@ -13,7 +13,8 @@ import { About } from './components/sections/About';
 import { Footer } from './components/layout/Footer';
 import { Spotlight } from './components/ui/spotlight';
 import CustomCursor from './components/CustomCursor';
-import Oneko from './components/oneko/oneko'; 
+import Oneko from './components/oneko/oneko';
+import Galaxy from './components/ui/galaxy';
 
 function ScrollToSection() {
   const location = useLocation();
@@ -37,42 +38,51 @@ function App() {
   return (
     <Router>
       <ScrollToSection />
-      <div className="min-h-screen transition-colors" style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+      <div className="min-h-screen transition-colors relative" style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <Galaxy
+            mouseInteraction={true}
+            transparent={true}
+          />
+        </div>
+
         {/* Global Spotlight Effect */}
         <Spotlight />
-        
+
         {/* Custom Pokeball Cursor */}
         <CustomCursor />
-        
+
         {/* Oneko Cat - follows the pokeball cursor */}
         <Oneko />
-        
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <SocialLinks />
-                <main>
-                  <ModernHero />
-                  <section id="about">
-                    <ModernSkills />
-                  </section>
-                  <section id="projects">
-                    <ModernProjects />
-                  </section>
-                  <ModernAchievements />
-                  <GithubSection />
-                  <ModernContact />
-                </main>
-              </>
-            }
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/experience" element={<Experience />} />
-        </Routes>
-        <Footer />
+
+        <div className="relative z-10">
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <SocialLinks />
+                  <main>
+                    <ModernHero />
+                    <section id="about">
+                      <ModernSkills />
+                    </section>
+                    <section id="projects">
+                      <ModernProjects />
+                    </section>
+                    <ModernAchievements />
+                    <GithubSection />
+                    <ModernContact />
+                  </main>
+                </>
+              }
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="/experience" element={<Experience />} />
+          </Routes>
+          <Footer />
+        </div>
       </div>
     </Router>
   );

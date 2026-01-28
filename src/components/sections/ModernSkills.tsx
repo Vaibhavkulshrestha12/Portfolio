@@ -88,10 +88,7 @@ export const ModernSkills = () => {
             <span className="text-gradient"> Technologies</span>
           </h2>
           
-          <p className="text-lg max-w-2xl mx-auto leading-relaxed mb-16"
-             style={{ color: 'var(--text-secondary)' }}>
-            Scroll down to see the skill cards merge into a deck
-          </p>
+         
         </div>
 
         {/* Skills Cards with Scroll Animation */}

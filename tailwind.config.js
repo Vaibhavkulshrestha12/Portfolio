@@ -5,41 +5,42 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Professional warm color palette
+        // Pokemon Theme Palette
         primary: {
-          50: '#fffbeb',   // Very light cream
-          100: '#fef3c7',  // Light cream
-          200: '#fde68a',  // Soft yellow
-          300: '#fcd34d',  // Warm golden
-          400: '#fbbf24',  // Golden amber
-          500: '#f59e0b',  // Primary golden
-          600: '#d97706',  // Warm amber
-          700: '#b45309',  // Deep amber
-          800: '#92400e',  // Rich brown
-          900: '#78350f',  // Very dark brown
+          50: '#fffee5',
+          100: '#fffab8',
+          200: '#fff58a',
+          300: '#ffed5c',
+          400: '#ffe02e',
+          500: '#FFCB05',  // Pikachu Yellow
+          600: '#e6b200',
+          700: '#cc9600',
+          800: '#a67600',
+          900: '#8c6000',
         },
         surface: {
-          50: '#fefefe',   // Pure warm white
-          100: '#f8f7f5',  // Cream white
-          200: '#f1ece6',  // Light warm beige
-          300: '#e5ddd4',  // Warm light border
-          400: '#d1c7b8',  // Warm medium border
-          500: '#8b8075',  // Light warm gray
-          600: '#5a5146',  // Medium warm gray
-          700: '#2c2621',  // Rich dark brown
-          800: '#1a1815',  // Dark warm brown
-          900: '#0f0e0d',  // Very dark warm black
+          50: '#f0f4ff',
+          100: '#e0e8ff',
+          200: '#c2d2ff',
+          300: '#94b0ff',
+          400: '#5c85ff',
+          500: '#3C5AA6',  // Pokemon Blue
+          600: '#2a4075',
+          700: '#1e2e54',
+          800: '#141e36',
+          900: '#0a0f1b',  // Dark Deep Blue
         },
         accent: {
-          blue: '#3b82f6',    // Professional blue
-          success: '#22c55e', // Success green
-          warning: '#f59e0b', // Warning amber
-          error: '#ef4444',   // Error red
+          yellow: '#FFCB05',   // Pikachu
+          blue: '#3C5AA6',     // Brand Blue
+          red: '#FF0000',      // Pokeball Red
+          dark: '#1a1a1a',     // Gameboy Dark
         }
       },
       fontFamily: {
-        'display': ['Playfair Display', 'serif'],
-        'body': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['"Press Start 2P"', 'cursive'], // Retro Gaming Font
+        'body': ['Outfit', 'sans-serif'],
+        'retro': ['"Press Start 2P"', 'cursive'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
@@ -47,6 +48,7 @@ export default {
         'slide-up': 'slideUp 0.8s ease-out',
         'fade-in': 'fadeIn 1s ease-out',
         'spotlight': 'spotlight 2s ease-in-out infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         float: {
@@ -54,8 +56,8 @@ export default {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          'from': { boxShadow: '0 4px 20px rgba(217, 119, 6, 0.2)' },
-          'to': { boxShadow: '0 8px 40px rgba(217, 119, 6, 0.4)' },
+          'from': { boxShadow: '0 4px 20px rgba(255, 203, 5, 0.2)' },
+          'to': { boxShadow: '0 8px 40px rgba(255, 203, 5, 0.4)' },
         },
         slideUp: {
           'from': { opacity: '0', transform: 'translateY(30px)' },
@@ -72,9 +74,9 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-warm': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-        'gradient-soft': 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
-        'gradient-light': 'linear-gradient(135deg, #fed7aa 0%, #fdba74 100%)',
+        'gradient-cosmic': 'linear-gradient(135deg, #FFCB05 0%, #FF0000 100%)',   // Electric -> Fire
+        'gradient-nebula': 'linear-gradient(135deg, #3C5AA6 0%, #FFCB05 100%)',   // Water -> Electric
+        'gradient-deep': 'linear-gradient(135deg, #0a0f1b 0%, #1a1a1a 100%)',     // Deep Space
       },
     },
   },
