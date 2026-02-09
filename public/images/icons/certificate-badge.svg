@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="certGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333EA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B21A8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#C084FC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333EA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Badge Circle Outer -->
+  <circle cx="256" cy="200" r="140" fill="url(#certGrad)"/>
+  
+  <!-- Badge Circle Middle -->
+  <circle cx="256" cy="200" r="120" fill="#A855F7"/>
+  
+  <!-- Badge Circle Inner -->
+  <circle cx="256" cy="200" r="95" fill="url(#certGrad)"/>
+  
+  <!-- Star in Badge -->
+  <path d="M 256 130 L 273 175 L 321 181 L 287 213 L 296 261 L 256 238 L 216 261 L 225 213 L 191 181 L 239 175 Z" fill="#FFF"/>
+  
+  <!-- Badge Border Decorations -->
+  <circle cx="256" cy="60" r="8" fill="#FDE047"/>
+  <circle cx="196" cy="80" r="6" fill="#FDE047"/>
+  <circle cx="316" cy="80" r="6" fill="#FDE047"/>
+  <circle cx="151" cy="130" r="6" fill="#FDE047"/>
+  <circle cx="361" cy="130" r="6" fill="#FDE047"/>
+  <circle cx="126" cy="200" r="8" fill="#FDE047"/>
+  <circle cx="386" cy="200" r="8" fill="#FDE047"/>
+  <circle cx="151" cy="270" r="6" fill="#FDE047"/>
+  <circle cx="361" cy="270" r="6" fill="#FDE047"/>
+  
+  <!-- Left Ribbon -->
+  <path d="M 206 310 L 206 340 L 180 480 L 160 500 L 140 480 L 180 340 L 180 310 Q 193 318 206 318 Z" fill="url(#ribbonGrad)"/>
+  <path d="M 180 340 L 206 340 L 180 480 Z" fill="#7C3AED" opacity="0.5"/>
+  
+  <!-- Right Ribbon -->
+  <path d="M 306 310 L 306 340 L 332 480 L 352 500 L 372 480 L 332 340 L 332 310 Q 319 318 306 318 Z" fill="url(#ribbonGrad)"/>
+  <path d="M 332 340 L 306 340 L 332 480 Z" fill="#7C3AED" opacity="0.5"/>
+  
+  <!-- Ribbon Connector -->
+  <ellipse cx="256" cy="315" rx="50" ry="25" fill="url(#ribbonGrad)"/>
+  
+  <!-- Text Lines -->
+  <rect x="226" y="195" width="60" height="4" rx="2" fill="#FFF" opacity="0.3"/>
+  <rect x="236" y="205" width="40" height="3" rx="1.5" fill="#FFF" opacity="0.3"/>
+</svg>

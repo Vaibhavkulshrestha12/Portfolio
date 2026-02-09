@@ -1,32 +1,31 @@
 import { SpotlightCard } from "../ui/spotlight";
-import { Award, Trophy, Star, Medal } from "lucide-react";
 
 const achievements = [
   {
     title: "Tech Speaker",
     description: "Spoke at 4+ tech events sharing knowledge and insights",
-    icon: Medal,
+    iconPath: "/images/icons/conference-speaker.svg",
     color: "#f59e0b",
     year: "2024"
   },
   {
     title: "Smart India Hackathon",
     description: "Twice qualified for the nationals and won 3 internal hackathon",
-    icon: Trophy,
+    iconPath: "/images/icons/trophy-laurel.svg",
     color: "#3b82f6",
     year: "2025"
   },
   {
     title: "MSME Hackathon Winner",
     description: "Winner of MSME-funded hackathon with innovative agri-tech solution",
-    icon: Star,
+    iconPath: "/images/icons/trophy-winner.svg",
     color: "#22c55e",
     year: "2024"
   },
   {
     title: "Oracle certified devops professional",
     description: "Achieved certification demonstrating expertise in DevOps practices and tools",
-    icon: Award,
+    iconPath: "/images/icons/certificate-badge.svg",
     color: "#8b5cf6",
     year: "2025"
   }
@@ -52,16 +51,12 @@ export const ModernAchievements = () => {
             <span className="text-gradient"> Achievements</span>
           </h2>
           
-          <p className="text-lg max-w-2xl mx-auto leading-relaxed"
-             style={{ color: 'var(--text-secondary)' }}>
-            Milestones that reflect my dedication to learning, contributing, and making a difference in tech
-          </p>
+          
         </div>
 
         {/* Achievements Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {achievements.map((achievement) => {
-            const Icon = achievement.icon;
             return (
               <SpotlightCard 
                 key={achievement.title} 
@@ -71,17 +66,17 @@ export const ModernAchievements = () => {
                   {/* Icon */}
                   <div className="flex-shrink-0 mx-auto sm:mx-0">
                     <div 
-                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center group-hover:animate-pulse transition-all duration-300 shadow-lg"
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center group-hover:animate-pulse transition-all duration-300 shadow-lg p-2"
                       style={{ 
                         background: `${achievement.color}20`,
                         border: `2px solid ${achievement.color}40`,
                         boxShadow: `0 8px 32px ${achievement.color}20`
                       }}
                     >
-                      <Icon 
-                        size={28}
-                        className="sm:w-8 sm:h-8"
-                        style={{ color: achievement.color }}
+                      <img 
+                        src={achievement.iconPath}
+                        alt={achievement.title}
+                        className="w-full h-full object-contain"
                       />
                     </div>
                   </div>

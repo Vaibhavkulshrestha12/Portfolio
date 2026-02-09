@@ -176,13 +176,13 @@ export const About = () => {
               <div className="lg:col-span-8 order-1 lg:order-2">
                 <SpotlightCard className="p-6 sm:p-8 h-full">
                   <div className="mb-4">
-                    <span className="text-xl sm:text-2xl">👋</span>
+                    <span className="text-xl sm:text-2xl"></span>
                     <span className="ml-2 text-base sm:text-lg font-semibold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent dark:from-orange-300 dark:to-amber-400">
                       console.log("Hello World!")
                     </span>
                   </div>
                   <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
-                    Hello there! 👋 I'm a{' '}
+                    Hello there!  I'm a{' '}
                     <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400">
                       Full-Stack Engineer and Product Architect
                     </span>{' '}
@@ -217,7 +217,7 @@ export const About = () => {
               <div className="lg:col-span-8 lg:order-1 order-1">
                 <SpotlightCard className="p-6 sm:p-8 h-full">
                   <div className="mb-4">
-                    <span className="text-xl sm:text-2xl">💼</span>
+                    <span className="text-xl sm:text-2xl"></span>
                     <span className="ml-2 text-base sm:text-lg font-semibold bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent dark:from-amber-300 dark:to-orange-400">
                       Entrepreneur.prototype
                     </span>
@@ -227,7 +227,7 @@ export const About = () => {
                     <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400">
                       Co-Founder of Kisan Connect
                     </span>{' '}
-                    (an MSME-funded agri-tech startup), I co-led development of a farmer buyer marketplace. This not only supported the farmers but also generated the 💰! , proof that a good engineering drives the buisness values.
+                    (an MSME-funded agri-tech startup), I co-led development of a farmer buyer marketplace. This not only supported the farmers but also generated the wealth! , proof that a good engineering drives the buisness values.
                   </p>
                 </SpotlightCard>
               </div>
@@ -354,7 +354,6 @@ export const About = () => {
               <div className="lg:col-span-8">
                 <SpotlightCard className="p-8 h-full">
                   <div className="mb-4">
-                    <span className="text-2xl">🎮</span>
                     <span className="ml-2 text-lg font-semibold bg-gradient-to-r from-yellow-500 to-amber-600 bg-clip-text text-transparent dark:from-yellow-300 dark:to-amber-400">
                       Player.getPassions()
                     </span>

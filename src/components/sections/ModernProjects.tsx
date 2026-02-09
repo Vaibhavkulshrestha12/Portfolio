@@ -132,10 +132,7 @@ export const ModernProjects = () => {
             <span className="text-gradient"> Projects</span>
           </h2>
           
-          <p className="text-lg max-w-2xl mx-auto leading-relaxed"
-             style={{ color: 'var(--text-secondary)' }}>
-            A showcase of real-world applications I've built for startups and organizations
-          </p>
+          
         </div>
 
         {/* Projects Grid */}

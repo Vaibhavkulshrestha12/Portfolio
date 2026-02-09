@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="trophyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Trophy Base -->
+  <rect x="170" y="420" width="172" height="60" rx="8" fill="url(#trophyGrad)"/>
+  <rect x="185" y="410" width="142" height="15" fill="#DAA520"/>
+  
+  <!-- Trophy Stem -->
+  <rect x="225" y="330" width="62" height="80" fill="url(#trophyGrad)"/>
+  
+  <!-- Trophy Cup -->
+  <path d="M 156 100 Q 156 80 176 80 L 336 80 Q 356 80 356 100 L 356 220 Q 356 280 316 310 Q 286 330 256 330 Q 226 330 196 310 Q 156 280 156 220 Z" fill="url(#trophyGrad)"/>
+  
+  <!-- Trophy Handles -->
+  <path d="M 156 120 Q 130 120 120 140 Q 115 160 120 180 Q 130 200 156 200" fill="none" stroke="#FFA500" stroke-width="16"/>
+  <path d="M 356 120 Q 382 120 392 140 Q 397 160 392 180 Q 382 200 356 200" fill="none" stroke="#FFA500" stroke-width="16"/>
+  
+  <!-- Left Laurel -->
+  <path d="M 80 140 Q 60 150 50 170 Q 45 190 55 200 L 70 185 Q 75 165 85 155 Z" fill="#22C55E"/>
+  <path d="M 70 180 Q 50 195 45 215 Q 42 235 55 245 L 68 228 Q 72 208 78 198 Z" fill="#16A34A"/>
+  <path d="M 60 230 Q 42 248 40 270 Q 40 290 55 298 L 65 278 Q 68 258 72 248 Z" fill="#22C55E"/>
+  
+  <!-- Right Laurel -->
+  <path d="M 432 140 Q 452 150 462 170 Q 467 190 457 200 L 442 185 Q 437 165 427 155 Z" fill="#22C55E"/>
+  <path d="M 442 180 Q 462 195 467 215 Q 470 235 457 245 L 444 228 Q 440 208 434 198 Z" fill="#16A34A"/>
+  <path d="M 452 230 Q 470 248 472 270 Q 472 290 457 298 L 447 278 Q 444 258 440 248 Z" fill="#22C55E"/>
+  
+  <!-- Trophy Details -->
+  <circle cx="256" cy="180" r="30" fill="#FFF" opacity="0.3"/>
+</svg>

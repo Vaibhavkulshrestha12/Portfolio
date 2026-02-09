@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="trophyWinnerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="starGrad">
+      <stop offset="0%" style="stop-color:#FFEB3B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFC107;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Trophy Cup Bottom -->
+  <ellipse cx="256" cy="380" rx="80" ry="15" fill="#DAA520"/>
+  
+  <!-- Trophy Cup Body -->
+  <path d="M 180 190 L 176 330 Q 176 380 256 380 Q 336 380 336 330 L 332 190 Z" fill="url(#trophyWinnerGrad)"/>
+  
+  <!-- Trophy Cup Top Rim -->
+  <ellipse cx="256" cy="190" rx="80" ry="20" fill="#FFD700"/>
+  <ellipse cx="256" cy="190" rx="65" ry="15" fill="#FFA500"/>
+  
+  <!-- Trophy Handles -->
+  <path d="M 180 220 Q 145 220 130 240 Q 120 260 130 280 Q 145 300 180 300" fill="none" stroke="#FFB84D" stroke-width="20" stroke-linecap="round"/>
+  <path d="M 332 220 Q 367 220 382 240 Q 392 260 382 280 Q 367 300 332 300" fill="none" stroke="#FFB84D" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- Trophy Base Pedestal -->
+  <path d="M 200 380 L 190 420 L 322 420 L 312 380 Z" fill="url(#trophyWinnerGrad)"/>
+  <rect x="180" y="420" width="152" height="40" rx="8" fill="#DAA520"/>
+  
+  <!-- Star 1 (Top Left) -->
+  <path d="M 120 100 L 130 130 L 162 134 L 140 154 L 146 186 L 120 170 L 94 186 L 100 154 L 78 134 L 110 130 Z" fill="url(#starGrad)"/>
+  
+  <!-- Star 2 (Top Right) -->
+  <path d="M 392 100 L 402 130 L 434 134 L 412 154 L 418 186 L 392 170 L 366 186 L 372 154 L 350 134 L 382 130 Z" fill="url(#starGrad)"/>
+  
+  <!-- Star 3 (Top Center) -->
+  <path d="M 256 40 L 270 80 L 312 86 L 283 113 L 291 155 L 256 135 L 221 155 L 229 113 L 200 86 L 242 80 Z" fill="url(#starGrad)" opacity="0.9"/>
+  
+  <!-- Trophy Shine -->
+  <ellipse cx="220" cy="260" rx="30" ry="60" fill="#FFF" opacity="0.2"/>
+</svg>
