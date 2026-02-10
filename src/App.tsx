@@ -14,6 +14,7 @@ import { Footer } from './components/layout/Footer';
 import { Spotlight } from './components/ui/spotlight';
 import CustomCursor from './components/CustomCursor';
 import Oneko from './components/oneko/oneko'; 
+import { Analytics } from "@vercel/analytics/next"
 
 function ScrollToSection() {
   const location = useLocation();
@@ -73,6 +74,7 @@ function App() {
           <Route path="/experience" element={<Experience />} />
         </Routes>
         <Footer />
+        <Analytics/>
       </div>
     </Router>
   );
