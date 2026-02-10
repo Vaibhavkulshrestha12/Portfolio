@@ -14,7 +14,7 @@ import { Footer } from './components/layout/Footer';
 import { Spotlight } from './components/ui/spotlight';
 import CustomCursor from './components/CustomCursor';
 import Oneko from './components/oneko/oneko'; 
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/react';
 
 function ScrollToSection() {
   const location = useLocation();
