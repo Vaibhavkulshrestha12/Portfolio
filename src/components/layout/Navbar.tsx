@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react'; 
 import { useTheme } from '../../hooks/useTheme';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import logo from '/public/images/icons/logo.png';
 
 export const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -55,11 +56,7 @@ export const Navbar = () => {
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-500 hover:scale-110 transition-transform">
-                <img
-                  src="./public/images/icons/logo.png"
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
+                <img src={logo} alt="Profile" />
               </div>
             </Link>
           </div>
