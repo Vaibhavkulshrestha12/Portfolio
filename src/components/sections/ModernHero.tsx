@@ -1,135 +1,110 @@
+import { 
+  SiReact,
+  SiTypescript, 
+  SiNextdotjs, 
+  SiNodedotjs,
+  SiPostgresql,
+  SiFirebase,
+  SiTailwindcss,
+  SiEthereum 
+} from 'react-icons/si';
+
+const TechBadge = ({ icon: Icon, name }: { icon: React.ComponentType<{ className?: string }>, name: string }) => (
+  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border mx-1 my-0.5 transition-all duration-200 hover:scale-105"
+        style={{ 
+          background: 'var(--bg-secondary)', 
+          borderColor: 'var(--border)',
+          borderStyle: 'dashed',
+          color: 'var(--text-secondary)',
+          fontSize: '0.875rem'
+        }}>
+    <Icon className="w-3.5 h-3.5" />
+    <span className="font-medium">{name}</span>
+  </span>
+);
+
 export const ModernHero = () => {
   return (
     <section className="section-padding min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 rounded-full opacity-10 animate-float" 
+      {/* Background Elements - More subtle */}
+      <div className="absolute inset-0 overflow-hidden opacity-30">
+        <div className="absolute top-20 left-10 w-72 h-72 rounded-full opacity-20 animate-float" 
              style={{ background: 'var(--gradient-primary)' }} />
-        <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full opacity-5 animate-float" 
+        <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full opacity-10 animate-float" 
              style={{ background: 'var(--gradient-secondary)', animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full opacity-10 animate-float" 
+        <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full opacity-20 animate-float" 
              style={{ background: 'var(--gradient-tertiary)', animationDelay: '4s' }} />
       </div>
       
-      <div className="container-custom relative z-10 text-center">
+      <div className="container-custom relative z-10 text-center max-w-5xl mx-auto px-4">
         {/* Role Indicator */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full border mb-8 animate-slide-up"
+        <div className="inline-flex items-center px-4 py-2 rounded-full border mb-10 animate-slide-up"
              style={{ 
                background: 'var(--bg-secondary)', 
                borderColor: 'var(--accent-primary)',
                color: 'var(--accent-primary)' 
              }}>
-          <span className="text-sm font-semibold tracking-wider uppercase">Full Stack Developer</span>
+          <span className="text-xs font-semibold tracking-wider uppercase">Full Stack Developer</span>
         </div>
 
-        {/* Main Title */}
-        <h1 className="text-5xl md:text-7xl font-display font-bold mb-8 animate-slide-up" 
-            style={{ animationDelay: '0.2s' }}>
-          <span style={{ color: 'var(--text-primary)' }}>Vaibhav</span>
-          <br />
-          <span className="text-gradient">Kulshrestha</span>
+        {/* Main Title with Introduction */}
+        <h1 className="text-4xl md:text-6xl font-display font-bold mb-10 leading-tight animate-slide-up" 
+            style={{ animationDelay: '0.1s' }}>
+          <span style={{ color: 'var(--text-secondary)' }}>Hi, I'm Vaibhav — </span>
+          <span className="text-gradient">A Full Stack developer.</span>
         </h1>
 
-        {/* Tagline & Bio */}
-        <div className="space-y-6 mb-12 max-w-4xl mx-auto">
-          {/* Main tagline */}
-          <p className="text-xl md:text-2xl font-light leading-relaxed animate-slide-up"
-             style={{ color: 'var(--text-secondary)', animationDelay: '0.4s' }}>
-            Full-Stack Engineer & Product Architect crafting scalable applications
-          </p>
-          
-          {/* Key highlights with staggered animations */}
-          <div className="grid md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
-            <div className="flex items-start gap-3 p-4 rounded-lg animate-slide-up"
-                 style={{ 
-                   background: 'var(--bg-secondary)', 
-                   animationDelay: '0.6s',
-                   border: '1px solid var(--border)'
-                 }}>
-              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                   style={{ background: 'var(--accent-primary)' }} />
-              <div>
-                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--accent-primary)' }}>
-                  OCI 2025 Certified
-                </p>
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                  DevOps Professional & AI Foundations
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-3 p-4 rounded-lg animate-slide-up"
-                 style={{ 
-                   background: 'var(--bg-secondary)', 
-                   animationDelay: '0.7s',
-                   border: '1px solid var(--border)'
-                 }}>
-              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                   style={{ background: 'var(--accent-primary)' }} />
-              <div>
-                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--accent-primary)' }}>
-                  Co-Founder & Winner
-                </p>
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                  MSME-funded Kisan Connect, Ideathon 2024
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-3 p-4 rounded-lg animate-slide-up"
-                 style={{ 
-                   background: 'var(--bg-secondary)', 
-                   animationDelay: '0.8s',
-                   border: '1px solid var(--border)'
-                 }}>
-              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                   style={{ background: 'var(--accent-primary)' }} />
-              <div>
-                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--accent-primary)' }}>
-                  Tech Leadership
-                </p>
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                  Leading dev teams & scaling to production
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex items-start gap-3 p-4 rounded-lg animate-slide-up"
-                 style={{ 
-                   background: 'var(--bg-secondary)', 
-                   animationDelay: '0.9s',
-                   border: '1px solid var(--border)'
-                 }}>
-              <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                   style={{ background: 'var(--accent-primary)' }} />
-              <div>
-                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--accent-primary)' }}>
-                  Tech Stack
-                </p>
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                  React, Node.js, Firebase & Cloud DevOps
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Closing statement */}
-          <p className="text-base md:text-lg font-light leading-relaxed animate-slide-up opacity-80"
-             style={{ color: 'var(--text-secondary)', animationDelay: '1.0s' }}>
-            Delivering secure, high-impact solutions while contributing to community
+        {/* Description with Tech Badges */}
+        <div className="space-y-6 mb-12 max-w-3xl mx-auto">
+          {/* Interactive description with inline tech badges */}
+          <p className="text-base md:text-lg font-normal leading-relaxed animate-slide-up"
+             style={{ color: 'var(--text-secondary)', animationDelay: '0.2s' }}>
+            I build interactive apps using 
+            <TechBadge icon={SiTypescript} name="TypeScript" />, <></>
+            <TechBadge icon={SiReact} name="React" />, <></>
+            <TechBadge icon={SiNextdotjs} name="Next.js" />, <></>
+            <TechBadge icon={SiNodedotjs} name="Node.js" />, <></>
+            <TechBadge icon={SiTailwindcss} name="Tailwind CSS" />,<></> 
+            <TechBadge icon={SiFirebase} name="Firebase" /> <></>
+           <></> and <></>
+            <TechBadge icon={SiPostgresql} name="PostgreSQL" />
+            that are not only functional but also visually appealing, with a strong focus on
+            <span className="font-semibold" style={{ color: 'var(--text-primary)' }}> UI and Interactive</span> design. Enthusiastic about  
+            <span className="font-semibold" style={{ color: 'var(--text-primary)' }}> Game development</span> and <TechBadge icon={SiEthereum } name="Blockchain" /> <></>.
           </p>
         </div>
         
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-slide-up"
-             style={{ animationDelay: '1.1s' }}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up"
+             style={{ animationDelay: '0.4s' }}>
           <a 
             href="/Vaibhav Kulshreshta resume.pdf" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105"
+            style={{
+              background: 'var(--bg-secondary)',
+              border: '1px solid var(--border)',
+              color: 'var(--text-primary)'
+            }}
           >
-            Download CV
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Resume / CV
+          </a>
+          <a 
+            href="#contact"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105"
+            style={{
+              background: 'var(--accent-primary)',
+              color: '#ffffff'
+            }}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+            Get in touch
           </a>
         </div>
 

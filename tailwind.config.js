@@ -38,8 +38,9 @@ export default {
         }
       },
       fontFamily: {
-        'display': ['Playfair Display', 'serif'],
-        'body': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Sora', 'Inter', 'system-ui', 'sans-serif'],
+        'body': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

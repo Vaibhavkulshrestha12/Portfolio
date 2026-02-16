@@ -56,7 +56,7 @@ export const Navbar = () => {
             <Link to="/" className="flex items-center">
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-500 hover:scale-110 transition-transform">
                 <img
-                  src="https://avatars.githubusercontent.com/u/137729638?v=4"
+                  src="./public/images/icons/logo.png"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
