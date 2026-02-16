@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  assetsInclude: ['**/*.glb'],
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
