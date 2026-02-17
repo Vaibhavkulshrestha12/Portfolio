@@ -3,7 +3,6 @@
 ##  Live Demo
 **[Visit vaibhavkulshrestha.me](https://vaibhavkulshrestha.me)**
 
-![Portfolio Demo](./readme/Preview.gif)
 
 ##  Features
 - **Modern Design**: Clean, professional, and responsive
