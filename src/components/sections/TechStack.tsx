@@ -39,7 +39,7 @@ export const techStack: TechStack = {
     { name: 'Node.js', icon: NodeJs, color: 'text-green-600' },
     { name: 'Python', icon: Python, color: 'text-yellow-500' },
     { name: 'Java', icon: Java, color: 'text-blue-500' },
-    { name: 'Firebase', icon:  PostgreSQL, color: 'text-yellow-500' },
+    { name: 'PostgreSQL', icon:  PostgreSQL, color: 'text-yellow-500' },
     { name: 'MongoDB', icon: MongoDB, color: 'text-green-600' }
   ],
   'Tech known': [
