@@ -9,10 +9,8 @@ import {
 } from 'developer-icons';
 
 import { SiEthereum } from 'react-icons/si';
-import { lazy, Suspense } from 'react';
-
-const Lanyard = lazy(() => import('../lanyard/Lanyard'));
-
+import { Suspense } from 'react';
+import ModelViewer from '../ui/ModelViewer';
 const TechBadge = ({ icon: Icon, name }: { icon: React.ComponentType<{ size?: number }>, name: string }) => (
   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border mx-1 my-0.5 transition-all duration-200 hover:scale-105"
         style={{ 
@@ -122,8 +120,8 @@ export const ModernHero = () => {
             </div>
           </div>
 
-          {/* Lanyard Component - Right (Hidden on mobile) */}
-          <div className="hidden lg:block h-[600px] relative">
+          {/* ModelViewer Component - Right (Hidden on mobile) */}
+          <div className="hidden lg:flex h-[540px] w-full relative items-center justify-center">
             <Suspense fallback={
               <div className="w-full h-full flex items-center justify-center">
                 <div 
@@ -132,11 +130,19 @@ export const ModernHero = () => {
                 />
               </div>
             }>
-              <Lanyard 
-                position={[0, 0, 24]}
-                gravity={[0, -40, 0]}
-                fov={20}
-                transparent={true}
+              <ModelViewer
+                url="/assets/react_logo.glb"
+                width="100%"
+                height={540}
+                modelXOffset={0}
+                modelYOffset={0}
+                enableMouseParallax
+                enableHoverRotation
+                environmentPreset="forest"
+                fadeIn={true}
+                autoRotate={false}
+                autoRotateSpeed={0.35}
+                showScreenshotButton={false}
               />
             </Suspense>
           </div>
