@@ -9,7 +9,8 @@ import {
   React as ReactIcon,
   NodeJs,
   PostgreSQL,
-  ShadcnUI
+  ShadcnUI,
+  Python
 } from 'developer-icons';
 import { SiEthereum } from 'react-icons/si';
 
@@ -25,7 +26,8 @@ const projects = [
       { name: "TypeScript", icon: TypeScript },
       { name: "Node.js", icon: NodeJs },
       { name: "PostgreSQL", icon: PostgreSQL },
-      { name: "Blockchain", icon: SiEthereum }
+      { name: "Blockchain", icon: SiEthereum },
+      { name: "Shadcn UI", icon: ShadcnUI }
     ],
     github: "It is a private repo",
     live: "https://eastore.xyz",
@@ -51,12 +53,14 @@ const projects = [
   },
   {
     title: "PashuDrishti",
-    description: "AI-powered cattle breed recognition platform with Farm and livestock management",
+    description: "AI-powered indian cattle breed recognition and Atc scoring platform with Farm and livestock management accesibilities and features.",
+    role: "Full-Stack Developer — Developed AI-powered cattle breed recognition and ATC scoring system and frontend of the app and backend. Implemented image upload, real-time breed identification, ATC scoring, face identification lock , native geo-location based cattle suggestions and farm management features.",
     image: "./images/PashuDrishti.gif",
     technologies: [
       { name: "TypeScript", icon: TypeScript },
       { name: "Tailwind CSS", icon: TailwindCSS },
-      { name: "Firebase", icon: Firebase }
+      { name: "Firebase", icon: Firebase },
+      { name: "Python", icon: Python }
     ],
     github: "https://github.com/Vaibhavkulshrestha12/SIH-",
     live: "https://pashudrishti-sih.vercel.app/",
@@ -65,13 +69,17 @@ const projects = [
   },
   {
     title: "WriterSpace",
-    description: "A comprehensive blogging platform with modern features and intuitive design",
+    description:
+      "Simple blogging app build for individuals to share their thoughts and emotions , contains it's own text editor and social features to interact with and magic cursor for better user experience.",
+    role:
+      "As Full-Stack Developer, built frontend with custom hooks, modular components, context-based theming, and magic cursor (shadcn component). Developed backend with Firebase for authentication and real-time data storage. Implemented rich content editing, social features (likes, shares, reactions), admin tools, and mobile-first accessibility.(coding + vibe coding)",
     image: "./writerspace.png",
     technologies: [
       { name: "React", icon: ReactIcon },
       { name: "TypeScript", icon: TypeScript },
       { name: "Firebase", icon: Firebase },
-      { name: "Tailwind CSS", icon: TailwindCSS }
+      { name: "Tailwind CSS", icon: TailwindCSS },
+      { name: "Shadcn UI", icon: ShadcnUI }
     ],
     github: "https://github.com/Vaibhavkulshrestha12/WriterSpace",
     live: "https://writerspace.vercel.app",
