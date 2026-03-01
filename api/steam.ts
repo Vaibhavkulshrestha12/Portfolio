@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-const STEAM_KEY = process.env.VITE_STEAM_KEY;
-const STEAM_ID  = process.env.STEAM_ID;
+const STEAM_KEY = process.env.STEAM_KEY ?? process.env.VITE_STEAM_KEY;
+const STEAM_ID  = process.env.STEAM_ID  ?? process.env.VITE_STEAM_ID;
 
 interface SteamGame {
   appid: number;
@@ -28,10 +28,23 @@ const gameHeader = (appid: number) =>
 const iconUrl = (appid: number, hash: string) =>
   `https://media.steampowered.com/steamcommunity/public/images/apps/${appid}/${hash}.jpg`;
 
+const ALLOWED_ORIGINS = [
+  "https://vaibhavkulshrestha.me",
+  "https://www.vaibhavkulshrestha.me",
+  // Vercel preview URLs
+  /\.vercel\.app$/,
+  // localhost for dev
+  /^http:\/\/localhost:/,
+];
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  const origin = req.headers.origin ?? "";
+  const allowed = ALLOWED_ORIGINS.some((o) =>
+    typeof o === "string" ? o === origin : o.test(origin)
+  );
+  res.setHeader("Access-Control-Allow-Origin", allowed ? origin : "https://vaibhavkulshrestha.me");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Vary", "Origin");
   if (req.method === "OPTIONS") return res.status(200).end();
 
   if (!STEAM_KEY || !STEAM_ID) {

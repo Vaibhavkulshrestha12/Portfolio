@@ -148,23 +148,24 @@ export function useSteamStats() {
     let cancelled = false;
     (async () => {
       try {
-        /* ── Try Vercel serverless function first (production / vercel dev) ── */
-        let steamData: SteamData | null = null;
-        try {
-          const res = await fetch("/api/steam");
-          if (res.ok) {
-            steamData = (await res.json()) as SteamData;
-          }
-        } catch { /* will fall through to direct fetch */ }
-
-        /* ── Fallback: call Steam API directly via CORS proxy (npm run dev) ── */
-        if (!steamData) {
-          steamData = await fetchSteamDirect();
-        }
-
+        /* ── Always try the Vercel serverless function first ── */
+        const res = await fetch("/api/steam");
+        if (!res.ok) throw new Error(`/api/steam returned ${res.status}`);
+        const steamData = (await res.json()) as SteamData;
         if (!cancelled) setData(steamData);
-      } catch (e) {
-        if (!cancelled) setError(e instanceof Error ? e.message : "Unknown error");
+      } catch (apiErr) {
+        /* ── Fallback: direct Steam API via CORS proxy — DEV ONLY ── */
+        if (import.meta.env.PROD) {
+          // Never use third-party CORS proxies in production — they expose the key
+          if (!cancelled) setError("Steam data unavailable");
+        } else {
+          try {
+            const steamData = await fetchSteamDirect();
+            if (!cancelled) setData(steamData);
+          } catch (e) {
+            if (!cancelled) setError(e instanceof Error ? e.message : "Unknown error");
+          }
+        }
       } finally {
         if (!cancelled) setLoading(false);
       }

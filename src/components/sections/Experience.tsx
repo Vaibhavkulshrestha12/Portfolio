@@ -84,7 +84,7 @@ export const Experience = () => {
   };
 
   // Re-usable card
-  const ExpCard = ({ exp, index }: { exp: typeof experiences[0]; index: number }) => (
+  const ExpCard = ({ exp }: { exp: typeof experiences[0] }) => (
     <div className="rounded-xl border border-[#2a2a2a] bg-[#111111] hover:border-[#f59e0b]/40 hover:shadow-[0_0_24px_rgba(245,158,11,0.07)] transition-all duration-300 overflow-hidden">
       {/* Image banner */}
       <div
@@ -171,7 +171,7 @@ export const Experience = () => {
                       {/* dot */}
                       <div className="absolute left-[9px] top-5 w-[11px] h-[11px] rounded-full bg-[#f59e0b] ring-2 ring-[#f59e0b]/30 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
                       <div className="w-full">
-                        <ExpCard exp={exp} index={index} />
+                        <ExpCard exp={exp} />
                       </div>
                     </div>
 
@@ -181,15 +181,17 @@ export const Experience = () => {
                       <div className={`w-[calc(50%-2rem)] pr-6 ${
                         !isRight ? '' : 'invisible pointer-events-none'
                       }`}>
-                        {!isRight && <ExpCard exp={exp} index={index} />}
+                        {!isRight && <ExpCard exp={exp} />}
                       </div>
 
                       {/* Center dot + connector */}
-                      <div className="flex-shrink-0 w-16 flex flex-col items-center pt-5">
+                      <div className="flex-shrink-0 w-16 relative flex justify-center pt-5">
                         <div className="w-3.5 h-3.5 rounded-full bg-[#f59e0b] ring-[3px] ring-[#f59e0b]/25 shadow-[0_0_10px_rgba(245,158,11,0.6)]" />
-                        {/* horizontal connector nub */}
-                        <div className={`mt-[-7px] h-[2px] w-6 bg-[#f59e0b]/40 ${
-                          isRight ? 'self-start ml-[7px]' : 'self-end mr-[7px]'
+                        {/* connector nub — points TOWARD the card */}
+                        <div className={`absolute top-[26px] h-[2px] w-5 bg-[#f59e0b]/60 ${
+                          isRight
+                            ? 'left-[calc(50%+6px)]'   /* card is right → nub extends right */
+                            : 'right-[calc(50%+6px)]'  /* card is left  → nub extends left  */
                         }`} />
                       </div>
 
@@ -197,7 +199,7 @@ export const Experience = () => {
                       <div className={`w-[calc(50%-2rem)] pl-6 ${
                         isRight ? '' : 'invisible pointer-events-none'
                       }`}>
-                        {isRight && <ExpCard exp={exp} index={index} />}
+                        {isRight && <ExpCard exp={exp} />}
                       </div>
                     </div>
                   </motion.div>
