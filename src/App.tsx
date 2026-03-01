@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
+import { Footer } from './components/layout/Footer';
 import { SocialLinks } from './components/sections/SocialLinks';
 import { ModernHero } from './components/sections/ModernHero';
 import { ModernSkills } from './components/sections/ModernSkills';
@@ -14,6 +15,7 @@ import { Spotlight } from './components/ui/spotlight';
 import CustomCursor from './components/CustomCursor';
 import Oneko from './components/oneko/oneko'; 
 import { Analytics } from '@vercel/analytics/react';
+import { PortfolioChatbot } from './components/ui/PortfolioChatbot';
 
 function ScrollToSection() {
   const location = useLocation();
@@ -74,6 +76,8 @@ function App() {
         </Routes>
        
         <Analytics/>
+        <PortfolioChatbot />
+        <Footer />
       </div>
     </Router>
   );

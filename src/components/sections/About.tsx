@@ -1,394 +1,675 @@
-import { SpotlightCard } from "../ui/spotlight";
-import { AnimatedText } from "../ui/animated-text";
-import { Gamepad2, Terminal, Cpu, Star, Rocket, Shield, Database, Monitor } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  React,
+  TypeScript,
+  NextJs,
+  NodeJs,
+  PostgreSQL,
+  Firebase,
+  TailwindCSS,
+} from "developer-icons";
+import { SiEthereum, SiSteam } from "react-icons/si";
+import {
+  Terminal,
+  Settings2,
+  Code2,
+  ChevronRight,
+  MapPin,
+  ExternalLink,
+} from "lucide-react";
+import { YouTubeMusicCard } from "../ui/youtube-music-card";
+import { useGitHubStats } from "../../hooks/useGitHubStats";
+import { useSteamStats } from "../../hooks/useSteamStats";
+import { useGeminiQuote } from "../../hooks/useGeminiQuote";
+import logo from "/public/images/icons/logo.png";
+
+/* --------------------------------------------------
+   Reusable sub-components
+-------------------------------------------------- */
+
+const SectionLabel = ({
+  label,
+  title,
+}: {
+  label: string;
+  title: string;
+}) => (
+  <div className="mb-6">
+    <p className="text-xs font-semibold tracking-widest uppercase mb-1" style={{ color: "var(--text-muted)" }}>
+      {label}
+    </p>
+    <h2 className="text-2xl md:text-3xl font-display font-bold" style={{ color: "var(--text-primary)" }}>
+      {title}
+    </h2>
+  </div>
+);
+
+const SkillIcon = ({
+  icon: Icon,
+  name,
+}: {
+  icon: React.ComponentType<{ size?: number }>;
+  name: string;
+}) => (
+  <div
+    className="group flex flex-col items-center gap-1.5 p-2.5 rounded-xl border transition-all duration-200 hover:scale-110 cursor-default"
+    style={{
+      background: "var(--bg-secondary)",
+      borderColor: "var(--border)",
+    }}
+    title={name}
+  >
+    <Icon size={22} />
+    <span className="text-[10px] font-medium" style={{ color: "var(--text-muted)" }}>
+      {name}
+    </span>
+  </div>
+);
+
+const SetupItem = ({
+  icon: Icon,
+  title,
+  description,
+  href,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  href?: string;
+}) => (
+  <a
+    href={href ?? "#"}
+    target={href ? "_blank" : undefined}
+    rel="noopener noreferrer"
+    className="flex items-center gap-4 p-4 rounded-xl border transition-all duration-200 hover:border-amber-500/40 hover:bg-amber-500/5 group"
+    style={{
+      background: "var(--bg-secondary)",
+      borderColor: "var(--border)",
+    }}
+  >
+    <div
+      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+      style={{ background: "var(--bg-tertiary)" }}
+    >
+      <Icon className="w-5 h-5" />
+    </div>
+    <div className="flex-1 min-w-0">
+      <p className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
+        {title}
+      </p>
+      <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+        {description}
+      </p>
+    </div>
+    <ChevronRight
+      className="w-4 h-4 flex-shrink-0 opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200"
+      style={{ color: "var(--text-muted)" }}
+    />
+  </a>
+);
 
 export const About = () => {
+  const gh      = useGitHubStats("Vaibhavkulshrestha12");
+  const steam   = useSteamStats();
+  const { quote, loading: quoteLoading } = useGeminiQuote();
   return (
-    <section className="min-h-screen section-padding relative overflow-hidden">
-      {/* Gaming/Coding inspired background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Matrix-style code rain effect */}
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-orange-500/20 to-transparent animate-pulse" />
-        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-amber-500/20 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-yellow-500/20 to-transparent animate-pulse" style={{ animationDelay: '2s' }} />
-        
-        {/* Floating tech elements */}
-        <div className="absolute top-20 left-10 opacity-5 animate-float">
-          <div className="text-6xl font-mono text-orange-500">{'<>'}</div>
-        </div>
-        <div className="absolute bottom-40 right-16 opacity-5 animate-float" style={{ animationDelay: '1s' }}>
-          <div className="text-6xl font-mono text-amber-500">{'{ }'}</div>
-        </div>
-        <div className="absolute top-1/2 left-16 opacity-5 animate-float" style={{ animationDelay: '2s' }}>
-          <div className="text-4xl font-mono text-yellow-500">console.log();</div>
-        </div>
-        
-        {/* Gaming UI elements */}
-        <div className="absolute top-32 right-20 opacity-10">
-          <div className="w-20 h-20 border-2 border-orange-500 rounded-lg p-2 animate-pulse">
-            <div className="w-full h-2 bg-orange-500 rounded mb-1" />
-            <div className="w-3/4 h-2 bg-orange-500/60 rounded mb-1" />
-            <div className="w-1/2 h-2 bg-orange-500/40 rounded" />
+    <div
+      className="min-h-screen"
+      style={{ background: "var(--bg-primary)", color: "var(--text-primary)" }}
+    >
+      <div className="max-w-3xl mx-auto px-4 py-28 space-y-16">
+
+        {/* ── Profile ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <SectionLabel label="About" title="Me" />
+
+          <div
+            className="rounded-2xl border p-6 flex flex-col sm:flex-row gap-6 items-start"
+            style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
+          >
+            {/* Avatar */}
+            <div className="flex-shrink-0">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-amber-500/40">
+                <img src={logo} alt="Vaibhav" className="w-full h-full object-cover" />
+              </div>
+            </div>
+
+            {/* Info */}
+            <div className="flex-1 space-y-3">
+              <div>
+                <h1 className="text-xl sm:text-2xl font-display font-bold" style={{ color: "var(--text-primary)" }}>
+                  Vaibhav Kulshreshtha
+                </h1>
+                <p className="text-sm flex items-center gap-1.5 mt-1" style={{ color: "var(--text-muted)" }}>
+                  <MapPin className="w-3.5 h-3.5" /> Delhi, India
+                </p>
+              </div>
+
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                I'm a{" "}
+                <span className="font-semibold text-amber-400">
+                  Full-Stack Engineer &amp; Product Architect
+                </span>{" "}
+                who loves building robust, scalable, and impact-driven digital products. From
+                crafting intuitive frontends with React &amp; Tailwind to designing secure
+                backends with Node.js, Firebase, and PostgreSQL — I turn complex ideas into
+                seamless experiences. I'm the{" "}
+                <span className="font-semibold text-amber-400">Co-Founder of Kisan Connect</span>,
+                an MSME-funded agri-tech startup, and hold{" "}
+                <span className="font-semibold text-amber-400">OCI DevOps Professional</span>{" "}
+                and AI Foundations certifications. When I'm not shipping code, I'm mastering
+                FromSoftware titles or deep-diving into comic universes.
+              </p>
+
+              {/* Skills */}
+              <div>
+                <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--text-muted)" }}>
+                  Skills
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <SkillIcon icon={React} name="React" />
+                  <SkillIcon icon={TypeScript} name="TypeScript" />
+                  <SkillIcon icon={NextJs} name="Next.js" />
+                  <SkillIcon icon={NodeJs} name="Node.js" />
+                  <SkillIcon icon={TailwindCSS} name="Tailwind" />
+                  <SkillIcon icon={Firebase} name="Firebase" />
+                  <SkillIcon icon={PostgreSQL} name="Postgres" />
+                  <SkillIcon icon={SiEthereum} name="Web3" />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </motion.section>
+
+        {/* ── YouTube Music ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <SectionLabel label="Music" title="What I'm Listening To" />
+          <YouTubeMusicCard />
+        </motion.section>
+
+        {/* ── Featured: GitHub ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <SectionLabel label="Featured" title="GitHub Activity" />
+
+          <div
+            className="rounded-2xl border overflow-hidden"
+            style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
+          >
+            <div className="p-5 space-y-5">
+              {/* Contributions heatmap */}
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+                    Contributions in last year
+                  </span>
+                  <a
+                    href="https://github.com/Vaibhavkulshrestha12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] transition-colors hover:text-amber-400"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Contribution heatmap →
+                  </a>
+                </div>
+                <div className="overflow-x-auto">
+                  <img
+                    src="https://ghchart.rshah.org/f59e0b/Vaibhavkulshrestha12"
+                    alt="GitHub contributions"
+                    className="w-full rounded-lg"
+                    style={{ minWidth: "480px" }}
+                  />
+                </div>
+              </div>
+
+              {/* Top Languages — real API data only */}
+              {gh?.languages && gh.languages.length > 0 && (
+                <div>
+                  <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+                    Top Languages
+                  </span>
+                  <div className="flex h-2 rounded-full overflow-hidden mt-3 gap-px">
+                    {gh.languages.map(l => (
+                      <div key={l.name} style={{ width: `${l.percent}%`, background: l.color }} />
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-2.5">
+                    {gh.languages.map(l => (
+                      <div key={l.name} className="flex items-center gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: l.color }} />
+                        <span className="text-xs" style={{ color: "var(--text-secondary)" }}>{l.name}</span>
+                        <span className="text-[11px]" style={{ color: "var(--text-muted)" }}>{l.percent}%</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Stats — real API data only, no fallbacks */}
+              {gh && (
+                <div
+                  className="grid grid-cols-3 gap-2 pt-1 border-t"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  {[
+                    { label: "Repositories", value: gh.repos },
+                    { label: "GitHub Stars",  value: gh.stars },
+                    { label: "Followers",     value: gh.followers },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="text-center py-2">
+                      <p className="text-base font-bold text-amber-400">{value}</p>
+                      <p className="text-[11px] mt-0.5" style={{ color: "var(--text-muted)" }}>{label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ── Steam Gaming ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+        >
+          <SectionLabel label="Gaming" title="Steam Activity" />
+
+          {steam.loading ? (
+            <div className="rounded-2xl overflow-hidden animate-pulse" style={{ background: "#0e1521" }}>
+              <div className="h-44 bg-white/5" />
+              <div className="p-4 space-y-3">
+                <div className="h-4 w-1/3 rounded bg-white/5" />
+                {[1,2,3,4,5].map(i => <div key={i} className="h-3 w-full rounded bg-white/5" />)}
+              </div>
+            </div>
+          ) : steam.error || !steam.data ? (
+            <div
+              className="rounded-2xl p-6 flex items-center gap-4"
+              style={{ background: "#0e1521", border: "1px solid #1e2d3d" }}
+            >
+              <SiSteam className="w-8 h-8 flex-shrink-0" style={{ color: "#4c9be8" }} />
+              <div>
+                <p className="text-sm font-semibold" style={{ color: "#c6d4df" }}>Steam stats unavailable</p>
+                <p className="text-xs mt-0.5" style={{ color: "#8ba0b4" }}>
+                  {steam.error ?? "Could not reach Steam API."}
+                </p>
+              </div>
+            </div>
+          ) : (
+            /* ONE unified dark card */
+            <div className="rounded-2xl overflow-hidden" style={{ background: "#0e1521" }}>
+
+              {/* ─ Banner ─ */}
+              {steam.data.recentGame && (
+                <a
+                  href={`https://store.steampowered.com/app/${steam.data.recentGame.appid}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative overflow-hidden group"
+                  style={{ height: "168px" }}
+                >
+                  <img
+                    src={steam.data.recentGame.header}
+                    alt={steam.data.recentGame.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src =
+                        `https://cdn.cloudflare.steamstatic.com/steam/apps/${steam.data!.recentGame!.appid}/capsule_231x87.jpg`;
+                    }}
+                  />
+                  {/* Bottom gradient */}
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0e1521 0%, rgba(14,21,33,0.45) 50%, transparent 100%)" }} />
+
+                  {/* Last Played badge */}
+                  <div
+                    className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md"
+                    style={{ background: "rgba(14,21,33,0.82)", border: "1px solid rgba(76,155,232,0.35)" }}
+                  >
+                    <SiSteam style={{ color: "#4c9be8", width: "12px", height: "12px", flexShrink: 0 }} />
+                    <span className="text-[11px] font-semibold" style={{ color: "#c6d4df" }}>Last Played</span>
+                  </div>
+
+                  {/* Game name */}
+                  <div className="absolute bottom-0 left-0 right-0 px-4 pb-4">
+                    <p className="text-xl font-bold leading-tight" style={{ color: "#ffffff" }}>
+                      {steam.data.recentGame.name}
+                    </p>
+                  </div>
+                </a>
+              )}
+
+              {/* ─ Stats row ─ */}
+              {steam.data.recentGame && (
+                <div className="grid grid-cols-3" style={{ borderTop: "1px solid #1e2d3d", borderBottom: "1px solid #1e2d3d" }}>
+                  {[
+                    { label: "Total Hours",  value: `${steam.data.recentGame.totalHours}h`,       color: "#4c9be8" },
+                    { label: "Last 2 Weeks", value: `${steam.data.recentGame.hoursLast2Weeks}h`,  color: "#c6d4df" },
+                    {
+                      label: "Achievements",
+                      value: `${steam.data.recentGame.achievements.earned}/${steam.data.recentGame.achievements.total}`,
+                      color: "#c6d4df",
+                    },
+                  ].map(({ label, value, color }, i) => (
+                    <div
+                      key={label}
+                      className="py-4 text-center"
+                      style={{
+                        borderRight: i < 2 ? "1px solid #1e2d3d" : "none",
+                        background: "#111827",
+                      }}
+                    >
+                      <p className="text-lg font-bold" style={{ color }}>{value}</p>
+                      <p className="text-[11px] mt-0.5" style={{ color: "#8ba0b4" }}>{label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* ─ Divider between recent-game block and overall library stats ─ */}
+              <div style={{ height: "8px", background: "#060d14" }} />
+
+              {/* ─ Library stats ─ */}
+              <div className="grid grid-cols-2 gap-px" style={{ background: "#1e2d3d" }}>
+                {[
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" style={{ width: 18, height: 18 }}>
+                        <rect x="2" y="16" width="20" height="3" rx="1.5" fill="#4c9be8"/>
+                        <rect x="2" y="10.5" width="20" height="3" rx="1.5" fill="#4c9be8" opacity="0.7"/>
+                        <rect x="2" y="5" width="20" height="3" rx="1.5" fill="#4c9be8" opacity="0.4"/>
+                      </svg>
+                    ),
+                    label: "Games in Library",
+                    value: steam.data.totalGames,
+                    color: "#4c9be8",
+                  },
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" style={{ width: 18, height: 18 }}>
+                        <circle cx="12" cy="12" r="9" stroke="#4c9be8" strokeWidth="2"/>
+                        <path d="M12 7v5l3 3" stroke="#4c9be8" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    ),
+                    label: "Total Playtime",
+                    value: `${steam.data.totalHoursAll}h`,
+                    color: "#4c9be8",
+                  },
+                ].map(({ icon, label, value, color }) => (
+                  <div
+                    key={label}
+                    className="flex items-center gap-3 px-5 py-4"
+                    style={{ background: "#111827" }}
+                  >
+                    <div className="flex-shrink-0">{icon}</div>
+                    <div>
+                      <p className="text-lg font-bold" style={{ color }}>{value}</p>
+                      <p className="text-[11px]" style={{ color: "#8ba0b4" }}>{label}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* ─ Top 5 Most Played ─ */}
+              <div>
+                {/* Header */}
+                <div
+                  className="flex items-center justify-between px-4 py-3.5"
+                  style={{ borderBottom: "1px solid #1e2d3d" }}
+                >
+                  <span className="text-sm font-semibold" style={{ color: "#c6d4df" }}>
+                    Top 5 Most Played
+                  </span>
+                  <a
+                    href={`https://steamcommunity.com/profiles/${import.meta.env.VITE_STEAM_ID ?? ""}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] font-semibold transition-colors hover:text-white"
+                    style={{ color: "#4c9be8" }}
+                  >
+                    Steam Profile →
+                  </a>
+                </div>
+
+                {/* Rows */}
+                {steam.data.topGames.map((game, idx) => {
+                  const maxHours = steam.data!.topGames[0].hours;
+                  const pct = maxHours > 0 ? (game.hours / maxHours) * 100 : 0;
+                  return (
+                    <a
+                      key={game.appid}
+                      href={`https://store.steampowered.com/app/${game.appid}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-4 py-3"
+                      style={{ borderBottom: idx < steam.data!.topGames.length - 1 ? "1px solid #1e2d3d" : "none" }}
+                      onMouseEnter={e => (e.currentTarget.style.background = "#162030")}
+                      onMouseLeave={e => (e.currentTarget.style.background = "")}
+                    >
+                      {/* Rank */}
+                      <span
+                        className="text-base font-bold flex-shrink-0 text-center"
+                        style={{ width: "18px", color: "#8ba0b4" }}
+                      >
+                        {idx + 1}
+                      </span>
+
+                      {/* Capsule */}
+                      <div
+                        className="flex-shrink-0 rounded overflow-hidden"
+                        style={{ width: "48px", height: "48px", background: "#1e2d3d" }}
+                      >
+                        <img
+                          src={game.image}
+                          alt={game.name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => { (e.currentTarget as HTMLImageElement).src = game.header; }}
+                        />
+                      </div>
+
+                      {/* Name + bar */}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium truncate" style={{ color: "#c6d4df" }}>
+                          {game.name}
+                        </p>
+                        <div className="mt-2 h-[3px] w-full rounded-full" style={{ background: "#1e2d3d" }}>
+                          <div
+                            className="h-full rounded-full"
+                            style={{ width: `${pct}%`, background: "#4c9be8", transition: "width 0.8s ease" }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Hours */}
+                      <span className="text-sm font-bold flex-shrink-0" style={{ color: "#4c9be8" }}>
+                        {game.hours}h
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </motion.section>
+
+        {/* ── Development Setup ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <SectionLabel label="Development" title="Setup" />
+          <div className="space-y-3">
+            <SetupItem
+              icon={Settings2}
+              title="Gears Used"
+              description="Productivity tools &amp; gadgets I use daily"
+            />
+            <SetupItem
+              icon={Code2}
+              title="VS Code / Cursor Setup"
+              description="My editor configuration, extensions &amp; theme"
+            />
+            <SetupItem
+              icon={Terminal}
+              title="Terminal Setup"
+              description="Shell config, aliases &amp; prompt for Windows &amp; WSL"
+            />
+          </div>
+        </motion.section>
+
+        {/* ── Currently Working On — EaStore ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+        >
+          <SectionLabel label="Now" title="Currently Working On" />
+
+          {/* Eastore featured card — real project data */}
+          <div
+            className="rounded-2xl border overflow-hidden"
+            style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
+          >
+            {/* Banner — actual screenshot */}
+            <div className="relative h-44 overflow-hidden">
+              <img
+                src="/images/eastore.png"
+                alt="Eastore"
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              {/* Status badge */}
+              <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-[11px] text-white/90 font-medium">All Systems Operational</span>
+              </div>
+              {/* Title overlay */}
+              <div className="absolute bottom-0 left-0 right-0 px-5 pb-4">
+                <h3 className="text-white font-bold text-xl tracking-tight">Eastore</h3>
+                <p className="text-[12px] mt-0.5" style={{ color: "rgba(255,255,255,0.65)" }}>Decentralized File Storage</p>
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="p-5 space-y-4">
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                Decentralized file storage platform with{" "}
+                <span className="text-amber-400 font-medium">Web3 wallet authentication</span>,{" "}
+                hierarchical folder system, real-time file operations, and advanced search with{" "}
+                <span className="text-amber-400 font-medium">3-tier relevance ranking</span>. Features
+                on-chain data viewer with CID/dataset/SP info via{" "}
+                <span className="text-amber-400 font-medium">Synapse SDK</span>, interactive product tour,
+                file preview gallery, and session key management.
+              </p>
+
+              {/* Tech chips */}
+              <div className="flex flex-wrap gap-2">
+                {["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Web3", "Shadcn UI"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 rounded-md text-xs font-medium border"
+                    style={{
+                      background: "var(--bg-tertiary)",
+                      borderColor: "var(--border)",
+                      color: "var(--text-muted)",
+                    }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* Status + links */}
+              <div className="flex items-center justify-between pt-1">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
+                    In active development
+                  </span>
+                </div>
+                <a
+                  href="https://eastore.xyz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium hover:text-amber-400 transition-colors"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  Visit eastore.xyz
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ── Quote ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <div
+            className="rounded-2xl border p-7 relative overflow-hidden"
+            style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
+          >
+            {/* Decorative large quote marks */}
+            <span
+              className="absolute top-3 left-5 text-7xl font-serif leading-none select-none pointer-events-none"
+              style={{ color: "rgba(255,255,255,0.06)" }}
+            >
+              &#8220;
+            </span>
+            <span
+              className="absolute bottom-3 right-5 text-7xl font-serif leading-none select-none pointer-events-none"
+              style={{ color: "rgba(255,255,255,0.06)" }}
+            >
+              &#8221;
+            </span>
+
+            <blockquote className="relative z-10 text-center px-4">
+              {quoteLoading ? (
+                <div className="flex flex-col items-center gap-3 py-2">
+                  <div className="flex gap-1">
+                    {[0,1,2].map(i => (
+                      <span key={i} className="w-1.5 h-1.5 rounded-full bg-white/20 animate-bounce" style={{ animationDelay: `${i*150}ms` }} />
+                    ))}
+                  </div>
+                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>Generating today's quote…</p>
+                </div>
+              ) : (
+                <>
+                  <p
+                    className="text-base sm:text-lg italic leading-relaxed mb-5"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    &ldquo;{quote.text}&rdquo;
+                  </p>
+                  <footer
+                    className="text-sm font-medium"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    &#8212; {quote.author}
+                  </footer>
+                </>
+              )}
+            </blockquote>
+          </div>
+        </motion.section>
+
       </div>
-
-      <div className="container-custom relative z-10">
-        {/* Header with terminal-style design */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-block mb-6 sm:mb-8"
-          >
-            <div className="panel-background rounded-lg p-3 sm:p-4 font-mono text-xs sm:text-sm backdrop-blur-sm">
-              <div className="flex items-center gap-1 sm:gap-2 mb-2">
-                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500" />
-                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500" />
-                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500" />
-                <span className="ml-1 sm:ml-2 text-xs sm:text-sm" style={{ color: 'var(--text-muted)' }}>~/about-vaibhav.js</span>
-              </div>
-              <div className="text-orange-400 text-xs sm:text-sm break-all">
-                <span className="text-purple-400">const</span>{' '}
-                <span className="text-blue-400">aboutMe</span>{' '}
-                <span className="text-white">=</span>{' '}
-                <span className="text-yellow-400">"passionate developer"</span>
-              </div>
-            </div>
-          </motion.div>
-          
-          <AnimatedText
-            text="About Me"
-            className="text-3xl sm:text-5xl md:text-7xl font-display font-bold mb-6 sm:mb-8"
-          />
-          
-          {/* Role tags with emerald highlighting */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex justify-center gap-2 sm:gap-4 flex-wrap mb-8 sm:mb-12 px-4"
-          >
-            <div className="px-3 sm:px-4 py-1.5 sm:py-2 panel-background rounded-full backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400 text-xs sm:text-sm">
-                Full-Stack Engineer
-              </span>
-            </div>
-            <div className="px-3 sm:px-4 py-1.5 sm:py-2 panel-background rounded-full backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text font-medium text-transparent dark:from-blue-200 dark:to-cyan-400 text-xs sm:text-sm">
-                Gaming Enthusiast
-              </span>
-            </div>
-            <div className="px-3 sm:px-4 py-1.5 sm:py-2 panel-background rounded-full backdrop-blur-sm">
-              <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text font-medium text-transparent dark:from-purple-200 dark:to-pink-400 text-xs sm:text-sm">
-                Comic Geek
-              </span>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Main content - Gaming HUD style */}
-        <div className="max-w-7xl mx-auto">
-          
-          {/* Section 1: The Code Architect */}
-          <motion.div 
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-12 sm:mb-16 lg:mb-20"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
-              {/* Stats panel */}
-              <div className="lg:col-span-4 order-2 lg:order-1">
-                <div className="panel-background rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                    <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400 flex-shrink-0" />
-                    <h3 className="text-lg sm:text-xl font-bold">
-                      <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent dark:from-orange-300 dark:to-amber-400">
-                        System.Engineer
-                      </span>
-                    </h3>
-                  </div>
-                  
-                  {/* Skill bars */}
-                  <div className="space-y-3 sm:space-y-4">
-                    <div>
-                      <div className="flex justify-between mb-1">
-                        <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>React & Frontend</span>
-                        <span className="text-xs sm:text-sm text-orange-400">95%</span>
-                      </div>
-                      <div className="w-full bg-gray-700 rounded-full h-2">
-                        <motion.div 
-                          className="bg-gradient-to-r from-orange-500 to-amber-600 h-2 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: '95%' }}
-                          transition={{ duration: 1.5, delay: 0.5 }}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="flex justify-between mb-1">
-                        <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>Node.js & Backend</span>
-                        <span className="text-xs sm:text-sm text-amber-400">90%</span>
-                      </div>
-                      <div className="w-full bg-gray-700 rounded-full h-2">
-                        <motion.div 
-                          className="bg-gradient-to-r from-amber-500 to-yellow-600 h-2 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: '90%' }}
-                          transition={{ duration: 1.5, delay: 0.7 }}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="flex justify-between mb-1">
-                        <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>DevOps & Cloud</span>
-                        <span className="text-xs sm:text-sm text-yellow-400">85%</span>
-                      </div>
-                      <div className="w-full bg-gray-700 rounded-full h-2">
-                        <motion.div 
-                          className="bg-gradient-to-r from-yellow-500 to-orange-500 h-2 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: '85%' }}
-                          transition={{ duration: 1.5, delay: 0.9 }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Certifications */}
-                  <div className="mt-4 sm:mt-6 space-y-2">
-                    <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-                      <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 flex-shrink-0" />
-                      <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>OCI DevOps Professional</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
-                      <Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0" />
-                      <span className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>AI Foundations</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Main content */}
-              <div className="lg:col-span-8 order-1 lg:order-2">
-                <SpotlightCard className="p-6 sm:p-8 h-full">
-                  <div className="mb-4">
-                    <span className="text-xl sm:text-2xl"></span>
-                    <span className="ml-2 text-base sm:text-lg font-semibold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent dark:from-orange-300 dark:to-amber-400">
-                      console.log("Hello World!")
-                    </span>
-                  </div>
-                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
-                    Hello there!  I'm a{' '}
-                    <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400">
-                      Full-Stack Engineer and Product Architect
-                    </span>{' '}
-                    who loves building robust, scalable, and impactful digital products . From crafting intuitive frontends with{' '}
-                    <span className="bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text font-medium text-transparent dark:from-blue-200 dark:to-cyan-400">
-                      React & Tailwind
-                    </span>{' '}
-                    to designing secure backends with{' '}
-                    <span className="bg-gradient-to-r from-amber-500 to-yellow-600 bg-clip-text text-transparent font-medium dark:from-amber-300 dark:to-yellow-400">
-                      Node.js, Firebase, and PostgreSQL
-                    </span>
-                    , I thrive on turning complex ideas into seamless experiences. With{' '}
-                    <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-red-400">
-                      Oracle Cloud Infrastructure DevOps Professional and AI Foundations
-                    </span>{' '}
-                    certifications, I bring a strong DevOps mindset to ensure every project I work on is not just functional, but also cloud-ready, secure, and future-proof
-                  </p>
-                </SpotlightCard>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Section 2: The Business Builder */}
-          <motion.div 
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-12 sm:mb-16 lg:mb-20"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
-              {/* Main content */}
-              <div className="lg:col-span-8 lg:order-1 order-1">
-                <SpotlightCard className="p-6 sm:p-8 h-full">
-                  <div className="mb-4">
-                    <span className="text-xl sm:text-2xl"></span>
-                    <span className="ml-2 text-base sm:text-lg font-semibold bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent dark:from-amber-300 dark:to-orange-400">
-                      Entrepreneur.prototype
-                    </span>
-                  </div>
-                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
-                    For me, innovation is about solving real problems that matter .Like{' '}
-                    <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-amber-400">
-                      Co-Founder of Kisan Connect
-                    </span>{' '}
-                    (an MSME-funded agri-tech startup), I co-led development of a farmer buyer marketplace. This not only supported the farmers but also generated the wealth! , proof that a good engineering drives the buisness values.
-                  </p>
-                </SpotlightCard>
-              </div>
-              
-              {/* Achievement panel */}
-              <div className="lg:col-span-4 lg:order-2 order-2">
-                <div className="panel-background rounded-xl p-4 sm:p-6 backdrop-blur-sm h-full">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                    <Rocket className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 flex-shrink-0" />
-                    <h3 className="text-lg sm:text-xl font-bold">
-                      <span className="bg-gradient-to-r from-amber-500 to-yellow-600 bg-clip-text text-transparent dark:from-amber-300 dark:to-yellow-400">
-                        Achievements.unlock()
-                      </span>
-                    </h3>
-                  </div>
-                  
-                  {/* Achievement cards */}
-                  <div className="space-y-2 sm:space-y-3">
-                    <motion.div 
-                      className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-green-500/10 border border-green-500/30 rounded-lg"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-xs font-bold">Co</span>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-semibold text-green-300 text-xs sm:text-sm">Co-Founder</p>
-                        <p className="text-xs text-green-400 break-words">Kisan Connect</p>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Star className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-semibold text-yellow-300 text-xs sm:text-sm">Winner</p>
-                        <p className="text-xs text-yellow-400 break-words">MSME Hackathon 2024</p>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Database className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-semibold text-blue-300 text-xs sm:text-sm">MSME Funded</p>
-                        <p className="text-xs text-blue-400 break-words">Agri-Tech Startup</p>
-                      </div>
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Section 3: The Gaming Virtuoso */}
-          <motion.div 
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-20"
-          >
-            <div className="grid lg:grid-cols-12 gap-8">
-              {/* Gaming stats panel */}
-              <div className="lg:col-span-4">
-                <div className="panel-background rounded-xl p-6 backdrop-blur-sm h-full">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Gamepad2 className="w-6 h-6 text-yellow-400" />
-                    <h3 className="text-xl font-bold">
-                      <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent dark:from-yellow-300 dark:to-orange-400">
-                        GameProfile.load()
-                      </span>
-                    </h3>
-                  </div>
-                  
-                  {/* Gaming achievements */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between p-2 bg-red-500/10 rounded">
-                      <span className="text-sm text-red-300">🤠 RDR2</span>
-                      <span className="text-xs bg-red-500 text-white px-2 py-1 rounded">100%</span>
-                    </div>
-                    <div className="flex items-center justify-between p-2 bg-gray-500/10 rounded">
-                      <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>⚔️ Dark Souls</span>
-                      <span className="text-xs bg-gray-500 text-white px-2 py-1 rounded">MASTER</span>
-                    </div>
-                    <div className="flex items-center justify-between p-2 bg-orange-500/10 rounded">
-                      <span className="text-sm text-orange-300">🥷 Sekiro</span>
-                      <span className="text-xs bg-orange-500 text-white px-2 py-1 rounded">BEAT</span>
-                    </div>
-                    <div className="flex items-center justify-between p-2 bg-blue-500/10 rounded">
-                      <span className="text-sm text-blue-300">🪲 Hollow Knight</span>
-                      <span className="text-xs bg-blue-500 text-white px-2 py-1 rounded">DONE</span>
-                    </div>
-                    <div className="flex items-center justify-between p-2 bg-green-500/10 rounded">
-                      <span className="text-sm text-green-300">🚀 Ghostrunner</span>
-                      <span className="text-xs bg-green-500 text-white px-2 py-1 rounded">SPEED</span>
-                    </div>
-                    <div className="flex items-center justify-between p-2 bg-yellow-500/10 rounded">
-                      <span className="text-sm text-yellow-300">🌱 Stardew Valley</span>
-                      <span className="text-xs bg-yellow-500 text-black px-2 py-1 rounded">CHILL</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-4 p-3 bg-purple-500/10 border border-purple-500/30 rounded">
-                    <div className="flex items-center gap-2">
-                      <Monitor className="w-4 h-4 text-purple-400" />
-                      <span className="text-sm text-purple-300">Ex-Esports Athlete</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Main content */}
-              <div className="lg:col-span-8">
-                <SpotlightCard className="p-8 h-full">
-                  <div className="mb-4">
-                    <span className="ml-2 text-lg font-semibold bg-gradient-to-r from-yellow-500 to-amber-600 bg-clip-text text-transparent dark:from-yellow-300 dark:to-amber-400">
-                      Player.getPassions()
-                    </span>
-                  </div>
-                  <p className="text-lg leading-relaxed" style={{ color: 'var(--text-primary)' }}>
-                    While I love developing software, I also believe in hobbies.be it geeking myself for{' '}
-                    <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text font-medium text-transparent dark:from-purple-200 dark:to-pink-400">
-                      comics and novels
-                    </span>{' '}
-                    or it's 100% completing{' '}
-                    <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent font-medium dark:from-orange-300 dark:to-red-400">
-                      Red Dead Redemption 2
-                    </span>
-                    , mastering the{' '}
-                    <span className="bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text font-medium text-transparent dark:from-gray-200 dark:to-gray-400">
-                      Dark Souls series
-                    </span>
-                    , or exploring worlds like{' '}
-                    <span className="bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent font-medium dark:from-amber-300 dark:to-orange-400">
-                      Sekiro, Hollow Knight, Ghostrunner, and Stardew Valley
-                    </span>
-                    . I've even pursued gaming professionally as an{' '}
-                    <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent font-medium dark:from-yellow-300 dark:to-orange-400">
-                      esports athlete
-                    </span>{' '}
-                    in past, an experience that taught me discipline, strategy, and resilience. Whatever I do be it engineering, founding startups, or gaming, I do it with passion and  profession
-                  </p>
-                </SpotlightCard>
-              </div>
-            </div>
-          </motion.div>
-
-
-        </div>
-      </div>
-    </section>
+    </div>
   );
 };

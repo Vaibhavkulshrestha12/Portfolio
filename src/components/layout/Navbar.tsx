@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react'; 
-import { useTheme } from '../../hooks/useTheme';
+import { Menu, X } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '/public/images/icons/logo.png';
 
 export const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -92,14 +90,6 @@ export const Navbar = () => {
 
           <div className="flex items-center gap-4">
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100/10 transition-colors hidden md:block"
-            >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-
-            
-            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-colors absolute top-4 right-4"
             >
@@ -139,27 +129,7 @@ export const Navbar = () => {
               Contact
             </button>
 
-            <div className="px-4 py-2">
-              <button
-                onClick={() => {
-                  toggleTheme();
-                  setIsMenuOpen(false);
-                }}
-                className="flex items-center gap-2 text-gray-300 hover:text-violet-500 transition-colors"
-              >
-                {theme === 'dark' ? (
-                  <>
-                    <Sun className="w-5 h-5" />
-                    <span>Light Mode</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon className="w-5 h-5" />
-                    <span>Dark Mode</span>
-                  </>
-                )}
-              </button>
-            </div>
+
           </div>
         </div>
       )}
