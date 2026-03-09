@@ -6,15 +6,13 @@
 
 ##  Features
 - **Modern Design**: Clean, professional, and responsive
-- **Theme Support**: Beautiful dark/light mode toggle
 - **Interactive UI**: Smooth animations and hover effects
 - **Performance Optimized**: Fast loading and SEO friendly
 
 ##  Built With
 - **Frontend**: React + TypeScript + Vite
 - **Styling**: Tailwind CSS + Custom CSS Variables
-- **Animations**: Framer Motion + Custom Animations
-- **Icons**: Lucide React
+- **Animations**: Framer Motion + ReactBits components .
 - **Deployment**: Vercel
 
 ##  Sections

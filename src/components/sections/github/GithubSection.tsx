@@ -6,7 +6,7 @@ export const GithubSection = () => {
 
   return (
     <section className="py-20 px-4" id="github">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}

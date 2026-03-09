@@ -15,12 +15,7 @@ export const GithubStats = ({ username }: GithubStatsProps) => {
   const t    = `theme=github_dark`;
   const u    = `username=${username}`;
 
-  // Row 1 — full-width profile/contribution graph
-  // Row 2 — two equal cards
-  // Row 3 — two equal cards
-  // → perfectly symmetric 1+2+2 grid
-  const rows: { src: string; alt: string; full?: boolean }[] = [
-    { src: `${BASE}/profile-details?${u}&${t}`,       alt: 'Profile & Contributions', full: true },
+  const sideCards: { src: string; alt: string }[] = [
     { src: `${BASE}/most-commit-language?${u}&${t}`,  alt: 'Top Languages by Commit' },
     { src: `${BASE}/stats?${u}&${t}`,                 alt: 'Stats' },
     { src: `${BASE}/productive-time?${u}&${t}`,       alt: 'Commits by Hour' },
@@ -28,12 +23,23 @@ export const GithubStats = ({ username }: GithubStatsProps) => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      {rows.map(({ src, alt, full }) => (
-        <Card key={alt} className={full ? 'sm:col-span-2' : ''}>
-          <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" />
-        </Card>
-      ))}
+    <div className="flex flex-col lg:flex-row gap-3">
+      <Card className="lg:flex-1 flex items-center">
+        <img
+          src={`${BASE}/profile-details?${u}&${t}`}
+          alt="Profile & Contributions"
+          loading="lazy"
+          className="w-full h-auto block"
+        />
+      </Card>
+
+      <div className="grid grid-cols-2 gap-3 lg:w-[45%]">
+        {sideCards.map(({ src, alt }) => (
+          <Card key={alt}>
+            <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" />
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };

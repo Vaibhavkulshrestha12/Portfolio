@@ -9,6 +9,7 @@ import {
   TailwindCSS,
 } from "developer-icons";
 import { SiEthereum, SiSteam } from "react-icons/si";
+import LogoLoop from "../ui/logo-loop";
 import {
   Terminal,
   Settings2,
@@ -23,9 +24,6 @@ import { useSteamStats } from "../../hooks/useSteamStats";
 import { useGeminiQuote } from "../../hooks/useGeminiQuote";
 import logo from "/public/images/icons/logo.png";
 
-/* --------------------------------------------------
-   Reusable sub-components
--------------------------------------------------- */
 
 const SectionLabel = ({
   label,
@@ -41,28 +39,6 @@ const SectionLabel = ({
     <h2 className="text-2xl md:text-3xl font-display font-bold" style={{ color: "var(--text-primary)" }}>
       {title}
     </h2>
-  </div>
-);
-
-const SkillIcon = ({
-  icon: Icon,
-  name,
-}: {
-  icon: React.ComponentType<{ size?: number }>;
-  name: string;
-}) => (
-  <div
-    className="group flex flex-col items-center gap-1.5 p-2.5 rounded-xl border transition-all duration-200 hover:scale-110 cursor-default"
-    style={{
-      background: "var(--bg-secondary)",
-      borderColor: "var(--border)",
-    }}
-    title={name}
-  >
-    <Icon size={22} />
-    <span className="text-[10px] font-medium" style={{ color: "var(--text-muted)" }}>
-      {name}
-    </span>
   </div>
 );
 
@@ -119,7 +95,6 @@ export const About = () => {
     >
       <div className="max-w-3xl mx-auto px-4 py-28 space-y-16">
 
-        {/* ── Profile ── */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,18 +103,16 @@ export const About = () => {
           <SectionLabel label="About" title="Me" />
 
           <div
-            className="rounded-2xl border p-6 flex flex-col sm:flex-row gap-6 items-start"
+            className="rounded-2xl border p-4 sm:p-6 flex flex-row gap-4 sm:gap-6 items-start overflow-hidden"
             style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
           >
-            {/* Avatar */}
             <div className="flex-shrink-0">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-amber-500/40">
+              <div className="w-16 h-16 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-amber-500/40">
                 <img src={logo} alt="Vaibhav" className="w-full h-full object-cover" />
               </div>
             </div>
 
-            {/* Info */}
-            <div className="flex-1 space-y-3">
+            <div className="flex-1 min-w-0 space-y-3">
               <div>
                 <h1 className="text-xl sm:text-2xl font-display font-bold" style={{ color: "var(--text-primary)" }}>
                   Vaibhav Kulshreshtha
@@ -156,36 +129,59 @@ export const About = () => {
                 </span>{" "}
                 who loves building robust, scalable, and impact-driven digital products. From
                 crafting intuitive frontends with React &amp; Tailwind to designing secure
-                backends with Node.js, Firebase, and PostgreSQL — I turn complex ideas into
+                backends with Node.js, Firebase, and PostgreSQL , I turn complex ideas into
                 seamless experiences. I'm the{" "}
                 <span className="font-semibold text-amber-400">Co-Founder of Kisan Connect</span>,
                 an MSME-funded agri-tech startup, and hold{" "}
-                <span className="font-semibold text-amber-400">OCI DevOps Professional</span>{" "}
-                and AI Foundations certifications. When I'm not shipping code, I'm mastering
+                <span className="font-semibold text-amber-400">AWS Solutions Architect Associate</span>{" "}
+                and <span className="font-semibold text-amber-400">OCI DevOps Professional</span>{" "} certifications. When I'm not shipping code, I'm mastering
                 FromSoftware titles or deep-diving into comic universes.
               </p>
 
-              {/* Skills */}
               <div>
                 <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--text-muted)" }}>
                   Skills
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  <SkillIcon icon={React} name="React" />
-                  <SkillIcon icon={TypeScript} name="TypeScript" />
-                  <SkillIcon icon={NextJs} name="Next.js" />
-                  <SkillIcon icon={NodeJs} name="Node.js" />
-                  <SkillIcon icon={TailwindCSS} name="Tailwind" />
-                  <SkillIcon icon={Firebase} name="Firebase" />
-                  <SkillIcon icon={PostgreSQL} name="Postgres" />
-                  <SkillIcon icon={SiEthereum} name="Web3" />
+                <div className="overflow-hidden">
+                <LogoLoop
+                  logos={[
+                    { node: <React size={22} />,       title: "React" },
+                    { node: <TypeScript size={22} />,  title: "TypeScript" },
+                    { node: <NextJs size={22} />,      title: "Next.js" },
+                    { node: <NodeJs size={22} />,      title: "Node.js" },
+                    { node: <TailwindCSS size={22} />, title: "Tailwind" },
+                    { node: <Firebase size={22} />,    title: "Firebase" },
+                    { node: <PostgreSQL size={22} />,  title: "Postgres" },
+                    { node: <SiEthereum size={22} />,  title: "Web3" },
+                  ]}
+                  speed={60}
+                  direction="left"
+                  logoHeight={32}
+                  gap={28}
+                  hoverSpeed={0}
+                  scaleOnHover
+                  ariaLabel="Tech skills"
+                  renderItem={(item) => {
+                    const it = item as { node: React.ReactNode; title?: string };
+                    return (
+                      <div
+                        className="flex flex-col items-center gap-1 px-2"
+                        title={it.title}
+                      >
+                        <span className="text-[22px] leading-none">{it.node}</span>
+                        <span className="text-[9px] font-medium whitespace-nowrap" style={{ color: "var(--text-muted)" }}>
+                          {it.title}
+                        </span>
+                      </div>
+                    );
+                  }}
+                />
                 </div>
               </div>
             </div>
           </div>
         </motion.section>
-
-        {/* ── YouTube Music ── */}
+        {/* YouTube Music */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -195,7 +191,7 @@ export const About = () => {
           <YouTubeMusicCard />
         </motion.section>
 
-        {/* ── Featured: GitHub ── */}
+        {/*  GitHub */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -234,7 +230,6 @@ export const About = () => {
                 </div>
               </div>
 
-              {/* Top Languages — real API data only */}
               {gh?.languages && gh.languages.length > 0 && (
                 <div>
                   <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
@@ -257,7 +252,6 @@ export const About = () => {
                 </div>
               )}
 
-              {/* Stats — real API data only, no fallbacks */}
               {gh && (
                 <div
                   className="grid grid-cols-3 gap-2 pt-1 border-t"
@@ -279,7 +273,7 @@ export const About = () => {
           </div>
         </motion.section>
 
-        {/* ── Steam Gaming ── */}
+        {/*  Steam Gaming  */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -309,10 +303,9 @@ export const About = () => {
               </div>
             </div>
           ) : (
-            /* ONE unified dark card */
+            
             <div className="rounded-2xl overflow-hidden" style={{ background: "#0e1521" }}>
 
-              {/* ─ Banner ─ */}
               {steam.data.recentGame && (
                 <a
                   href={`https://store.steampowered.com/app/${steam.data.recentGame.appid}`}
@@ -330,10 +323,8 @@ export const About = () => {
                         `https://cdn.cloudflare.steamstatic.com/steam/apps/${steam.data!.recentGame!.appid}/capsule_231x87.jpg`;
                     }}
                   />
-                  {/* Bottom gradient */}
                   <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0e1521 0%, rgba(14,21,33,0.45) 50%, transparent 100%)" }} />
 
-                  {/* Last Played badge */}
                   <div
                     className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md"
                     style={{ background: "rgba(14,21,33,0.82)", border: "1px solid rgba(76,155,232,0.35)" }}
@@ -342,7 +333,6 @@ export const About = () => {
                     <span className="text-[11px] font-semibold" style={{ color: "#c6d4df" }}>Last Played</span>
                   </div>
 
-                  {/* Game name */}
                   <div className="absolute bottom-0 left-0 right-0 px-4 pb-4">
                     <p className="text-xl font-bold leading-tight" style={{ color: "#ffffff" }}>
                       {steam.data.recentGame.name}
@@ -351,7 +341,6 @@ export const About = () => {
                 </a>
               )}
 
-              {/* ─ Stats row ─ */}
               {steam.data.recentGame && (
                 <div className="grid grid-cols-3" style={{ borderTop: "1px solid #1e2d3d", borderBottom: "1px solid #1e2d3d" }}>
                   {[
@@ -378,10 +367,8 @@ export const About = () => {
                 </div>
               )}
 
-              {/* ─ Divider between recent-game block and overall library stats ─ */}
               <div style={{ height: "8px", background: "#060d14" }} />
 
-              {/* ─ Library stats ─ */}
               <div className="grid grid-cols-2 gap-px" style={{ background: "#1e2d3d" }}>
                 {[
                   {
@@ -422,9 +409,8 @@ export const About = () => {
                 ))}
               </div>
 
-              {/* ─ Top 5 Most Played ─ */}
               <div>
-                {/* Header */}
+               
                 <div
                   className="flex items-center justify-between px-4 py-3.5"
                   style={{ borderBottom: "1px solid #1e2d3d" }}
@@ -443,7 +429,6 @@ export const About = () => {
                   </a>
                 </div>
 
-                {/* Rows */}
                 {steam.data.topGames.map((game, idx) => {
                   const maxHours = steam.data!.topGames[0].hours;
                   const pct = maxHours > 0 ? (game.hours / maxHours) * 100 : 0;
@@ -458,7 +443,7 @@ export const About = () => {
                       onMouseEnter={e => (e.currentTarget.style.background = "#162030")}
                       onMouseLeave={e => (e.currentTarget.style.background = "")}
                     >
-                      {/* Rank */}
+                    
                       <span
                         className="text-base font-bold flex-shrink-0 text-center"
                         style={{ width: "18px", color: "#8ba0b4" }}
@@ -466,7 +451,6 @@ export const About = () => {
                         {idx + 1}
                       </span>
 
-                      {/* Capsule */}
                       <div
                         className="flex-shrink-0 rounded overflow-hidden"
                         style={{ width: "48px", height: "48px", background: "#1e2d3d" }}
@@ -479,7 +463,6 @@ export const About = () => {
                         />
                       </div>
 
-                      {/* Name + bar */}
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium truncate" style={{ color: "#c6d4df" }}>
                           {game.name}
@@ -492,7 +475,6 @@ export const About = () => {
                         </div>
                       </div>
 
-                      {/* Hours */}
                       <span className="text-sm font-bold flex-shrink-0" style={{ color: "#4c9be8" }}>
                         {game.hours}h
                       </span>
@@ -504,7 +486,6 @@ export const About = () => {
           )}
         </motion.section>
 
-        {/* ── Development Setup ── */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -530,7 +511,6 @@ export const About = () => {
           </div>
         </motion.section>
 
-        {/* ── Currently Working On — EaStore ── */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -538,12 +518,10 @@ export const About = () => {
         >
           <SectionLabel label="Now" title="Currently Working On" />
 
-          {/* Eastore featured card — real project data */}
           <div
             className="rounded-2xl border overflow-hidden"
             style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
           >
-            {/* Banner — actual screenshot */}
             <div className="relative h-44 overflow-hidden">
               <img
                 src="/images/eastore.png"
@@ -551,19 +529,18 @@ export const About = () => {
                 className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              {/* Status badge */}
+             
               <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                 <span className="text-[11px] text-white/90 font-medium">All Systems Operational</span>
               </div>
-              {/* Title overlay */}
+         
               <div className="absolute bottom-0 left-0 right-0 px-5 pb-4">
                 <h3 className="text-white font-bold text-xl tracking-tight">Eastore</h3>
                 <p className="text-[12px] mt-0.5" style={{ color: "rgba(255,255,255,0.65)" }}>Decentralized File Storage</p>
               </div>
             </div>
 
-            {/* Body */}
             <div className="p-5 space-y-4">
               <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                 Decentralized file storage platform with{" "}
@@ -575,7 +552,6 @@ export const About = () => {
                 file preview gallery, and session key management.
               </p>
 
-              {/* Tech chips */}
               <div className="flex flex-wrap gap-2">
                 {["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Web3", "Shadcn UI"].map((tech) => (
                   <span
@@ -592,7 +568,6 @@ export const About = () => {
                 ))}
               </div>
 
-              {/* Status + links */}
               <div className="flex items-center justify-between pt-1">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
@@ -615,7 +590,6 @@ export const About = () => {
           </div>
         </motion.section>
 
-        {/* ── Quote ── */}
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -625,7 +599,6 @@ export const About = () => {
             className="rounded-2xl border p-7 relative overflow-hidden"
             style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
           >
-            {/* Decorative large quote marks */}
             <span
               className="absolute top-3 left-5 text-7xl font-serif leading-none select-none pointer-events-none"
               style={{ color: "rgba(255,255,255,0.06)" }}

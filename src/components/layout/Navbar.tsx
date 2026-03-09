@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaWhatsapp, FaDiscord } from 'react-icons/fa';
 import logo from '/public/images/icons/logo.png';
 
 export const Navbar = () => {
@@ -128,6 +129,33 @@ export const Navbar = () => {
             >
               Contact
             </button>
+
+            {/* Social Links */}
+            <div className="pt-3 mt-1 border-t border-white/10">
+              <p className="px-3 pb-2 text-xs font-semibold tracking-widest uppercase text-gray-500">Connect</p>
+              <div className="flex items-center gap-1 px-3 flex-wrap">
+                {[
+                  { href: "https://github.com/Vaibhavkulshrestha12",             icon: <FaGithub size={18} />,   label: "GitHub" },
+                  { href: "https://www.linkedin.com/in/vaibhav-kulshrestha-053924283/", icon: <FaLinkedin size={18} />, label: "LinkedIn" },
+                  { href: "https://x.com/Vaibhav_1208",                          icon: <FaTwitter size={18} />,  label: "Twitter" },
+                  { href: "mailto:vaibhavkulshrestha55@gmail.com",                icon: <FaEnvelope size={18} />, label: "Email" },
+                  { href: "https://wa.me/+917355479199",                          icon: <FaWhatsapp size={18} />, label: "WhatsApp" },
+                  { href: "https://discord.com/users/idk_alpha_",                 icon: <FaDiscord size={18} />,  label: "Discord" },
+                ].map(({ href, icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                    aria-label={label}
+                    className="flex items-center justify-center w-9 h-9 rounded-lg text-gray-400 hover:text-amber-400 hover:bg-white/10 transition-colors"
+                  >
+                    {icon}
+                  </a>
+                ))}
+              </div>
+            </div>
 
 
           </div>
