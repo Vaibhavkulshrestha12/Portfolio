@@ -27,7 +27,7 @@ const TechBadge = ({ icon: Icon, name }: { icon: React.ComponentType<{ size?: nu
 
 export const ModernHero = () => {
   return (
-    <section className="section-padding min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
+      <section className="section-padding min-h-[auto] sm:min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
       {/* Background Elements - More subtle */}
       <div className="absolute inset-0 overflow-hidden opacity-30">
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full opacity-20 animate-float" 

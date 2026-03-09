@@ -410,7 +410,7 @@ export const ModernProjects = () => {
 
         {/* View All Projects */}
         <motion.div 
-          className="mt-16 text-center"
+          className="mt-8 sm:mt-16 text-center"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}

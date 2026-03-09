@@ -136,7 +136,7 @@ export const Experience = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center mb-16"
+            className="flex flex-col items-center mb-8 sm:mb-16"
           >
             <span className="mb-4 inline-block rounded-full border border-white/20 px-4 py-1 text-xs font-semibold tracking-widest text-white/70 uppercase">
               Career

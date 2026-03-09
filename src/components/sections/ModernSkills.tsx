@@ -14,7 +14,7 @@ export const ModernSkills = () => {
       <div className="container-custom max-w-7xl mx-auto">
         {/* Header */}
         <motion.div 
-          className="mb-12 md:mb-16 border-b pb-8"
+          className="mb-8 md:mb-16 border-b pb-6 md:pb-8"
           style={{ borderColor: 'var(--border)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export const ModernSkills = () => {
         </motion.div>
 
         {/* Clean Linear Layout */}
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           {categories.map(([category, technologies], categoryIndex) => (
             <motion.div
               key={category}

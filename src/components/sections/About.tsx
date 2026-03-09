@@ -90,10 +90,10 @@ export const About = () => {
   const { quote, loading: quoteLoading } = useGeminiQuote();
   return (
     <div
-      className="min-h-screen"
+      className="min-h-[auto] sm:min-h-screen"
       style={{ background: "var(--bg-primary)", color: "var(--text-primary)" }}
     >
-      <div className="max-w-3xl mx-auto px-4 py-28 space-y-16">
+      <div className="max-w-3xl mx-auto px-4 py-14 sm:py-20 md:py-28 space-y-10 sm:space-y-16">
 
         <motion.section
           initial={{ opacity: 0, y: 24 }}

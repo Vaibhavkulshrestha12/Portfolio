@@ -5,7 +5,7 @@ export const GithubSection = () => {
   const githubUsername = "Vaibhavkulshrestha12";
 
   return (
-    <section className="py-20 px-4" id="github">
+    <section className="py-12 sm:py-20 px-4" id="github">
         <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
