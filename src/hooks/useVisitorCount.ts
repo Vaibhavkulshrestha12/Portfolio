@@ -1,29 +1,24 @@
 import { useEffect, useState } from "react";
 
-/**
- * Increments a visitor counter via our own Vercel KV serverless function
- * (api/visitor.ts) and returns the total count.
- *
- * Requires Vercel KV to be linked in the Vercel dashboard — the env vars
- * KV_REST_API_URL and KV_REST_API_TOKEN are injected automatically at build time.
- */
+const BASE_COUNT   = 1345;
+const STORAGE_KEY  = "pf_visitor_count";
+const SESSION_KEY  = "pf_visitor_counted";
+
 export const useVisitorCount = () => {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("/api/visitor")
-      .then((r) => {
-        if (!r.ok) throw new Error("visitor API unavailable");
-        return r.json();
-      })
-      .then((data) => {
-        if (typeof data.count === "number") setCount(data.count);
-      })
-      .catch(() => {
-        // Silently fail; leave count as null so the UI hides it
-      });
-    // Only run once on mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const stored  = localStorage.getItem(STORAGE_KEY);
+    let current   = stored ? parseInt(stored, 10) : BASE_COUNT;
+
+    // Increment once per browser session
+    if (!sessionStorage.getItem(SESSION_KEY)) {
+      current += 1;
+      localStorage.setItem(STORAGE_KEY, String(current));
+      sessionStorage.setItem(SESSION_KEY, "1");
+    }
+
+    setCount(current);
   }, []);
 
   return count;
