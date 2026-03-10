@@ -1,114 +1,205 @@
-import { SpotlightCard } from "../ui/spotlight";
+import { useState } from "react";
+import StarBorder from "../ui/StarBorder";
 
-const achievements = [
+// ── Certification Badges ─────────────────────────────────────────────────────
+const certBadges = [
   {
-    title: "Tech Speaker",
-    description: "Spoke at 4+ tech events sharing knowledge and insights",
-    iconPath: "/images/icons/conference-speaker.svg",
-    color: "#f59e0b",
-    year: "2024"
+    id: "aws-saa",
+    src: "/images/aws-certified-solutions-architect-associate.png",
+    name: "AWS Certified",
+    sub: "Solutions Architect – Associate",
+    issuer: "Amazon Web Services",
   },
   {
-    title: "Smart India Hackathon",
-    description: "Twice qualified for the nationals and won 3 internal hackathon",
-    iconPath: "/images/icons/trophy-laurel.svg",
-    color: "#3b82f6",
-    year: "2025"
+    id: "oci-devops",
+    src: "/images/OCI25DOPOCP.png",
+    name: "OCI DevOps",
+    sub: "Professional",
+    issuer: "Oracle Cloud Infrastructure",
   },
   {
-    title: "MSME Hackathon Winner",
-    description: "Winner of MSME-funded hackathon with innovative agri-tech solution",
-    iconPath: "/images/icons/trophy-winner.svg",
-    color: "#22c55e",
-    year: "2024"
+    id: "oci-ai",
+    src: "/images/OCI25AICFAV1.png",
+    name: "OCI AI Foundations",
+    sub: "Associate",
+    issuer: "Oracle Cloud Infrastructure",
   },
   {
-    title: "Oracle certified devops professional",
-    description: "Achieved certification demonstrating expertise in DevOps practices and tools",
-    iconPath: "/images/icons/certificate-badge.svg",
-    color: "#8b5cf6",
-    year: "2025"
-  }
+    id: "oci-dev",
+    src: "/images/OCID25CP.png",
+    name: "OCI Developer",
+    sub: "Professional",
+    issuer: "Oracle Cloud Infrastructure",
+  },
 ];
+
+// ── Badge Card ────────────────────────────────────────────────────────────────
+const CertBadgeCard = ({
+  src,
+  name,
+  sub,
+  issuer,
+}: {
+  src: string;
+  name: string;
+  sub: string;
+  issuer: string;
+}) => {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <StarBorder as="div" className="w-full" color="#f59e0b" speed="5s">
+      <div className="flex flex-col items-center gap-3 p-4">
+        <div className="w-24 h-24 flex items-center justify-center">
+          {imgError ? (
+            <div
+              className="w-24 h-24 rounded-full flex items-center justify-center"
+              style={{ background: "rgba(255,255,255,0.05)", border: "2px dashed rgba(255,255,255,0.2)" }}
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+          ) : (
+            <img
+              src={src}
+              alt={`${name} ${sub}`}
+              className="w-24 h-24 object-contain"
+              onError={() => setImgError(true)}
+            />
+          )}
+        </div>
+        <div className="text-center">
+          <p className="text-sm font-bold leading-tight text-white">{name}</p>
+          <p className="text-xs mt-0.5 leading-tight text-gray-400">{sub}</p>
+          <p className="text-xs mt-2 font-medium px-2 py-0.5 rounded inline-block bg-white/10 border border-white/10 text-gray-400">
+            {issuer}
+          </p>
+        </div>
+      </div>
+    </StarBorder>
+  );
+};
 
 export const ModernAchievements = () => {
   return (
     <section className="section-padding" id="achievements">
       <div className="container-custom">
-        {/* Section Header */}
-        <div className="text-center space-element">
-          <div className="inline-flex items-center px-4 py-2 rounded-full border mb-6"
-               style={{ 
-                 background: 'var(--bg-secondary)', 
-                 borderColor: 'var(--accent-primary)',
-                 color: 'var(--accent-primary)' 
-               }}>
+
+        <div className="text-center mb-12">
+          <div
+            className="inline-flex items-center px-4 py-2 rounded-full border mb-6"
+            style={{ background: "var(--bg-secondary)", borderColor: "var(--accent-primary)", color: "var(--accent-primary)" }}
+          >
             <span className="text-sm font-semibold tracking-wider uppercase">Recognition</span>
           </div>
-          
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            <span style={{ color: 'var(--text-primary)' }}>Key</span>
-            <span className="text-gradient"> Achievements</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-3">
+            <span style={{ color: "var(--text-primary)" }}>Key </span>
+            <span className="text-gradient">Achievements</span>
           </h2>
-          
-          
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+            Milestones from competitions, certifications, and community events
+          </p>
         </div>
 
-        {/* Achievements Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          {achievements.map((achievement) => {
-            return (
-              <SpotlightCard 
-                key={achievement.title} 
-                className="achievement-card p-6 sm:p-8 group backdrop-blur-md shadow-2xl transition-all duration-300 lg:hover:scale-105"
+        <div
+          className="rounded-xl border p-6 mb-6"
+          style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}
+        >
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>
+                Certification Badges
+              </p>
+              
+            </div>
+            <span
+              className="text-xs font-medium px-2.5 py-1 rounded"
+              style={{ background: "var(--bg-tertiary)", border: "1px solid var(--border)", color: "var(--text-muted)" }}
+            >
+              4 badges
+            </span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {certBadges.map((badge) => (
+              <CertBadgeCard key={badge.id} {...badge} />
+            ))}
+          </div>
+        </div>
+
+        {/* Hackathon Record — 2 columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Smart India Hackathon */}
+          <div
+            className="rounded-xl p-5"
+            style={{
+              background: "var(--bg-secondary)",
+              borderTop: "1px solid var(--border)",
+              borderRight: "1px solid var(--border)",
+              borderBottom: "1px solid var(--border)",
+              borderLeft: "3px solid var(--accent-primary)",
+            }}
+          >
+            <div className="flex items-start justify-between gap-2 mb-1">
+              <h3 className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>
+                Hackathons
+              </h3>
+              <span
+                className="flex-shrink-0 text-xs font-semibold px-2 py-0.5 rounded"
+                style={{
+                  background: "rgba(251,191,36,0.10)",
+                  border: "1px solid rgba(251,191,36,0.25)",
+                  color: "var(--accent-primary)",
+                }}
               >
-                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-                  {/* Icon */}
-                  <div className="flex-shrink-0 mx-auto sm:mx-0">
-                    <div 
-                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center group-hover:animate-pulse transition-all duration-300 shadow-lg p-2"
-                      style={{ 
-                        background: `${achievement.color}20`,
-                        border: `2px solid ${achievement.color}40`,
-                        boxShadow: `0 8px 32px ${achievement.color}20`
-                      }}
-                    >
-                      <img 
-                        src={achievement.iconPath}
-                        alt={achievement.title}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </div>
+                Top 3
+              </span>
+            </div>
+            <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
+             Intra-University and Nationals
+            </p>
+            <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              2x national qualifier · 3 internal wins · competed in EdTech &amp; Agriculture verticals.
+            </p>
+          </div>
 
-                  {/* Content */}
-                  <div className="flex-grow text-center sm:text-left w-full">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">
-                      <h3 className="text-lg sm:text-xl font-bold drop-shadow-sm break-words"
-                          style={{ color: 'var(--text-primary)' }}>
-                        {achievement.title}
-                      </h3>
-                      <span 
-                        className="text-sm font-medium px-3 py-1 rounded-full backdrop-blur-sm self-center sm:self-auto flex-shrink-0"
-                        style={{
-                          background: 'var(--accent-primary)',
-                          color: 'white',
-                          border: `1px solid var(--accent-primary)`
-                        }}
-                      >
-                        {achievement.year}
-                      </span>
-                    </div>
-                    <p className="text-sm sm:text-base leading-relaxed drop-shadow-sm break-words hyphens-auto"
-                       style={{ color: 'var(--text-secondary)' }}>
-                      {achievement.description}
-                    </p>
-                  </div>
-                </div>
-              </SpotlightCard>
-            );
-          })}
+          {/* MSME Hackathon */}
+          <div
+            className="rounded-xl p-5"
+            style={{
+              background: "var(--bg-secondary)",
+              borderTop: "1px solid var(--border)",
+              borderRight: "1px solid var(--border)",
+              borderBottom: "1px solid var(--border)",
+              borderLeft: "3px solid var(--accent-primary)",
+            }}
+          >
+            <div className="flex items-start justify-between gap-2 mb-1">
+              <h3 className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>
+                MSME National Hackathon
+              </h3>
+              <span
+                className="flex-shrink-0 text-xs font-semibold px-2 py-0.5 rounded"
+                style={{
+                  background: "rgba(251,191,36,0.10)",
+                  border: "1px solid rgba(251,191,36,0.25)",
+                  color: "var(--accent-primary)",
+                }}
+              >
+                Winner
+              </span>
+            </div>
+            <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
+              Ministry of MSME · 2024
+            </p>
+            <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              1st place · ₹3.5L funding secured · built Kisan Connect, an agri-tech marketplace now in production.
+            </p>
+          </div>
         </div>
+
       </div>
     </section>
   );

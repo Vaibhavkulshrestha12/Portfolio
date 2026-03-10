@@ -11,10 +11,6 @@ import {
 import { SiEthereum, SiSteam } from "react-icons/si";
 import LogoLoop from "../ui/logo-loop";
 import {
-  Terminal,
-  Settings2,
-  Code2,
-  ChevronRight,
   MapPin,
   ExternalLink,
 } from "lucide-react";
@@ -40,48 +36,6 @@ const SectionLabel = ({
       {title}
     </h2>
   </div>
-);
-
-const SetupItem = ({
-  icon: Icon,
-  title,
-  description,
-  href,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  description: string;
-  href?: string;
-}) => (
-  <a
-    href={href ?? "#"}
-    target={href ? "_blank" : undefined}
-    rel="noopener noreferrer"
-    className="flex items-center gap-4 p-4 rounded-xl border transition-all duration-200 hover:border-amber-500/40 hover:bg-amber-500/5 group"
-    style={{
-      background: "var(--bg-secondary)",
-      borderColor: "var(--border)",
-    }}
-  >
-    <div
-      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-      style={{ background: "var(--bg-tertiary)" }}
-    >
-      <Icon className="w-5 h-5" />
-    </div>
-    <div className="flex-1 min-w-0">
-      <p className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
-        {title}
-      </p>
-      <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-        {description}
-      </p>
-    </div>
-    <ChevronRight
-      className="w-4 h-4 flex-shrink-0 opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200"
-      style={{ color: "var(--text-muted)" }}
-    />
-  </a>
 );
 
 export const About = () => {
@@ -222,7 +176,7 @@ export const About = () => {
                 </div>
                 <div className="overflow-x-auto">
                   <img
-                    src="https://ghchart.rshah.org/f59e0b/Vaibhavkulshrestha12"
+                    src="https://ghchart.rshah.org/39d353/Vaibhavkulshrestha12"
                     alt="GitHub contributions"
                     className="w-full rounded-lg"
                     style={{ minWidth: "480px" }}
@@ -484,31 +438,6 @@ export const About = () => {
               </div>
             </div>
           )}
-        </motion.section>
-
-        <motion.section
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <SectionLabel label="Development" title="Setup" />
-          <div className="space-y-3">
-            <SetupItem
-              icon={Settings2}
-              title="Gears Used"
-              description="Productivity tools &amp; gadgets I use daily"
-            />
-            <SetupItem
-              icon={Code2}
-              title="VS Code / Cursor Setup"
-              description="My editor configuration, extensions &amp; theme"
-            />
-            <SetupItem
-              icon={Terminal}
-              title="Terminal Setup"
-              description="Shell config, aliases &amp; prompt for Windows &amp; WSL"
-            />
-          </div>
         </motion.section>
 
         <motion.section
