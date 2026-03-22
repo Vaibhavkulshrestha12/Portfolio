@@ -1,11 +1,11 @@
 import { Music } from "lucide-react";
 
 const TRACK = {
-  title:     "Tere Ishk Mein",
-  artist:    "A.R. Rahman, Arijit Singh",
-  album:     "Tere Ishk Mein",
-  thumbnail: "https://i.ytimg.com/vi/w0pbdkrRRJM/hqdefault.jpg",
-  url:       "https://music.youtube.com/watch?v=w0pbdkrRRJM&si=Ej4NpndmqyVqD78o",
+  title:     "Kabhi Bekasi Ne Mara",
+  artist:    "Kishore Kumar",
+  album:     "Alag Alag (1985)",
+  thumbnail: "https://img.youtube.com/vi/RrquQS1Gj2o/hqdefault.jpg",
+  url:       "https://music.youtube.com/watch?v=RrquQS1Gj2o&si=5TrA-xrkpbNorfIT",
 };
 
 const YT_RED = "#FF0000";

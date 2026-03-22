@@ -56,7 +56,7 @@ export const ModernHero = () => {
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight animate-slide-up" 
                 style={{ animationDelay: '0.1s' }}>
               <span style={{ color: 'var(--text-secondary)' }}>Hi, I'm Vaibhav — </span>
-              <span className="text-gradient">A Full Stack developer.</span>
+              <span className="text-gradient">A Full Stack developer</span>
             </h1>
 
             {/* Description with Tech Badges */}

@@ -96,7 +96,7 @@ export const ModernAchievements = () => {
             <span className="text-sm font-semibold tracking-wider uppercase">Recognition</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-3">
-            <span style={{ color: "var(--text-primary)" }}>Key </span>
+            <span style={{ color: "var(--text-primary)" }}>Certifications & </span>
             <span className="text-gradient">Achievements</span>
           </h2>
           <p className="text-sm" style={{ color: "var(--text-muted)" }}>
