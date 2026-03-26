@@ -9,6 +9,7 @@ const certBadges = [
     name: "AWS Certified",
     sub: "Solutions Architect – Associate",
     issuer: "Amazon Web Services",
+    link: "https://www.credly.com/badges/901c7ff3-1864-4ca6-8132-a43954772803/public_url",
   },
   {
     id: "oci-devops",
@@ -16,6 +17,7 @@ const certBadges = [
     name: "OCI DevOps",
     sub: "Professional",
     issuer: "Oracle Cloud Infrastructure",
+    link: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=E59EE73EBB13DAB2D9F3DDA5E22A350C9FC4C0D001E3EEDAC783D55A8AA996CA",
   },
   {
     id: "oci-ai",
@@ -39,46 +41,63 @@ const CertBadgeCard = ({
   name,
   sub,
   issuer,
+  link,
 }: {
   src: string;
   name: string;
   sub: string;
   issuer: string;
+  link?: string;
 }) => {
   const [imgError, setImgError] = useState(false);
 
+  const content = (
+    <div className="flex flex-col items-center gap-3 p-4">
+      <div className="w-24 h-24 flex items-center justify-center">
+        {imgError ? (
+          <div
+            className="w-24 h-24 rounded-full flex items-center justify-center"
+            style={{ background: "rgba(255,255,255,0.05)", border: "2px dashed rgba(255,255,255,0.2)" }}
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "rgba(255,255,255,0.4)" }}>
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+        ) : (
+          <img
+            src={src}
+            alt={`${name} ${sub}`}
+            className="w-24 h-24 object-contain"
+            onError={() => setImgError(true)}
+          />
+        )}
+      </div>
+      <div className="text-center">
+        <p className="text-sm font-bold leading-tight text-white">{name}</p>
+        <p className="text-xs mt-0.5 leading-tight text-gray-400">{sub}</p>
+        <p className="text-xs mt-2 font-medium px-2 py-0.5 rounded inline-block bg-white/10 border border-white/10 text-gray-400">
+          {issuer}
+        </p>
+      </div>
+    </div>
+  );
+
   return (
     <StarBorder as="div" className="w-full" color="#f59e0b" speed="5s">
-      <div className="flex flex-col items-center gap-3 p-4">
-        <div className="w-24 h-24 flex items-center justify-center">
-          {imgError ? (
-            <div
-              className="w-24 h-24 rounded-full flex items-center justify-center"
-              style={{ background: "rgba(255,255,255,0.05)", border: "2px dashed rgba(255,255,255,0.2)" }}
-            >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "rgba(255,255,255,0.4)" }}>
-                <rect x="3" y="3" width="18" height="18" rx="3" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg>
-            </div>
-          ) : (
-            <img
-              src={src}
-              alt={`${name} ${sub}`}
-              className="w-24 h-24 object-contain"
-              onError={() => setImgError(true)}
-            />
-          )}
-        </div>
-        <div className="text-center">
-          <p className="text-sm font-bold leading-tight text-white">{name}</p>
-          <p className="text-xs mt-0.5 leading-tight text-gray-400">{sub}</p>
-          <p className="text-xs mt-2 font-medium px-2 py-0.5 rounded inline-block bg-white/10 border border-white/10 text-gray-400">
-            {issuer}
-          </p>
-        </div>
-      </div>
+      {link ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block transition-opacity hover:opacity-80"
+        >
+          {content}
+        </a>
+      ) : (
+        content
+      )}
     </StarBorder>
   );
 };
