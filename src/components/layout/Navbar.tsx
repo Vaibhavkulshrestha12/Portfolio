@@ -80,6 +80,14 @@ export const Navbar = () => {
               >
                 Experience
               </Link>
+              <a
+                href="https://myownjournal.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Blog
+              </a>
               <button
                 onClick={handleContactClick}
                 className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -123,6 +131,15 @@ export const Navbar = () => {
             >
               Experience
             </Link>
+            <a
+              href="https://myownjournal.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
+            >
+              Blog
+            </a>
             <button
               onClick={handleContactClick}
               className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
