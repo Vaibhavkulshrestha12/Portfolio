@@ -68,12 +68,12 @@ export const Navbar = () => {
               >
                 About
               </Link>
-              <button
-                onClick={() => scrollToSection('projects')}
+              <Link
+                to="/projects"
                 className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Projects
-              </button>
+              </Link>
               <Link
                 to="/experience"
                 className="text-surface-400 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -118,12 +118,13 @@ export const Navbar = () => {
             >
               About
             </Link>
-            <button
-              onClick={() => scrollToSection('projects')}
+            <Link
+              to="/projects"
+              onClick={() => setIsMenuOpen(false)}
               className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-violet-500 hover:bg-gray-100/10 transition-colors"
             >
               Projects
-            </button>
+            </Link>
             <Link
               to="/experience"
               onClick={() => setIsMenuOpen(false)}
