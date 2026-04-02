@@ -1,11 +1,11 @@
 import { Music } from "lucide-react";
 
 const TRACK = {
-  title:     "Kabhi Bekasi Ne Mara",
-  artist:    "Kishore Kumar",
-  album:     "Alag Alag (1985)",
-  thumbnail: "https://img.youtube.com/vi/RrquQS1Gj2o/hqdefault.jpg",
-  url:       "https://music.youtube.com/watch?v=RrquQS1Gj2o&si=5TrA-xrkpbNorfIT",
+  title:     "Mast Kalandar",
+  artist:    "Atif Aslam, Sami Yusuf",
+  album:     "Mast Kalandar - Single",
+  thumbnail: "https://img.youtube.com/vi/k83rmi-5vJo/hqdefault.jpg",
+  url:       "https://music.youtube.com/watch?v=k83rmi-5vJo&si=tpSfi0C68nI4FtOY",
 };
 
 const YT_RED = "#FF0000";
