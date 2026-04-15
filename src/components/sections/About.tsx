@@ -18,7 +18,7 @@ import { YouTubeMusicCard } from "../ui/youtube-music-card";
 import { useGitHubStats } from "../../hooks/useGitHubStats";
 import { useSteamStats } from "../../hooks/useSteamStats";
 import { useGeminiQuote } from "../../hooks/useGeminiQuote";
-import logo from "/public/images/icons/thopda.png";
+import logo from "/public/images/icons/logo.png";
 
 
 const SectionLabel = ({
