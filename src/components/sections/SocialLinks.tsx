@@ -1,4 +1,5 @@
-import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaDiscord } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin,  FaWhatsapp, FaDiscord } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 
 export const SocialLinks = () => {
   return (
@@ -6,7 +7,7 @@ export const SocialLinks = () => {
       <div className="flex flex-col gap-6">
         <SocialLink href="https://github.com/Vaibhavkulshrestha12" icon={<FaGithub size={24} />} />
         <SocialLink href="https://www.linkedin.com/in/vaibhav-kulshrestha-053924283/" icon={<FaLinkedin size={24} />} />
-        <SocialLink href="https://x.com/Vaibhav_1208" icon={<FaTwitter size={24} />} />
+        <SocialLink href="https://x.com/potato_code_0_0" icon={<FaXTwitter size={24} />} />
         <SocialLink href="mailto:vaibhavkulshrestha55@gmail.com" icon={<FaEnvelope size={24} />} />
         <SocialLink href="https://wa.me/+917355479199" icon={<FaWhatsapp size={24} />} />
         <SocialLink href="https://discord.com/users/idk_alpha_" icon={<FaDiscord size={24} />} />
