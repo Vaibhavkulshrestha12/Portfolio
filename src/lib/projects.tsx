@@ -11,7 +11,8 @@ import {
   AWS,
   Terraform
 } from 'developer-icons';
-import { SiEthereum } from 'react-icons/si';
+import { SiEthereum, SiThreedotjs, SiWebgl, SiWebrtc } from 'react-icons/si';
+import { Code2 } from 'lucide-react';
 
 export const allProjects = [
   {
@@ -52,20 +53,56 @@ export const allProjects = [
     isPrivate: false,
   },
   {
-    title: "PashuDrishti",
-    description: "AI-powered indian cattle breed recognition and Atc scoring platform with Farm and livestock management accesibilities and features.",
-    role: "Full-Stack Developer — Developed AI-powered cattle breed recognition and ATC scoring system and frontend of the app and backend. Implemented image upload, real-time breed identification, ATC scoring, face identification lock , native geo-location based cattle suggestions and farm management features.",
-    image: "./images/PashuDrishti.gif",
+    title: "Vision",
+    description: "A visual recreation of getcraft.com, built as a polished design template that can be adapted for other websites.",
+    role: "Frontend Developer — Recreated the getcraft.com visual experience with a reusable, responsive interface and a design system ready to be adapted for new sites.",
+    image: "/vision.png",
+    technologies: [
+      { name: "Next.js", icon: NextJs },
+      { name: "TypeScript", icon: TypeScript },
+      { name: "Tailwind CSS", icon: TailwindCSS }
+    ],
+    github: "https://github.com/Vaibhavkulshrestha12/Vision-",
+    live: "https://vision-two-olive.vercel.app/",
+    status: "Open Source",
+    gradient: "from-amber-500 via-orange-500 to-rose-600",
+    isPrivate: false,
+  },
+  {
+    title: "Soccer",
+    description: "A desktop-focused web soccer game built with WebGL that can be played against AI or online with another player through browser-to-browser communication.",
+    role: "Developer — Built the 3D game experience with Three.js and WebGL, added AI gameplay, and implemented online multiplayer with PeerJS and WebRTC-compatible browser communication.",
+    image: "/soccer.png",
     technologies: [
       { name: "TypeScript", icon: TypeScript },
-      { name: "Tailwind CSS", icon: TailwindCSS },
-      { name: "Firebase", icon: Firebase },
-      { name: "Python", icon: Python }
+      { name: "Three.js", icon: SiThreedotjs },
+      { name: "WebGL", icon: SiWebgl },
+      { name: "PeerJS", icon: Code2 },
+      { name: "WebRTC", icon: SiWebrtc }
     ],
-    github: "https://github.com/Vaibhavkulshrestha12/SIH-",
-    live: "https://pashudrishti-sih.vercel.app/",
+    github: "https://github.com/Vaibhavkulshrestha12/SoccerPro",
+    live: "https://soccerpro-max.vercel.app/",
+    status: "Open Source",
+    gradient: "from-green-500 via-emerald-500 to-cyan-600",
+    isPrivate: false,
+  },
+  {
+    title: "Journal",
+    description: "A high-performance blogging platform designed for developers and technical writers who want a clean, fast, and modern writing environment. Features global edge caching and instant revalidation.",
+    role: "Full-Stack Developer — Built a responsive edge-caching platform using Next.js 15 App Router, PostgreSQL via AWS RDS, and AWS S3 for media storage. Implemented secure admin access with AWS Cognito, a custom Markdown editor, and real-time metrics dashboard.",
+    image: "/images/journal.png",
+    technologies: [
+      { name: "Next.js", icon: NextJs },
+      { name: "TypeScript", icon: TypeScript },
+      { name: "Tailwind CSS", icon: TailwindCSS },
+      { name: "PostgreSQL", icon: PostgreSQL },
+      { name: "AWS", icon: AWS },
+      { name: "Terraform", icon: Terraform }
+    ],
+    github: "https://github.com/Vaibhavkulshrestha12/Journal",
+    live: "https://myownjournal.vercel.app/",
     status: "All Systems Operational",
-    gradient: "from-cyan-500 via-blue-500 to-purple-600",
+    gradient: "from-violet-500 via-fuchsia-500 to-indigo-600",
     isPrivate: false,
   },
   {
@@ -87,22 +124,20 @@ export const allProjects = [
     isPrivate: false,
   },
   {
-    title: "Journal",
-    description: "A high-performance blogging platform designed for developers and technical writers who want a clean, fast, and modern writing environment. Features global edge caching and instant revalidation.",
-    role: "Full-Stack Developer — Built a responsive edge-caching platform using Next.js 15 App Router, PostgreSQL via AWS RDS, and AWS S3 for media storage. Implemented secure admin access with AWS Cognito, a custom Markdown editor, and real-time metrics dashboard.",
-    image: "./images/journal.png",
+    title: "PashuDrishti",
+    description: "AI-powered indian cattle breed recognition and Atc scoring platform with Farm and livestock management accesibilities and features.",
+    role: "Full-Stack Developer — Developed AI-powered cattle breed recognition and ATC scoring system and frontend of the app and backend. Implemented image upload, real-time breed identification, ATC scoring, face identification lock , native geo-location based cattle suggestions and farm management features.",
+    image: "./images/PashuDrishti.gif",
     technologies: [
-      { name: "Next.js", icon: NextJs },
       { name: "TypeScript", icon: TypeScript },
       { name: "Tailwind CSS", icon: TailwindCSS },
-      { name: "PostgreSQL", icon: PostgreSQL },
-      { name: "AWS", icon: AWS },
-      { name: "Terraform", icon: Terraform }
+      { name: "Firebase", icon: Firebase },
+      { name: "Python", icon: Python }
     ],
-    github: "https://github.com/Vaibhavkulshrestha12/Journal",
-    live: "https://myownjournal.vercel.app/",
+    github: "https://github.com/Vaibhavkulshrestha12/SIH-",
+    live: "https://pashudrishti-sih.vercel.app/",
     status: "All Systems Operational",
-    gradient: "from-violet-500 via-fuchsia-500 to-indigo-600",
+    gradient: "from-cyan-500 via-blue-500 to-purple-600",
     isPrivate: false,
   }
 ];

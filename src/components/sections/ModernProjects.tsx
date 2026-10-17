@@ -152,27 +152,29 @@ export const ModernProjects = () => {
                     {project.title}
                   </h3>
                   <div className="flex gap-1.5 flex-shrink-0">
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg transition-all duration-200"
-                      style={{
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
-                        color: 'rgba(255, 255, 255, 0.6)',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                        e.currentTarget.style.color = 'white';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
-                      }}
-                    >
-                      <Globe size={16} />
-                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-lg transition-all duration-200"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          color: 'rgba(255, 255, 255, 0.6)',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                          e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
+                        }}
+                      >
+                        <Globe size={16} />
+                      </a>
+                    )}
                     <a
                       href={project.github}
                       target="_blank"
