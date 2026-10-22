@@ -1,7 +1,7 @@
 #  Portfolio Website
 
 ##  Live Demo
-**[Visit vaibhavkulshrestha.me](https://vaibhavkulshrestha.me)**
+**[Visit vaibhavkulshrestha.tech](https://vaibhavkulshrestha.tech)**
 
 
 ##  Features
